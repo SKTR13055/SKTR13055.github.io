@@ -15,12 +15,12 @@ This site is designed for clarity, scalability, and structured learning — show
 Keep track of the latest additions and updates to this portfolio.  
 *(Newest entries appear first)*
 
-| Date | Title | Category |
-|:------|:-------------------------------------------|:-------------|
-| **Oct 25, 2025** | [Safe PowerShell Attack Lab](./docs/sysmon-lab.html) | Documentation |
-| **Oct 20, 2025** | [TryHackMe – Agent_T Writeup](./writeups/agent-t.html) | Writeup |
-| **Oct 12, 2025** | [Faux Phish: Phishing Simulation Project](./projects/faux-phish.html) | Project |
-| **Oct 05, 2025** | [Timer Controller: Remote System Management Tool](./projects/timer-controller.html) | Project |
+| Date | Title | Category | Domain | Mode |
+|:-----|:------|:---------|:-------|:-----|
+| Oct 25, 2025 | Safe PowerShell Attack Lab | Documentation | Blue Team | Hands-on Practice |
+| Oct 20, 2025 | TryHackMe – Agent_T Writeup | Writeup | Red Team | Hands-on Practice |
+| Oct 12, 2025 | Faux Phish: Phishing Simulation Project | Project | Red Team | Hands-on Practice |
+| Oct 05, 2025 | Timer Controller: Remote System Management Tool | Project | IT | Hands-on Practice |
 
 ➡️ [View All Writeups](./writeups/index.html)  
 ➡️ [View All Documentation](./docs/index.html)
@@ -67,15 +67,6 @@ Curated learning material, cheat sheets, and reference links.
 ➡️ [Explore Resources](./resources/index.html)
 
 ---
-
-## 🧭 Site Navigation
-
-| Section | Description |
-|:---------|:-------------|
-| [Docs](./docs/index.html) | Reports, configurations, and documentation. |
-| [Projects](./projects/index.html) | Tools, scripts, and simulation experiments. |
-| [Writeups](./writeups/index.html) | Lab walkthroughs and analyses. |
-| [Resources](./resources/index.html) | Study materials and external references. |
 
 ---
 
