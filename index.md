@@ -2,9 +2,6 @@
 layout: default
 title: Cybersecurity Portfolio
 ---
-
-# 🧩 Cybersecurity Portfolio
-
 Welcome to my cybersecurity knowledge base — a central hub for **technical documentation**, **projects**, and **writeups**.  
 This site is designed for clarity, scalability, and structured learning — showcasing real-world security research and experimentation.
 
@@ -17,9 +14,9 @@ Keep track of the latest additions and updates to this portfolio.
 
 | Date | Title | Category | Domain | Mode |
 |:-----|:------|:---------|:-------|:-----|
-| Oct 25, 2025 | Safe PowerShell Attack Lab | Documentation | Blue Team | Hands-on Practice |
-| Oct 20, 2025 | TryHackMe – Agent_T Writeup | Writeup | Red Team | Hands-on Practice |
-| Oct 05, 2025 | Timer Controller: Remote System Management Tool | Project | IT | Hands-on Practice |
+| Oct 25,2025 | Safe PowerShell Attack Lab | Documentation | Blue Team | Hands-on Practice |
+| Oct 20,2025 | TryHackMe – Agent_T Writeup | Writeup | Red Team | Hands-on Practice |
+| Oct 05,2025 | Timer Controller: Remote System Management Tool | Project | IT | Hands-on Practice |
 
 ➡️ [View All Writeups](./writeups/index.html)  
 ➡️ [View All Documentation](./docs/index.html)
