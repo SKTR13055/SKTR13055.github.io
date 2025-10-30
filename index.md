@@ -1,123 +1,73 @@
 ---
 layout: default
+title: Cybersecurity Portfolio
 ---
 
-Text can be **bold**, _italic_, ~~strikethrough~~ or `keyword`.
+# 🧩 Cybersecurity Portfolio
 
-[Link to another page](./another-page.html).
+Welcome to my cybersecurity knowledge base — a central hub for my **technical documentation**, **project reports**, and **writeups**.  
+This site is structured to provide a clean and organized presentation of my work in security research, practical labs, and development.
 
-There should be whitespace between paragraphs.
+---
 
-There should be whitespace between paragraphs. We recommend including a README, or a file with information about your project.
+## 📘 Overview
 
-# Header 1
+This portfolio contains a collection of materials focused on:
 
-This is a normal paragraph following a header. GitHub is a code hosting platform for version control and collaboration. It lets you and others work together on projects from anywhere.
+- **Documentation:** System design, research reports, and technical notes.  
+- **Projects:** Tools, simulations, and automation scripts built for security learning.  
+- **Writeups:** Detailed analyses of cybersecurity challenges, incident labs, and CTFs.  
+- **Resources:** References, cheat sheets, and learning materials.
 
-## Header 2
+Each section is designed for easy navigation and future scalability.
 
-> This is a blockquote following a header.
->
-> When something is important enough, you do it even if the odds are not in your favor.
+---
 
-### Header 3
+## 📂 Sections
 
-```js
-// Javascript code with syntax highlighting.
-var fun = function lang(l) {
-  dateformat.i18n = require('./lang/' + l)
-  return true;
-}
-```
+### 🧠 Documentation
+Contains structured reports, case studies, and research notes.  
+These documents are formatted for clarity, and often include diagrams, workflows, and references.
 
-```ruby
-# Ruby code with syntax highlighting
-GitHubPages::Dependencies.gems.each do |gem, version|
-  s.add_dependency(gem, "= #{version}")
-end
-```
+➡️ [View Documentation](./docs/index.html)
 
-#### Header 4
+---
 
-*   This is an unordered list following a header.
-*   This is an unordered list following a header.
-*   This is an unordered list following a header.
+### 🧰 Projects
+Security-focused tools and experiments — from network monitoring scripts to controlled attack simulations.  
+Each project folder includes setup steps, architecture details, and testing results.
 
-##### Header 5
+➡️ [View Projects](./projects/index.html)
 
-1.  This is an ordered list following a header.
-2.  This is an ordered list following a header.
-3.  This is an ordered list following a header.
+---
 
-###### Header 6
+### 🧩 Writeups
+CTF and lab walkthroughs, including methodology, exploitation process, and remediation steps.  
+Writeups are categorized by platform (e.g., TryHackMe, HackTheBox, Custom Labs).
 
-| head1        | head two          | three |
-|:-------------|:------------------|:------|
-| ok           | good swedish fish | nice  |
-| out of stock | good and plenty   | nice  |
-| ok           | good `oreos`      | hmm   |
-| ok           | good `zoute` drop | yumm  |
+➡️ [View Writeups](./writeups/index.html)
 
-### There's a horizontal rule below this.
+---
 
-* * *
+### 📚 Resources
+A curated list of references, reading materials, and notes for continuous cybersecurity learning.  
 
-### Here is an unordered list:
+➡️ [Explore Resources](./resources/index.html)
 
-*   Item foo
-*   Item bar
-*   Item baz
-*   Item zip
+---
 
-### And an ordered list:
+## 🧭 Site Navigation
 
-1.  Item one
-1.  Item two
-1.  Item three
-1.  Item four
+| Section | Description |
+|:---------|:-------------|
+| [Docs](./docs/index.html) | Reports, configurations, and documentation. |
+| [Projects](./projects/index.html) | Tools, scripts, and simulation experiments. |
+| [Writeups](./writeups/index.html) | Lab walkthroughs and analyses. |
+| [Resources](./resources/index.html) | Helpful study materials and links. |
 
-### And a nested list:
+---
 
-- level 1 item
-  - level 2 item
-  - level 2 item
-    - level 3 item
-    - level 3 item
-- level 1 item
-  - level 2 item
-  - level 2 item
-  - level 2 item
-- level 1 item
-  - level 2 item
-  - level 2 item
-- level 1 item
+### 💡 Tip
 
-### Small image
+Each page in this portfolio follows a consistent structure:
 
-![Octocat](https://github.githubassets.com/images/icons/emoji/octocat.png)
-
-### Large image
-
-![Branching](https://guides.github.com/activities/hello-world/branching.png)
-
-
-### Definition lists can be used with HTML syntax.
-
-<dl>
-<dt>Name</dt>
-<dd>Godzilla</dd>
-<dt>Born</dt>
-<dd>1952</dd>
-<dt>Birthplace</dt>
-<dd>Japan</dd>
-<dt>Color</dt>
-<dd>Green</dd>
-</dl>
-
-```
-Long, single-line code blocks should not wrap. They should horizontally scroll if they are too long. This line should be long enough to demonstrate this.
-```
-
-```
-The final element.
-```
