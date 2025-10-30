@@ -5,8 +5,25 @@ title: Cybersecurity Portfolio
 
 # 🧩 Cybersecurity Portfolio
 
-Welcome to my cybersecurity knowledge base — a central hub for my **technical documentation**, **project reports**, and **writeups**.  
-This site is structured to provide a clean and organized presentation of my work in security research, practical labs, and development.
+Welcome to my cybersecurity knowledge base — a central hub for **technical documentation**, **projects**, and **writeups**.  
+This site is designed for clarity, scalability, and structured learning — showcasing real-world security research and experimentation.
+
+---
+
+## 📰 Recent Posts
+
+Keep track of the latest additions and updates to this portfolio.  
+*(Newest entries appear first)*
+
+| Date | Title | Category |
+|:------|:-------------------------------------------|:-------------|
+| **Oct 25, 2025** | [Safe PowerShell Attack Lab](./docs/sysmon-lab.html) | Documentation |
+| **Oct 20, 2025** | [TryHackMe – Agent_T Writeup](./writeups/agent-t.html) | Writeup |
+| **Oct 12, 2025** | [Faux Phish: Phishing Simulation Project](./projects/faux-phish.html) | Project |
+| **Oct 05, 2025** | [Timer Controller: Remote System Management Tool](./projects/timer-controller.html) | Project |
+
+➡️ [View All Writeups](./writeups/index.html)  
+➡️ [View All Documentation](./docs/index.html)
 
 ---
 
@@ -14,43 +31,38 @@ This site is structured to provide a clean and organized presentation of my work
 
 This portfolio contains a collection of materials focused on:
 
-- **Documentation:** System design, research reports, and technical notes.  
-- **Projects:** Tools, simulations, and automation scripts built for security learning.  
-- **Writeups:** Detailed analyses of cybersecurity challenges, incident labs, and CTFs.  
-- **Resources:** References, cheat sheets, and learning materials.
-
-Each section is designed for easy navigation and future scalability.
+- **Documentation:** Technical reports and security research notes.  
+- **Projects:** Tools, automation scripts, and controlled attack simulations.  
+- **Writeups:** Detailed analyses of CTFs, labs, and security challenges.  
+- **Resources:** Study materials and references for continued learning.
 
 ---
 
 ## 📂 Sections
 
 ### 🧠 Documentation
-Contains structured reports, case studies, and research notes.  
-These documents are formatted for clarity, and often include diagrams, workflows, and references.
+Structured reports, system design notes, and research findings.
 
 ➡️ [View Documentation](./docs/index.html)
 
 ---
 
 ### 🧰 Projects
-Security-focused tools and experiments — from network monitoring scripts to controlled attack simulations.  
-Each project folder includes setup steps, architecture details, and testing results.
+Security-focused experiments, tools, and proof-of-concepts.
 
 ➡️ [View Projects](./projects/index.html)
 
 ---
 
 ### 🧩 Writeups
-CTF and lab walkthroughs, including methodology, exploitation process, and remediation steps.  
-Writeups are categorized by platform (e.g., TryHackMe, HackTheBox, Custom Labs).
+CTF and lab walkthroughs with methodology, exploitation, and remediation.
 
 ➡️ [View Writeups](./writeups/index.html)
 
 ---
 
 ### 📚 Resources
-A curated list of references, reading materials, and notes for continuous cybersecurity learning.  
+Curated learning material, cheat sheets, and reference links.
 
 ➡️ [Explore Resources](./resources/index.html)
 
@@ -63,11 +75,9 @@ A curated list of references, reading materials, and notes for continuous cybers
 | [Docs](./docs/index.html) | Reports, configurations, and documentation. |
 | [Projects](./projects/index.html) | Tools, scripts, and simulation experiments. |
 | [Writeups](./writeups/index.html) | Lab walkthroughs and analyses. |
-| [Resources](./resources/index.html) | Helpful study materials and links. |
+| [Resources](./resources/index.html) | Study materials and external references. |
 
 ---
 
-### 💡 Tip
 
-Each page in this portfolio follows a consistent structure:
 
