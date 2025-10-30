@@ -1,11 +1,4 @@
----
-layout: default
-title: Cybersecurity Portfolio
----
-Welcome to my cybersecurity knowledge base — a central hub for **technical documentation**, **projects**, and **writeups**.  
-This site is designed for clarity, scalability, and structured learning — showcasing real-world security research and experimentation.
 
----
 
 ## 📰 Recent Posts
 
