@@ -19,7 +19,6 @@ Keep track of the latest additions and updates to this portfolio.
 |:-----|:------|:---------|:-------|:-----|
 | Oct 25, 2025 | Safe PowerShell Attack Lab | Documentation | Blue Team | Hands-on Practice |
 | Oct 20, 2025 | TryHackMe – Agent_T Writeup | Writeup | Red Team | Hands-on Practice |
-| Oct 12, 2025 | Faux Phish: Phishing Simulation Project | Project | Red Team | Hands-on Practice |
 | Oct 05, 2025 | Timer Controller: Remote System Management Tool | Project | IT | Hands-on Practice |
 
 ➡️ [View All Writeups](./writeups/index.html)  
