@@ -1,4 +1,4 @@
-# Project: WebStrike Lab
+# Documentation: WebStrike Lab
 
 | Status  | Owner | Objective              | Experiment Start    | Experiment End      | Website          | Domain    | Category          |
 |----------|--------|------------------------|---------------------|---------------------|------------------|-----------|-------------------|
