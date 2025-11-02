@@ -1,13 +1,8 @@
-# Experiment 7: WebStrike Lab
+# Project: WebStrike Lab
 
-Status: Success
-Owner: Syed Khalid Tipu Razvi
-Objective: Hands-On Lab, Learning
-Experiment Start: October 28, 2025
-Experiment End: October 28, 2025
-Website: Cyber Defenders
-Domain: Blue Team
-Category: Network Forensics
+| Status  | Owner | Objective              | Experiment Start    | Experiment End      | Website          | Domain    | Category          |
+|----------|--------|------------------------|---------------------|---------------------|------------------|-----------|-------------------|
+| Success  | Syed Khalid Tipu Razvi  | Hands-On Lab, Learning | October 28, 2025    | October 28, 2025    | Cyber Defenders  | Blue Team | Network Forensics |
 
 # Summary
 
@@ -48,9 +43,7 @@ Your task is to analyze the provided PCAP file to uncover how the file appeared 
 1. Lets begin the lab by opening the Wireshark tool and analyze the Pcap(Packet Capture) file and check the first question.
 
 <aside>
-❓
-
-1. Identifying the geographical origin of the attack facilitates the implementation of geo-blocking measures and the analysis of threat intelligence. From which city did the attack originate?
+ ❓ 1. Identifying the geographical origin of the attack facilitates the implementation of geo-blocking measures and the analysis of threat intelligence. From which city did the attack originate?
 
 💡 Note: The lab machines do not have internet access. To look up the IP address and complete this step, use an IP geolocation service on your local computer outside the lab environment.
 
@@ -59,40 +52,36 @@ Your task is to analyze the provided PCAP file to uncover how the file appeared 
 1. The First Question basically ask to analyze from which city does this attack originate from? In order to find out the city from where the attack has originated is we have to look at the “Source IP Address” and use a “Third Party Service” which is “[IP geo location](https://ipgeolocation.io/)” to find out since that is how the attack started.
 2. Copy the “Source IP Address” and then paste it on to the search bar of the ip geo location website, the results will be display that the IP originated from the Country “China” and State is “Tianjin” → This is the answer to the First Question.
 
-![Screenshot 2025-10-28 at 7.09.31 PM.png](Experiment%207%20WebStrike%20Lab%20297c704c659681c5bebef80c8df5b1f7/Screenshot_2025-10-28_at_7.09.31_PM.png)
+![Screenshot 2025-10-28 at 7.09.31 PM.png](/assets/images/Webstrike%20Photos/Screenshot_2025-10-28_at_7.09.31_PM.png)
 
 <aside>
-❓
-
-1. Knowing the attacker's User-Agent assists in creating robust filtering rules. What's the attacker's Full User-Agent?
+❓1. Knowing the attacker's User-Agent assists in creating robust filtering rules. What's the attacker's Full User-Agent?
 </aside>
 
 5.The User-Agent basically displays what system is the attacker using which can appended in  the allow/deny lists to protect from future attack. In order to find out the User-Agent click a packet which contains the “HTTP” Protocol then on the “Packet Information Window” I observed that in the HTTP section There was “***User Agent”*** present which is 
 
-![Screenshot 2025-10-28 at 7.18.53 PM.png](Experiment%207%20WebStrike%20Lab%20297c704c659681c5bebef80c8df5b1f7/Screenshot_2025-10-28_at_7.18.53_PM.png)
+![Screenshot 2025-10-28 at 7.18.53 PM.png](/assets/images/Webstrike%20Photos/Screenshot_2025-10-28_at_7.18.53_PM.png)
 
 User- Agent: Mozilla/5.0 (X11; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/115.0 → Answer to the Second Question.
 
 <aside>
-❓
-
-1. We need to determine if any vulnerabilities were exploited. What is the name of the malicious web shell that was successfully uploaded?
+❓1. We need to determine if any vulnerabilities were exploited. What is the name of the malicious web shell that was successfully uploaded?
 </aside>
 
 1. Malicious web shell in other words what malicious file was used to exploit the vulnerabilities, to find out in the Wireshark’s “search bar” type in the following filter “http.request.method ==POST” ( This will find the packets which used the POST method in the website)
 2. There are total of 3 packets which used the “POST” method, I observed the first 2 packets which the info was written “/reviews/upload.php” follow the HTTP stream of the first packet (Ctrl+Alt+Shift+H) and observe the details.
 
-![Screenshot 2025-10-28 at 7.27.56 PM.png](Experiment%207%20WebStrike%20Lab%20297c704c659681c5bebef80c8df5b1f7/Screenshot_2025-10-28_at_7.27.56_PM.png)
+![Screenshot 2025-10-28 at 7.27.56 PM.png](/assets/images/Webstrike%20Photos//Screenshot_2025-10-28_at_7.27.56_PM.png)
 
 (Insert the FIrst Packet details image)
 
-![Screenshot 2025-10-28 at 7.28.21 PM.png](Experiment%207%20WebStrike%20Lab%20297c704c659681c5bebef80c8df5b1f7/Screenshot_2025-10-28_at_7.28.21_PM.png)
+![Screenshot 2025-10-28 at 7.28.21 PM.png](/assets/images/Webstrike%20Photos//Screenshot_2025-10-28_at_7.28.21_PM.png)
 
 1. I observed in the last section of the client side (Colored in Red) that the name of the file was “uploadedFile” and the file name is “image.php” now it is malicious file however if you see in the server side (Colored in Blue) The response was “Invalid file format” now that is great thing that it blocked the malicious file.
 
 (Insert the second packet details image)
 
-![Screenshot 2025-10-28 at 7.28.48 PM.png](Experiment%207%20WebStrike%20Lab%20297c704c659681c5bebef80c8df5b1f7/Screenshot_2025-10-28_at_7.28.48_PM.png)
+![Screenshot 2025-10-28 at 7.28.48 PM.png](/assets/images/Webstrike%20Photos/Screenshot_2025-10-28_at_7.28.48_PM.png)
 
 1. However if we take a look the details of the second “POST” Packet that file name was changed from “image.php” to  “image.jpg.php” by which the server accepted the file bypassing the file upload restriction.
     
@@ -100,40 +89,34 @@ User- Agent: Mozilla/5.0 (X11; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/11
     
 
 <aside>
-❓
-
-1. Identifying the directory where uploaded files are stored is crucial for locating the vulnerable page and removing any malicious files. Which directory is used by the website to store the uploaded files?
+❓1. Identifying the directory where uploaded files are stored is crucial for locating the vulnerable page and removing any malicious files. Which directory is used by the website to store the uploaded files?
 </aside>
 
 1. After the malicious file was uploaded it is an urgent matter to remove the file in order to stop from making more damage, in order to know where the file was uploaded I applied a certain filter which was “ip.src == <ipaddress> && http.request.method == GET” this will the return the specific “ malicious ip address” as the source and the method as “GET”
 
 (insert the GET filter picture)
 
-![Screenshot 2025-10-28 at 8.29.27 PM.png](Experiment%207%20WebStrike%20Lab%20297c704c659681c5bebef80c8df5b1f7/Screenshot_2025-10-28_at_8.29.27_PM.png)
+![Screenshot 2025-10-28 at 8.29.27 PM.png](/assets/images/Webstrike%20Photos/Screenshot_2025-10-28_at_8.29.27_PM.png)
 
 1. I observed in the packet number “138” where the info was “ GET /reviews/uploads/image.jpg.php HTTP/1.1\r\n” as I know that the malicious file was “image.jpg.php”  it was uploaded in /reviews/uploads/ → Answer to the 4th question.
 
 <aside>
-❓
-
-1. Which port, opened on the attacker's machine, was targeted by the malicious web shell for establishing unauthorized outbound communication?
+❓1. Which port, opened on the attacker's machine, was targeted by the malicious web shell for establishing unauthorized outbound communication?
 </aside>
 
 1. To know which port was opened, I simply went back to the packet where the method was “POST” and inspect the contents “image.jpg.php” ,there I saw that it used a netcat(nc) command with the ip address along with the port number “8080” hence this was the port number → Answer to the 5th question.
 
 (insert the 8080 image) 
 
-![Screenshot 2025-10-28 at 8.39.53 PM.png](Experiment%207%20WebStrike%20Lab%20297c704c659681c5bebef80c8df5b1f7/Screenshot_2025-10-28_at_8.39.53_PM.png)
+![Screenshot 2025-10-28 at 8.39.53 PM.png](/assets/images/Webstrike%20Photos/Screenshot_2025-10-28_at_8.39.53_PM.png)
 
 <aside>
-❓
-
-1. Recognizing the significance of compromised data helps prioritize incident response actions. Which file was the attacker attempting to exfiltrate.
+❓1. Recognizing the significance of compromised data helps prioritize incident response actions. Which file was the attacker attempting to exfiltrate.
 </aside>
 
 1. Finally I need to recognize which file the attacker was trying to exfiltrate? In order to know I went again to the packets which contained the POST method, since I mentioned previously that there were 3 packets contained the method POST I followed the HTTP stream of the last packet from that the User-Agent was changed to “curl” which indicated that it was using the “curl” command from the “Terminal” and the command which was used is “/etc/passwd/.
 
-![Screenshot 2025-10-28 at 8.46.35 PM.png](Experiment%207%20WebStrike%20Lab%20297c704c659681c5bebef80c8df5b1f7/4f299593-3bfa-41e1-8aa5-285be86d2e75.png)
+![Screenshot 2025-10-28 at 8.46.35 PM.png](/assets/images/Webstrike%20Photos/4f299593-3bfa-41e1-8aa5-285be86d2e75.png)
 
 In other words the attacker was trying to exfiltrate the “passwords” file which  is a critical target as it contains a list of system users and their associated configuration information which was stored in the server. Technically this where every Linux OS stores its passwords. 
 
@@ -201,13 +184,6 @@ What did you learn from this experiment? Was your hypothesis validated or not? W
 | Threat Intelligence | Geo-located source IP | Attribution & intelligence |
 | SOC Mindset | Followed kill chain: upload → C2 → exfil | Incident correlation |
 
-# Follow up experiments…
-
----
-
-Create any experiments you think is worth pursuing in the future. Feel free to leave this blank. 
-
-[Untitled](Experiment%207%20WebStrike%20Lab%20297c704c659681c5bebef80c8df5b1f7/Untitled%20297c704c659681fe9e1ffe0449d4be9a.csv)
 
 # Example Report.
 
