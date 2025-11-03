@@ -10,7 +10,7 @@ Keep track of the latest additions and updates to this portfolio.
 
 | Date | Title | Category | Domain | Mode |
 |:-----|:------|:---------|:-------|:-----|
-| Oct 28, 2025 | [WebStrike Lab](./docs/WebStrike%20Lab/index.md) | Documentation | Blue Team | Hands-On |
+| Oct 28, 2025 | [WebStrike Lab](./docs/WebStrike%20Lab/) | Documentation | Blue Team | Hands-On |
 | Oct 25,2025 | Safe PowerShell Attack Lab | Documentation | Blue Team | Hands-on Practice |
 | Oct 20,2025 | TryHackMe – Agent_T Writeup | Writeup | Red Team | Hands-on Practice |
 | Oct 05,2025 | Timer Controller: Remote System Management Tool | Project | IT | Hands-on Practice |
