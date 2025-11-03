@@ -1,6 +1,6 @@
 ---
 layout: default
-title: WebStrike Lab
+title: Documentations
 ---
 # 📘 Documentation Index
 
@@ -12,7 +12,7 @@ Welcome to the documentation section.
 
 | Date | Title | Domain | Category | Link |
 |------|--------|---------|-----------|------|
-| Oct 28, 2025 | WebStrike Lab | Blue Team | Network Forensics | [View Documentation](./WebStrikeLab/) |
+| Oct 28, 2025 | WebStrike Lab | Blue Team | Network Forensics | [View Documentation](./WebStrike%20Lab/) |
 | Oct 25, 2025 | Safe PowerShell Attack Lab | Blue Team | Endpoint Detection | [View Documentation](./SafePowerShellLab/) |
 
 ---
