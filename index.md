@@ -15,8 +15,8 @@ Keep track of the latest additions and updates to this portfolio.
 | Oct 20,2025 | TryHackMe – Agent_T Writeup | Writeup | Red Team | Hands-on Practice |
 | Oct 05,2025 | Timer Controller: Remote System Management Tool | Project | IT | Hands-on Practice |
 
-➡️ [View All Writeups](./writeups/index.html)  
-➡️ [View All Documentation](./docs/index.html)
+➡️ [View All Writeups](./writeups/index.md)  
+➡️ [View All Documentation](./docs/index.md)
 
 ---
 
@@ -36,28 +36,28 @@ This portfolio contains a collection of materials focused on:
 ### 🧠 Documentation
 Structured reports, system design notes, and research findings.
 
-➡️ [View Documentation](./docs/index.html)
+➡️ [View Documentation](./docs/index.md)
 
 ---
 
 ### 🧰 Projects
 Security-focused experiments, tools, and proof-of-concepts.
 
-➡️ [View Projects](./projects/index.html)
+➡️ [View Projects](./projects/index.md)
 
 ---
 
 ### 🧩 Writeups
 CTF and lab walkthroughs with methodology, exploitation, and remediation.
 
-➡️ [View Writeups](./writeups/index.html)
+➡️ [View Writeups](./writeups/index.md)
 
 ---
 
 ### 📚 Resources
 Curated learning material, cheat sheets, and reference links.
 
-➡️ [Explore Resources](./resources/index.html)
+➡️ [Explore Resources](./resources/index.md)
 
 ---
 
