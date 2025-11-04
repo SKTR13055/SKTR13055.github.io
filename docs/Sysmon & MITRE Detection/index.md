@@ -96,7 +96,7 @@ Access is denied.
 8. To ensure it has been logged open up the Event-viewer→Applications and Service Logs → Microsoft → Windows → Sysmon.
 9. On the Actions side{Which is on the right side} Operational Section click on the “Filter Current Log”, this opens up a dialogue box in the “filter” tab there is a section which says <All Event  IDs> in that you should include “1” where  1 means “Process Create (most useful for validating process creation logging). 
 
-   ![image.png](assets/images/%20Sysmon%20Detection%20Lab%20photos/image.png)
+   ![image.png](/assets/images/%20Sysmon%20Detection%20Lab%20photos/image.png)
 
 ---
 
