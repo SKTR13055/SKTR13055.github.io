@@ -1,8 +1,8 @@
 ---
 layout: default
-title: Sysmon Detection Lab
+title: Sysmon & MITRE Detection 
 ---
-# Experiment : Sysmon & MITRE ATT&CK
+# Experiment : Sysmon & MITRE ATT&CK Detection
 
 
 | Status  | Owner | Objective              | Experiment Start    | Experiment End      | Domain    |
