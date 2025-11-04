@@ -1,4 +1,7 @@
-[Experiment 3 Sysmon & MITRE ATT&CK 297c704c659681258637e4caea7ccd8a.md](https://github.com/user-attachments/files/23328295/Experiment.3.Sysmon.MITRE.ATT.CK.297c704c659681258637e4caea7ccd8a.md)
+---
+layout: default
+title: Sysmon Detection Lab
+---
 # Experiment : Sysmon & MITRE ATT&CK
 
 
