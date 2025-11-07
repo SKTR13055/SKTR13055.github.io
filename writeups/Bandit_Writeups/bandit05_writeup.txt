@@ -1,0 +1,43 @@
+Title: Bandit Level4 -> Level5
+
+Challenge: The password for the next level is stored in the only human-readable file in the inhere directory.
+
+Tools Used: ls , cd , cat , file , du , find
+
+Solution: For this Challenge It took me some time to findout the solution so heres the following steps to perform it.
+
+1.Connect to the level using the password obtained from the previous level 
+2.Change your directory to the 'inhere' directory using the cd command.
+3.list out the files in the current working directory using the 'ls' command.
+4.Now you will be able to see around 9 files, the confusing part is how to display the content?
+5.To display the content I've simple cat command but it wasn't able to find the file (due to the - in the prefix of the file name it takes as an argument hence throwing the error.
+6.Now the actual way to display the content is to recall the trick from level 2 in that way we can display the file content one by one (cat <-file07) or do this (cat ./-file07)
+7.There might be other ways to display the content of the files but I found this way to access it.
+8.Save the password and to use it for the next level
+
+Password for the next level:4oQYVPkxZOOEOO5pTW81FB8j8lxXGUQw
+
+ON TO THE NEXT LEVEL.
+
+Solution2 Credits to MayaDevBe Blog
+
+1.Now after searching on the internet I found another solution now all credits goes to MayaDevBe for finding a the Solution.(Link to the website will be at the end)
+
+2.Now it explained in phenomenal way for solving the problem along with the explanation now lets further a do lets see the following steps.
+
+3.After connecting the level and changing to the inhere directory.
+
+4.The Blog explained of using a wild card with the file command like this (file ./*)
+{ The command structure is file <filename>. Instead of using a filename, we use a wildcard to get the type for all the files. Additionally, looking at the file names, specifically at the fact, the names start with ‘-’, gives us problems. Therefore we use the same method as in Level 2.}
+
+5.This will display all the files with the particular file format (Which is in ASCII format)
+
+6.Then use the "cat" command to display the password and move on to the next level.
+
+Notes: 
+I learned how to use find with -exec for more advanced file filtering.
+
+Thanks to maybeadev for guiding concepts — I made sure to adapt and understand everything independently before writing this up.
+
+*Thank you MayaDevBe for providing a splendid way to solve this level*
+https://mayadevbe.me/posts/overthewire/bandit/level5/

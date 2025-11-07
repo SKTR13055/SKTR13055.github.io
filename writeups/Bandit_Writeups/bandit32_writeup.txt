@@ -1,0 +1,61 @@
+Title:Bandit Level 31 → Level 32
+
+Challenge:There is a git repository at ssh://bandit31-git@localhost/home/bandit31-git/repo via the port 2220. The password for the user bandit31-git is the same as for the user bandit31.
+
+Clone the repository and find the password for the next level.
+
+Commands_Used: git, git push
+
+#Explanation:In this level the another additional command is used in the git which is the git-push command, git push is used to transfer commits from your local repository to a remote repository. This is essential for collaboration, as it allows others to access your changes.
+
+#Solution:
+1.Login the level using the password obtained from the precvious level.
+2.Repeat the same process of cloning the repository from the previous levels.
+3.After changing your repository to the repo and displaying the content of the "README.md" file
+-> The output would display as  
+
+This time your task is to push a file to the remote repository.
+
+Details:
+    File name: key.txt
+    Content: 'May I come in?'
+    Branch: master
+
+#Basically we need to create a file and need to push in the master branch
+
+4.Create a file called "key.txt" using the "touch" command or you can directly add the content using the vim command {vim key.txt}
+
+5.Add the content as "May I come in?" in the "key.txt" file.
+
+6.Type the following command git add -f key.txt {-f means force}
+
+->If you used withput the -f command then you would get a warning which says that this kind of file will be ignored or are not allowed to push, hence we have to use -f to force
+
+7.Then after that type the following command "git commit -a" {The flag -a makes sure all modified/deleted files are staged.}
+
+->The output would be as follows
+
+Unable to create directory /home/bandit31/.nano: Permission denied
+It is required for saving/loading search history or cursor positions.
+
+Press Enter to continue
+
+[master 35298de] Key file
+ 1 file changed, 1 insertion(+)
+ create mode 100644 key.txt
+bandit31@bandit:/tmp/tmp.IhtWdYHfZb/repo$ git push -u origin master
+...
+remote: ### Attempting to validate files... ####
+remote: 
+remote: .oOo.oOo.oOo.oOo.oOo.oOo.oOo.oOo.oOo.oOo.
+remote: 
+remote: Well done! Here is the password for the next level:
+remote: 3O9RfhqyAlVBEZpVb6LYStshZoqoSx5K
+remote: 
+remote: .oOo.oOo.oOo.oOo.oOo.oOo.oOo.oOo.oOo.oOo.
+remote: 
+...
+
+8.Done
+
+

@@ -1,0 +1,29 @@
+Title:Bandit Level 8 → Level 9
+
+Challenge:The password for the next level is stored in the file data.txt and is the only line of text that occurs only once
+
+Commands used in this level: sort, uniq
+
+#Explanation: Now Before I move on to revealing the solution you need to understand what does the command do 
+
+The sort command basically sorts the text in an alphabetical order this an essential step before trying to use the "uniq" command after that we use the "uniq" command this command finds unique characters present in the file there are some extra arguments/flags which you can use  that is -u for unique -c for count ( basically counts how many times the line has been repeated)
+
+Solutuion 
+
+1st My way
+-> Login to the level and enter the password obtained from the previous level 
+-> display the files using the "ls" command.
+-> Use the command " sort data.txt | uniq -c  {Where the -c stands for count}
+-> The Output will be displayed as {1 4CKMh1JI91bUIZZPXDqGanal4xvAg0JM} [Here the 1 stands bascially refers to how many number of times the line has been repeated in this it 1]
+->Copy The password and move on to the next level
+
+2nd MaybeaDevBlog Way
+#I know this is a simple challenge but my friend here solved in an amazing way (I later came to know how dumb I am)
+
+-> Repeating the same steps  for logging in 
+-> Use the command " sort data.txt | uniq -u "  
+-> Output will be displayed as 4CKMh1JI91bUIZZPXDqGanal4xvAg0JM { Just a line will be displayed}
+-> Done.
+
+#Note: Remember First Sort Then Uniq (FSTU) To find uniq characters 
+

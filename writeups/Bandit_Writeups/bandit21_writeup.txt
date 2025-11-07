@@ -1,0 +1,63 @@
+Title:Bandit Level 20 → Level 21
+
+Challenge:
+
+There is a setuid binary in the homedirectory that does the following: it makes a connection to localhost on the port you specify as a commandline argument. It then reads a line of text from the connection and compares it to the password in the previous level (bandit20). If the password is correct, it will transmit the password for the next level (bandit21).
+
+NOTE: Try connecting to your own network daemon to see if it works as you think
+
+#Commands-Used: nc,termux,screen and '&' command
+
+#Explanation:- This level talks about the "jobs" yeah not the actual jobs but in terms of the operating system jobs basically it allows users to manage mulitple prorcesses effectively and also this level introduces some new commands which we will be using in this level which are 'termux' and 'screen'. These two commands are similar to each other which allows you to switch process from one to another easily and allows you to manage multiple sessions efficiently, From the "level15" We know about the nc is used to read and write data across network connections,so we can also use 'nc' command  to be a client/server.
+
+#Note:- I used 'screen' in this level as I was getting some problems while using 'termux' in this level but you can also use termux to solve this level, through out the level I will be mentioning in which screen I am about talking about in the curly brackets{} so you won't get confused which screen I am talking about.
+
+#Solution:
+1.Login to the level using the password obtained from the previous level.
+
+2.Display the list of the files using the 'ls' command{In the 1st Screen}.
+
+3.Use the following command 'screen' ( This will open up a new terminal in the current shell itself).
+
+#Forgot to mention once you type 'screen' it will open another terminal lets say like an application but in CLI so you have to type 'screen' once again to traverse back and forth between terminals.
+
+4.Type the following in the new terimnal screen(in other words in a new 'screen') "nc -l 1234"(You can also give your own port number aswell) {In the 2nd Screen} [-l stands for listening]
+
+5.Go back to the previous screen by pressing "ctrl+a" then press n(new) or p(previous) to change.
+
+6.Run the program by typing "./suconnect 1234". { In the 1st Screen}
+
+7.Go to the 2nd screen and paste the password of the current level. { In the 2nd screen}
+
+8.The password will be displayed beneath the password of the current level password like this. {In this 2nd screen}
+
+{In the 1st Screen}
+->  /suconnect 1234  				
+Read: 0qXahG8ZjOVMN9Ghs7iOWsCfZyXOUbYO
+Password matches, sending next password.
+
+{In the 2nd Screen}
+-> nc -l 1234			[here the -l stands for listening]
+0qXahG8ZjOVMN9Ghs7iOWsCfZyXOUbYO
+EeoULMCra2q0dSkYj561DX7s1CpBuOBt
+
+9.Done
+
+***Alternative_Way
+Just Found out from Mayadevbe that you can use the following command aswell( He didn't actually use any session managers like 'termux' or 'screen')
+
+->echo -n '0qXahG8ZjOVMN9Ghs7iOWsCfZyXOUbYO' | nc -l -p1234 &
+
+(&: This runs the entire command in the background, allowing you to continue using the terminal for other commands)
+
+#Then type the following
+
+./suconnect 1234
+
+#This will give the following message on the same screen itself
+
+Read: 0qXahG8ZjOVMN9Ghs7iOWsCfZyXOUbYO
+Password matches, sending next password
+EeoULMCra2q0dSkYj561DX7s1CpBuOBt
+
+#Note: You can also solve the level without using termux or screen but the whole aim of the challenge is to use the 'termux' and 'screen' for those who are begginers in Linux {That includes me aswell}

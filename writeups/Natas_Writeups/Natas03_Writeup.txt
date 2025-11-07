@@ -1,0 +1,64 @@
+Title:Natas Level 2 → Level 3
+
+#Credentials
+
+Username: natas3
+Password: 3gqisGdR0pjm6tpkDKdIWO2hSvchLeYH
+URL: http://natas3.natas.labs.overthewire.org
+
+#Explanation
+
+In today's Internet Generation it is search indexed by the search-engine crawlers, now what are the search engine crawlers? the search engine crawlers basically get all the "paths" present in the website such as /images , /files , etc you get my point, so this is the job of the search-engine crawlers now some of the websites keep a file called "robots.txt" which basically contains what the "crawlers" can access and display it while searching in the search engine and what should not be displayed. This is how it looks like.
+
+User -agent: Googlebot
+Disallow: /private/
+
+User -agent: *
+Disallow: /private/
+
+
+# Now the User -agent aka the "bot crawler name" in this case here is "Googlebot" the Googlebot is not allowed to go in the /private/ path but other bots such as "bingobot" can access it. 
+
+#In the second example it is a Wildcard which means that every "bots" can access that path.
+
+# The robots.txt may contain in most of the websites,because it plays a role in the "Search Engine Optimzation (SEO)" but it does not have anything related to security 
+
+#In other Words robots.txt is a file that tells search engines (like Google) which parts of a website they can look at and which parts they should ignore.
+
+#How It Works
+
+    User -Agent: This is like saying, "Hey, this rule is for you!" For example, if it says User -agent: Googlebot, it means the rules apply to Google’s search engine.
+
+    Disallow: This means "Don’t go here!" For example, if it says Disallow: /private/, it tells Google not to visit the /private/ section of the website.
+
+    Allow: This means "You can go here!" It can be used to let crawlers access certain parts even if there are other restrictions.
+
+    Sitemap: This is a link that helps search engines understand the layout of the website better.
+
+#Remember just because the page is listed in the "robots.txt" as "disallowed" does not mean that it's safe or hidden. People can still access it if they know the link.
+
+#Solution
+
+1.Go to the specific URL and enter the following credentials to login.
+
+2.When looking at the "Source Page" we can see that it says "<!-- No more information leaks!! Not even Google will find it this time... -->"
+
+#This Directly refers to the "googlebot" which cannot find the particular "path" which means there is a "robots.txt" file present in this website, let's go to that txt file.
+
+3.Type "http://natas3.natas.labs.overthewire.org/robots.txt" to access the "robots.txt" file.
+
+User-agent: *
+Disallow: /s3cr3t/
+
+#We get this which says that all the "bots" (Googlebot,Bingobot,...) won't be able to access this path 
+
+4.Append the /s3cr3t/ at the end of the URL like this "https://natas3.natas.labs.overthewire.org/s3cret/ 
+#You will see the "Index of S3cr3t" and down below we can see there is "users.txt" which may contain username and password
+
+5.Click on the "users.txt" to get the password for the next level.
+
+natas4:QryZXc2e0zahULdHrtHxzyYkj59kUxLQ
+
+6.Done
+
+#Note: This is a really cool new thing to learn about the (SEO) which is the {robots.txt}

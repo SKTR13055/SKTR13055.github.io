@@ -1,0 +1,26 @@
+Title: Bandit Level1 -> Level2
+
+Challenge:The password for the next level is stored in a file called - located in the home directory
+
+Tools Used: ls - to list out the files present in the directory
+
+cd - used to change the directory
+
+cat - used to retrieve and display the content of a particular file
+
+du - estimates the file usage
+
+file - determines the file type
+
+find - locates the particular file
+
+Solution: In the Beginning I was pretty much confused because i've never encountered this as a beginner but hey first time for everything so follow along to solve this problem
+
+1.Connect to the server using SSH using the password obtained from the previous level.
+2.After Connecting to the server enter ls to list the file in the current working directory.
+3.You can observe a - file and in that file contains the password to the next level.
+4.I tried using the cat command to retrieve the file but unfortunately It didn't give out the output as i guess it was not able to find the file.
+5.Later on you can use the cat command with  the <- - to display the contents of the file like this [cat <- -]  ignore the square brackets
+6.Or you can use other command which is cat ./- the ./ is basically used in programming for displaying the output so when used this we can run the file and display the content using the cat command
+7.Once the password is displayed store it in your device which can be used for next level.
+8.Done {On to the next level} 

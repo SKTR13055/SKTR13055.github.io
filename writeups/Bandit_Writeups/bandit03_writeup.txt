@@ -1,0 +1,14 @@
+Title: Bandit Level 2 -> Level 3
+
+Challenge:The password for the next level is stored in a file called spaces in this filename located in the home directory
+
+Tools Used:ls , cd , cat , file , du , find
+
+Solution: It involves simple and few steps
+1.login to the level using the previous level password
+2.type 'ls' into the console and it will list the files present in the current directory
+3.One of the files will be displayed as  "spaces in this filename"
+4.This might seem a bit overwhelhimng for the beginners but its quite simple
+5.type "cat" command  and type spaces and then autocomplete it by pressing the "TAB" button and simply press enter 
+6.This will display the key for the next level.
+7.End of the level, Onwards to the next level.

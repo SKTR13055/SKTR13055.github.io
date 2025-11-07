@@ -1,0 +1,53 @@
+Title:Bandit Level 24 → Level 25
+
+Challenge: A daemon is listening on port 30002 and will give you the password for bandit25 if given the password for bandit24 and a secret numeric 4-digit pincode. There is no way to retrieve the pincode except by going through all of the 10000 combinations, called brute-forcing.
+You do not need to create new connections each time
+
+Commands_Used: Nmap(optional),nc(Not mentioned in the challenge)
+
+#Note: This level requires "scripting" as here it does not mention any commands used.
+
+#Explanation:In This level it requires you to bruteforce a particular port where in this port you have to submit the password along with the unique 4 digit password seperated with space, and there around 1000 characters which we need to guess ideally it would be hard to try from 1 to 10000 so we have use the script which we learnt how to make from previous level(bandit23) and some "grep" techniques.
+
+#Solution
+1.Login to the level using the password obtained from the previous level.
+
+#Optional: I used Nmap,ss to check if the port is listening (I want to refresh my previous skills thats why used it)
+
+2.Use "nc" command to connect to the the particular port (nc localhost 30002)
+
+->I am the pincode checker for user bandit25. Please enter the password for user bandit24 and the secret pincode on a single line, separated by a space.(Output of the command)
+
+#Self-Note:Whenever you are trying to connect to a particular port use the "nc" command.
+
+3.Since you can't type in every unique 4 digit code you have to create a script for it.
+
+4.Exit the "nc" command and then change your directory to the "temp" directory.
+
+5.Create a script using any text editor( I used vim in this case) and write the following script.
+
+-> #!/bin/bash
+for i in {1000..9999}; do
+ 	echo " gb8KRRCsshuZXI0tUuR6ypOFjiZbf3G8 $i " > combination.txt
+done
+
+cat echo "combination.txt" | nc localhost 30002  > result.txt
+
+6.After creating the script change the permission to all execute (+x) using the "chmod"
+
+7.Run the script using the ./<file_name>.
+
+8.Type in ls command to display the files present in the current working directory.
+
+9.Two files will present (combination.txt & result.txt).
+
+10.Use the "grep" command on the result.txt file to find the output
+
+-> grep "bandit25" result.txt (or) grep -v "Wrong" result.txt  { -v stands for invert match}
+
+11.Finally You will be able to see the for the next level(bandit25)
+{iCi86ttT4KSNe1armKiwbQNmB3YJP3q4}
+
+12.Done
+
+#Note: Just remember whenever you are trying to connect to a port us the "nc" command I just keep forgetting this command even though I have used it many times and from this level and onwards the levels might involve scripting so Bring it on!.

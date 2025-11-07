@@ -1,0 +1,82 @@
+Title:Bandit Level 25 → Level 26
+
+Challenge:Logging in to bandit26 from bandit25 should be fairly easy… The shell for user bandit26 is not /bin/bash, but something else. Find out what it is, how it works and how to break out of it.
+
+    NOTE: if you’re a Windows user and typically use Powershell to ssh into bandit: Powershell is known to cause issues with the intended solution to this level. You should use command prompt instead.
+
+Commands_Used: more,ssh,cat,vi, ls, id, pwd
+
+#Explanation: In this level you have to get the password by simply retrieving the password of bandit26 through ssh,Now the this seems like an easy challenge but it is not, so let me explain some technological terms/things which are important for thislevel
+->As we know that the commands where we enter is called a "shell" and there are many types of shell such as bash,zsh and custom shells(showtxt) in order to know what type of shell is used for the particular user is we simply have to go to this file path (/etc/passwd), normally "passwd" stands for password{Or so I thought} but it's actually not, this contains essential information about user accounts on the system,  from user to password to id to shell ( user->pass->id->shell) To understand which is which it is listed down below.
+
+username:password:UID:GID:comment:home_directory:shell
+
+ex:bandit26:x:11026:11026:bandit level 26:/home/bandit26:/usr/bin/showtext
+{For security purposes the password will be represented as * or x}
+
+--More Command Explanation--
+->The More command displays the contents of a file in a terminal particularly this is not used in the challenge to retrieve anything but it is present to be exploited in some way.
+
+Let's move on to the solution
+
+#Solution:
+1.Login to the level using the password obtained from the previous level.
+
+2.Display the list of files using the "ls" command.
+{bandit26.sshkey will be present}
+
+3.First we will understand the problem by normally logging in to the bandit26 from the bandit25 using "ssh"
+{ssh -i bandit26.sshkey bandit26@bandit.labs.overthewire.org -p2220} 
+
+->The output will be shown like this:
+
+You are trying to log into this SSH server with a password on port 2220 from localhost.
+!!! Connecting from localhost is blocked to conserve resources. (Logged in from my shell does not show any error just simply quits)
+!!! Please log out and log in again.
+
+Could not create directory '/home/bandit25/.ssh' (Permission denied).
+Failed to add the host to the list of known hosts (/home/bandit25/.ssh/known_hosts).
+
+#Normally I thought that since it is giving me this problem why not I try login from my machine; When I did it showed nothing not even any terminal to write the commands, On the contrary I also what if I could change the authorized keys just by using the "echo" but unfortunately that operation is not permissible.
+
+4.You have to understand what type of shell is used; Type the following command
+{cd /etc/passwd | grep bandit26}
+
+This output will be displayed as:
+
+bandit26:x:11026:11026:bandit level 26:/home/bandit26:/usr/bin/showtext
+
+Now from this we see in the "shell" section that it is showtext hence it is a custom script
+
+5.Go to the particular file path to reveal the content of the file {cat /use/bin/showtext}
+
+The output will be displayed as:
+#!/bin/sh
+export TERM=linux
+more ~/text.txt
+exit 0
+
+From this output it states that when the shell begins or starts it will execute the more command  of the file text.txt and after that it will exit.
+
+#Note: If you play around with the "more" command you can see that if there is a lot of information of the particular file text then it says "MORE 49%" which means that there more information and if you try to resize the terminal window it changes "MORE 62%", you have to understand and apply this trick in the challenge
+
+6.Copy the "bandit26.sshkey" to your local machine{You can just copy the contents of the file and save it in a file on your computer}
+
+7.Resize the terminal in such a way that you can anticipate when the "MORE" text shows up.
+
+8.Login to the bandit26 level with the private key which you copied in your machine.
+
+9.As soon as the "MORE" command shows up you have to press the "v" button which is "vim" for short.{Vim -> A text Editor tool}
+
+***REASON***
+(The reason why the "MORE" shows up is that from the script we see that when "more" commands get "executed" it basically tries to display all the information in a single page and exits, since we have resized the terminal it is not able to display the contents is a single page hence we are able to get around with it using "vim")
+
+10.Type the following command " :e /etc/bandit\_pass/bandit26 " this will retrive the password for bandit26 user.
+{s0773xxkk0MXfdqOfPRVr9L3jJBUOgCZ}
+
+11.Or if you want an interactive shell you can type this " :set shell=/bin/bash " and then type " :shell" and simply retrive the password.
+
+12.Done
+
+#Note:Sometimes I First try to solve the challenge by my own and if it gets too hard I try to take some hints and if that does'nt suffice then I look at the solution and try to understand as much as possible and use this command wherever its necessary or either it could refresh my learnt commands.
+

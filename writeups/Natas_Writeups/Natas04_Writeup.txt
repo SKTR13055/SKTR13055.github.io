@@ -1,0 +1,69 @@
+Title:Natas Level 3 → Level 4 (Header_Manipulation)/ Broken_Authentication /CSRF /Information Disclosure
+
+#Credentials
+Username: natas4
+Password: QryZXc2e0zahULdHrtHxzyYkj59kUxLQ
+URL:      http://natas4.natas.labs.overthewire.org
+
+#Explanation
+
+When you open a website, your computer (the client) asks the website's server for the page. This is called a request, and the server sends back the response — usually the website’s content (like HTML).
+
+This back-and-forth uses a system called HTTP.
+What does a request include?
+
+An HTTP request usually has:
+
+    Method: what you want to do (like GET to load a page).
+
+    URL: the web address you want.
+
+    Headers: extra info like:
+
+        User-Agent: your browser info
+
+        Accept: what kind of files you can receive (HTML, images, etc.)
+
+        Authorization: login info (if needed)
+
+        Referer: the page you came from
+
+Your browser does all this in the background, but you can also send requests yourself.
+
+
+#Solution
+1.Login to the given website with the following credentials.
+
+2.The website will be shown as 
+
+Access disallowed. You are visiting from "" while authorized users should come only from "http://natas5.natas.labs.overthewire.org/" 
+
+#Firstly when I tried to refresh the page and then I noticed that "URL" has no input sanitization so I tired to give custom input such as giving cross site scripting (XSS) and SQL but unfortunately I've got nothing.
+
+#Then I checked the headers which basically contains all the information(Explained in the Explanation Part)
+
+#Now there are 2 ways to solve it
+i)CLI-Command Line
+ii)BurpSuite -> Which I used in this level
+
+3.Open Burpsuite and configure all the settings and go to proxy and turn on the interception and catch it and send it to repeater, In the repeater section see the following line which says this.
+
+Referer: http://natas4.natas.labs.overthewire.org/
+
+4.Change the Referer from the natas4 to natas5 and send it, and the see the "Response" Tab and click on "Raw" there You will find password for natas5.
+
+Access granted. The password for natas5 is 0n35PkggAPm2zbEpOU802c0x0Msn1ToK
+
+5.Done
+
+#I used this tool because in most of the penetration testing you have to know how to use the tool aswellso this would be good practice to use it meanwhile you can do it without the tool by doing this
+
+i.Open the Developer Tools
+ii.Go to the network tab.
+iii.Refresh the page to get the "headers".
+iv. Right click on the "/" and press the "Edit and Send" and simply change from 4 to 5 and send it.
+v.Toggle the Raw and you will get the same response.
+
+
+
+ 

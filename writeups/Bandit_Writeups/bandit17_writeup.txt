@@ -1,0 +1,73 @@
+Title:Bandit Level 16 → Level 17
+
+Challenge:The credentials for the next level can be retrieved by submitting the 'password of the current level to a port on localhost in the range 31000 to 32000'. 
+1.First find out which of these ports have a server 'listening' on them. 
+2.Then find out which of those 'speak SSL/TLS' and which don’t. 
+3.There is only 1 server that will give the next credentials, the others will simply send back to you whatever you send to it.
+
+Commands_used: nmap,ss,ssh,ncat,openssl,s_client
+
+#Explanation:The whole aim of the challenge is to learn about nmap command the 'nmap' aka 'network mapper' is a tool which is used for network discovery and security auditing this command basically reveals about the particular network such as running and open ports, version of the service and many more.
+
+Solution:There are certain ways to solve this challenge which I will mention after the main solution
+1.Login to the level using the password obtained from the previous level.
+2.Use the following command "nmap -sV localhost -p31000-32000".
+
+#Explantion_of_the_code: The -sV stands for "service Version" basically tells the version of the service.
+localhost: Is basically an Ipaddress you can even mention "ipaddress" if you don't know the name.
+-p31000-32000: The -p stands for port number ranging from 31000 to 32000.(Since the clue mentions that send the password to a port on the 'range' from 31000-32000 so hence this flag is used.)
+
+3.After 4-5 min the output will be displayed with the openports along with the sevice.(like this)
+PORT      STATE SERVICE     VERSION
+31046/tcp open  echo
+31518/tcp open  ssl/echo
+31691/tcp open  echo
+31790/tcp open  ssl/unknown
+31960/tcp open  echo
+
+***Alternative_Way:There is a  faster way to findout the open ports by using the "ss" command formerly known as "netstat" by typing -> ss -tuln (or) ss -tln (or) netstat -tuln (or) netstat -tln
+
+#Explanation_of_the_code: -tuln is the combination of flags it is as follows
+-t: lists all the sockets which are running TCP.
+-u: lists all the sockets which are running UDP.
+-l: lists all the sockets which are listening.
+-n: Show numerical addresses instead of resolving hostnames. 
+
+Output:This would list out all the ports/sockets which are present according to the flags.
+
+4.From the step 3 we can observe that there are 5 ports which are listening and there are 2 ports which speak SSL/TLS but if we look more deeper we can observe that 
+
+Port:31518 is ssl but still it echoes the message if we sent the message on the contrary 
+Port:31790 is ssl but the other thing is "unknown" so this might be the server which sends the key to the next level [so lets connect to this port and give the password.]
+
+5.Connect the port using the 'openssl s_client' which we actually used in the previous level
+{openssl s_client -connect localhost:31790}
+
+***Alternative_Way#2
+-> I seem to have problem using this as it was repeating "KEYUPDATE" whenever I was sending the correct password but for others it worked out perfectly so there is another way to solve it using the 'ncat' command.
+
+Type this command: "ncat --ssl localhost 31790" This runs exactly like the previous command but it won't display anything like "TLS Certificate or Read Block" but don't worry
+Simply enter the password of the current level(or previous level if not working) you will receive the key.
+
+6.After the running the command and giving the password you will be granted with the "Private RSA Key"
+(I was confused in the beginning as I thought it would give plain old ASCII password but to my suprise I got this)
+
+7.Copy all the contents including the "Begining of the RSA" and "End of the RSA" and keep it with you.
+
+8.Now go the temporary folder and create a file called "private.key" and paste inside all the copied contents and make sure to set permission for the "user as read-only" and no other permissions for 'others' and 'groups'
+{chmod u+r private.key (or) chmod 400 private.key} 
+[ The + indicates give permisison and - indicates 'removing the permission the u,o,g stands for 'user','others', and 'group' and 
+r->stands for 'read'
+w->stands for 'write'
+x->stands for 'execute']
+
+9.After setting all the permissions for the particular file connect to the bandit17 using the 'ssh' while still logged in as 'bandit16' and type the following command
+
+"ssh -i private.key bandit17 -p2220" {Similar to the level4}
+
+10.After logged in as bandit17 grab the password from the /etc/bandit_pass/bandit17 path and store it.
+11.Done on to the next level.
+
+#Note:Remember Whenever you want to scan range of ports you have to use 'nmap' although it may be slow but still it is a very reliable tool for penetration testers.
+
+

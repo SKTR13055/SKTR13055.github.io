@@ -1,0 +1,53 @@
+How to Solve OvertheWire Bandit Level 15 -> 16 level?
+
+Objective:The password for the next level can be retrieved by submitting the password of the current level to port 30001 on localhost using SSL/TLS encryption.
+
+Helpful note: Getting “DONE”, “RENEGOTIATING” or “KEYUPDATE”? Read the “CONNECTED COMMANDS” section in the manpage.
+
+Commands needed to solve: ssh, telnet(possible), nc(possible), socat, openssl(used), s_client(used), nmap(used), netstat, ss(not used)
+
+1.in the Commands needed section I mentioned two keywords used,possible 
+  used: used in this level to solve the problem
+  possible: It is possible to use this command to solve the problem
+
+2.To solve this level we first need to know what does every command does (skip to 3 if you know what every command does) we can use "whatis" or "man" command to know
+    
+  ssh(secure shell): - OpenSSH remote login client
+  
+  telnet: - user interface to the TELNET protocol #Not used in this level
+
+  nc/ncat/netcat: - TCP/IP swiss army knife #Not/Possible way to use in this level
+
+  socat:- Multipurpose relay (SOcket CAT) #Not Used in this level
+
+  s_client (1ssl) - OpenSSL application commands {This command implements a generic SSL/TLS "client which connects to a remote host using SSL/TLS".
+       It is a very useful diagnostic tool for SSL servers}
+  
+  nmap:- Network exploration tool and security / port scanner
+
+ ss (8)               - another utility to investigate sockets
+  
+ netstat (8)          -  Print  network connections, routing tables, interface statistics, masquerade connections, and multicast memberships
+
+ openssl{open SecureSocketLayer} (1ssl)       - OpenSSL command line program {type man openssl for more details}
+
+3.I've solved this level using a little bit help from the internet so in order to solve this level
+
+ -> I First used the command echo"Password of this level" | openssl enc aes-128-cbc -K = your_key_password | nc localhost@10.0.1.6 -p 30001
+
+  seems to be wrong as the problem occurs during the netstat command { maybe I using this command in the wrong way} still after searching for the 
+
+  correct syntax I was not able to do so
+
+ -> I Researched in the internet, one of the users used the command as "openssl s_client -connect localhost:30001"
+     
+    1.Here the "openssl" is command is used for initiating communication over the computer network
+    2.the s_client is the implementation of a simple client that connects to a server using SSL/TLS.
+    3.-connect [host:port_number] this command is used for to connect to a particular host with a specified port number
+    4.after entering this command it will list all the details such as the certificate, cert_id, session_id ... then it proceeds
+    with R block{else known as Read Block} at this momment you have the paste the password for the current level (bandit15).
+    5. Finally this will give output as the nextlevel password(bandit16) {passwords differ from person to person}
+
+4. End of the Level
+
+    

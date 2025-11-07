@@ -1,0 +1,34 @@
+Title:Bandit Level 17 → Level 18
+
+Challenge:There are 2 files in the homedirectory: passwords.old and passwords.new. The password for the next level is in passwords.new and is the only line that has been changed between passwords.old and passwords.new
+
+#Commands_used: ls,diff
+
+#Explanation:- In this challenge you have to find the differences between the two files which are 'passwords.old' and 'passwords.new' Ideally it is very difficult to find the differences between the two largetext files just by looking at it.We use the 'diff'command to identify the difference between the two files the syntax are as follows
+
+diff syntax:- diff <file1> <file2>
+
+example: diff file1.txt file2.txt
+
+#Solution:
+1.Login to the level using the password obtained from the previous level.
+2.Type 'ls' to display the files in the current working directory[2 files will be present].
+3.Use the 'diff' command to find the differences between 2 files.
+-> diff passwords.old passwords.new
+
+The Output will be displayed as:
+
+42c42
+< C6XNBdYOkgt5ARXESMKWWOUwBeaIQZ0Y
+---
+> x2gLTTjFwMOhQ8oWNbMN362QKxfRqGlO 
+
+Here the 42c42 means there is the change in line 42, the '<' indicates the first file (passwords.old), the '>' indicates the second file (passwords.new)
+
+so it means that in the first file (passwords.old) the line 42 was changed from 'C6XNBdYOkgt5ARXESMKWWOUwBeaIQZ0Y' to'x2gLTTjFwMOhQ8oWNbMN362QKxfRqGlO'
+hence that is the password to the next level.
+
+4.Store the password for the next level(bandit18->bandit19)
+5.Done.
+
+NOTE: if you have solved this level and see ‘Byebye!’ when trying to log into bandit18, this is related to the next level, bandit19.

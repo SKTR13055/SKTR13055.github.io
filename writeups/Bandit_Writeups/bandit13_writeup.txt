@@ -1,0 +1,81 @@
+Title:Bandit Level 12 → Level 13
+
+Challenge:The password for the next level is stored in the file data.txt, which is a hexdump of a file that has been repeatedly compressed.
+
+Commands Used: mv,cp,tar,gzip,bzip2,xxd or hexdump,cat,file
+
+#Note: This Challenge is difficult for most of the beginners like me, now there maybe more difficult levels that meets the eye but as for me the binary or hex files are kinda difficult for me
+before starting the solution it may look a bit overwhelming while looking at the solution but I'll try my best to give out the solution in a simple manner, I will divide the solution phase into 3 phases.
+
+#Explantion:This challenge is more lengthy then the previous level so I'll explain you in simple manner
+
+-> Basically in this challenge you are given a file(data.txt) and you have to use a hex editor to understand and decompress it one by one for example: "Like a Chocolate wrapped under several Wrappers and you are unwrapping it one by one to get the delicious chocolate :p"
+
+->Now Most of the commands used are tar,gzip,bzip and xxd or hexeditor
+*tar is basically an archiving utility in other words you can say a file is archived under it.
+*gzip and bzip2 are like file compressors and decompressors but you need both of them.
+*xxd is a hexdumper this basically shows unreadable strings into hexadecimal numbers similarly for hexdump(my favorite hex editor)
+
+Solution:As I said before the solution will be divided into 3 phases 
+
+1st Phase (Moving the file into temporary)
+
+1.Login to the level using the password obtained from the previous level.
+2.Now the Level instruct us to make a temporary folder using the "mktmp -d" command the output will be displayed as the temp file path.
+3.Copy the file using the "cp" command and paste it into the temporary folder, rename the file using the "mv" command like this mv "<old_filename> <new_filename>" ( Ignore the double quotes)
+
+#End of the 1st Phase.
+
+2nd Phase(Unwrapping of the actual chocolate)
+1.First and foremost we display the contents of the data.txt which looks like this
+$ cat data.txt
+00000000: 1f8b 0808 0650 b45e 0203 6461 7461 322e  .....P.^..data2.
+00000010: 6269 6e00 013d 02c2 fd42 5a68 3931 4159  bin..=...BZh91AY
+00000020: 2653 598e 4f1c c800 001e 7fff fbf9 7fda  &SY.O...........
+00000030: 9e7f 4f76 9fcf fe7d 3fff f67d abde 5e9f  ..Ov...}?..}..^.
+00000040: f3fe 9fbf f6f1 feee bfdf a3ff b001 3b1b  ..............;.
+00000050: 5481 a1a0 1ea0 1a34 d0d0 001a 68d3 4683  T......4....h.F.
+00000060: 4680 0680 0034 1918 4c4d 190c 4000 0001  F....4..LM..@...
+00000070: a000 c87a 81a3 464d a8d3 43c5 1068 0346  ...z..FM..C..h.F
+00000080: 8343 40d0 3400 0340 66a6 8068 0cd4 f500  .C@.4..@f..h....
+00000090: 69ea 6800 0f50 68f2 4d00 680d 06ca 0190  i.h..Ph.M.h.....
+
+2.Since we want to operate on the real data we revert the hexduxmp and get the actual data using the xxd (xxd -r data.txt compressed_data) [-r stands for revert]
+
+->after using the 'ls' command two files will be present:compressed_data  data.txt
+
+3.Use the 'cat' command to look the actual data which will be "unreadable"
+
+4.To decompress the data we look at the hex values of the file using xxd or hexdump(I prefer hexdump) [hexdump compressed_data] or you can use the 'file' command which displays the format of the file.
+
+00000000: 1f8b 0808 0650 b45e 0203 6461 7461 322e  .....P.^..data2.
+00000010: 6269 6e00 013d 02c2 fd42 5a68 3931 4159  bin..=...BZh91AY 
+
+Now if we compare the hex values with the list of file signatures we can see that the \x1F\x8B\x08 correponds to gzip applcation now rename this file to compressed_data.gz using the mv command like this ( mv compressed_data compressed_data.gz)
+
+5.Use the gzip command [gzip -d compressed_data.gz] to decompress the file.
+
+6.If we check again the numbers have been changed to something else, you can use the 'file' command to check the format of the file (if you are in  hurry) but the aim is to understand the hex values, the output the file command will be displayed as the bzip.
+
+7.Repeat the same process by renaming the file as .bz2 instead of the .gz 
+
+8.Use the bzip2 command to decompress the file (bzip2 -d compressed_data.bz2)
+
+9.Repeat the process until you see the format of the file as  "tar".
+
+End of Phase2
+
+Phase3 (Tar Archives)
+
+1.Once you reach where the file format shows "tar" rename the file to "tar".
+2.Use the "tar" command and -xf argument to extarct the file ["tar -xf compressed_data.tar] where the -x stands for "Extract" and -f -> file [Let you choose a file] { In other words the -xf is combination of to flags and lets you extract for a certain file.}
+3.Repeat the process until you don't see the file format as any file compressor (i.e gzip,bzip2)4.Then do the same thing as done in Phase2.
+5.Finally you will see final file as "data8" which will be in ASCII format.
+6.Display the content of the file using the "cat" command.[The password is FO5dwFsc0cbaIiH0h8J2eUks2vdTDwAn]
+
+End of the Phase3.
+
+#Note: In the beginning if you see the file as a "hex_dump" or any of the format "revert" the file using the "xxd" command along with the '-r' argument (IMPORTANT STEP).
+
+#ONWARDS TO THE NEXT LEVEL.
+

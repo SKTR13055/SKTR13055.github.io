@@ -1,0 +1,27 @@
+Title: Bandit Level 26 → Level 27
+
+Challenge:Good job getting a shell! Now hurry and grab the password for bandit27!
+
+Commands_Used: ls (This is what the game stated) 
+
+#Explantion:For this level you need to grab the password of bandit27 as fast as you can well this what shte game stated but to be honest this level is related to previous level (bandit25) where we had to resize the terminal to make the "MORE" text showup (Reason explained in the previous level) So similarly we have to perform same thing here in this challenge.
+
+#Solution:
+1.Resize the terminal and login to the level using the password obtained from the previous level, Until the "MORE" text shows up.
+
+2.Press "v" to open up the vim text editor.
+
+3.To interact like shell type the following command " :set shell=/bin/bash " and after that type in ":shell" {This will give you an interactive shell like a normal terminal, You can resize terminal back to orignal if you want to} 
+
+4.Type "ls" to display the list of the files present in the current directory.
+
+5.There will be a file present called "bandit27-do" {If you recall from level-20(I suppose) then you know what to do next,If not no worries follow the next step.)
+
+6.Run the file using ./ {./bandit27-do} ( This basically executes any command as bandit27)
+
+7.Type the following ./bandit27-do cat /etc/bandit_pass/bandit27
+-> This will give the output as "upsNCc7vzaRDx6oZC6GiR6ERwe1MowGB" -> Bandit27 password.
+
+8.Done
+
+#Note: This is a good way to refresh your memories from the previous level and to be honest it is helping me a lot I wish the upcoming challenges are similar like this.

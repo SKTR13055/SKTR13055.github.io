@@ -1,0 +1,16 @@
+Title: Level 7 -> Level 8
+
+Challenge: The password for the next level is stored in the file data.txt next to the word "millionth"
+
+Commands needed to solve this level: grep and cat ( I know in the website it shows many commands but really in this level it requires this 2 commands)
+
+Solution:
+1.Login the level using SSH and password obtained from the previous level.
+2.Type "ls" in the command to list out the files present in the current directory
+3.Once you see the file named "data.txt" you can use the following command  ( cat data.txt | grep millionth) {The clue is the word next to the word millionth"}
+4.The output will be displayed like this  [millionth       dfwvzFQi4mU0wfNbFOe9RoWskMLg7eEc] (Ignore the square brackets)
+5.Grab the password which can used for the next level.
+6.Done.
+
+#Honestly this challenge basically tells you how to use the "grep" command and I was kinda fammililar with this command now on to the next level.
+

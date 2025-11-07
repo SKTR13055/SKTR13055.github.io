@@ -1,0 +1,72 @@
+Natas Level 9 → Level 10
+
+#Credentials
+Username: natas10
+Password: t7I5VHvpa14sJTUGV0cbEsbYfFP2dmOu
+URL:      http://natas10.natas.labs.overthewire.org
+
+#Concept
+This level is similar to the previous level but in this level the input is sanitized which basically means that we can't normally input anything as command well we can but we have to understand what special characters have been filtered.
+
+#Solution
+
+1.Login to the website using the credentials mentioned above.
+
+2.After Logging in the website will display an input box similar to the previous level
+
+3.Clicking on the "view source code" we can observe some changes.
+
+$key = "";
+
+if(array_key_exists("needle", $_REQUEST)) {
+    $key = $_REQUEST["needle"];
+}
+
+if($key != "") {
+    if(preg_match('/[;|&]/',$key)) {
+        print "Input contains an illegal character!";
+    } else {
+        passthru("grep -i $key dictionary.txt");
+    }
+}
+?>
+
+#In previous level in the second part the second if condition was not present which enables us to give any commands hence unsanitized, in this level we can't use these special characters which are mentioned in the if condition.
+
+#To bypass this filter we have to know more special characters for linux/Unix such as $, but to my suprise it's kinda different when I researched  the internet.
+
+4.Type in the following in the input box ". /etc/natas_webpass/natas11 #"
+
+Now let me explain this command and I was suprised when I understood the command
+
+->
+
+i) The first part the . part which basically does nothing -ish, the . basically is for "grep" command which searches in dictionary.txt and returns the matching result.
+
+ii)The /etc/natas_webpass/natas11 contains the password for the natas11
+
+iii)The # this part amazes me since this symbol is not filtered we can use this and if you use "scripting language(like python)" you can see that the # is used for comment the things which is not related to programming,just for understanding purposes  and if you used in between the programming it "ignores" that part/line so same principle is used in this command.
+
+->The Output will result as
+
+UJdqkK1pTu6VLt9UHWAgRZz6sVUZ3lEk  --> The password for natas11
+
+5.Done
+
+#Note:
+To prevent command injection, replace the use of shell commands with PHP's built-in functions and validate user input strictly. Here’s a concise solution: 
+
+$key = $_REQUEST['needle'] ?? '';
+if (preg_match('/^[a-zA-Z]+$/', $key)) { // Whitelist validation
+    $lines = file('dictionary.txt');
+    $results = preg_grep("/$key/i", $lines);
+    foreach ($results as $line) {
+        echo htmlspecialchars($line) . "<br>"; // Sanitize output
+    }
+} else {
+    echo "Invalid input.";
+}
+
+This solution validates the input against a whitelist of alphabetic characters, uses PHP functions to read and search the file, and sanitizes the output to prevent XSS.
+
+

@@ -1,0 +1,33 @@
+Title:Bandit Level 30 → Level 31
+
+Challenge:There is a git repository at ssh://bandit30-git@localhost/home/bandit30-git/repo via the port 2220. The password for the user bandit30-git is the same as for the user bandit30.
+
+Clone the repository and find the password for the next level.
+
+Commands_Used: git, git tag
+
+#Explanation: In this level another new command is used in this level which is the "git tag" The git tag basically Create, list, delete or verify a tag object signed with GPG or in simpler words Git tags are a way to mark specific points in your project's history as important. They are often used to indicate release versions or milestones in your project. Think of a tag as a bookmark that helps you easily find a particular commit later.
+
+#Solution:
+1.Login to the level using the password obtained from the previous level.
+2.Repeat the same process from the previous levels.
+3.Change your directory to "repo".
+4.Display the content of the README.md file using "cat" command.
+
+->Output
+just an epmty file... muahaha
+{Yup thats the actual output of the file}
+
+5.Since this does not provide any information we can check the tag/bookmark using the "git tag"
+->Output
+secret
+
+6.This is intresting there is a tag called "secret" in order to view the cotents of the tag type "git show secret" 
+->Output
+fb5S2xb7bRyFmAvQYQGEqsbhVyJqhnDy  ->Password for the next level.
+
+7.Done
+
+#Note: I don't use github a lot just some minor changes and adding repositories through GUI but through CLI and its really a good thing I am getting to know about the Github in CLI.
+
+

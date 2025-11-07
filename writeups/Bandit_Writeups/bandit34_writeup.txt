@@ -1,0 +1,24 @@
+Title:Bandit Level 33 → Level 34
+
+At this moment, level 34 does not exist yet.
+
+#Solution:
+1.Login to the level using the password obtained from the previous level.
+
+2.Display the list of files using "ls" command.
+
+3.Display the content of the "README.txt" file using the "cat" command.
+->Output 
+
+Congratulations on solving the last level of this game!
+
+At this moment, there are no more levels to play in this game. However, we are constantly working
+on new levels and will most likely expand this game with more levels soon.
+Keep an eye out for an announcement on our usual communication channels!
+In the meantime, you could play some of our other wargames.
+
+If you have an idea for an awesome new level, please let us know!
+
+#Note:Yup This finally the last challenge of the "Bandit" There might be new challenges but for now it is over and to be honest I've learned a lot from this challenge regarding the linux shell from finding password among the list of files to escaping shells, It's really amazing and I would say its a one level above challenge.
+
+NOW ON TO THE NEXT USER -> "LEVIATHAN" (Basics web and network security)

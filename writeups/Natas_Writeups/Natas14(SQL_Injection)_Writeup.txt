@@ -1,0 +1,69 @@
+Title:Natas Level 13 → Level 14 (SQL Injection)
+
+Username: natas14
+Password: z3UYcr4v4uBpeX8f7EZbMHlzK4UR2XtQ
+URL:      http://natas14.natas.labs.overthewire.org
+
+#Concept
+In this level it talks about the most famous web vulnerability called the SQL-Injection(SQLi) This vulnerability allows you to manipulate the database which is present in the website,It can retrieve usernames,passwords and other information from the database if present,this vulnerability is present due to the developers forgetting to implement the "Input Validation" or "Input Sanitization" by just simply adding the escaping characters to the input filed will yield the information according to the attackers desire,lets explain how this works
+
+#Note: If you don't to read long text then you can just watch "Network Chuck" about the SQLi He explains in a great manner and surely you'll be able to grasp it easily.
+
+#Explanation of the vulnerability(Education Purpose only)
+->Suppose you have a website which asks for username and password if look at the source code it looks like this
+
+SELECT * from users where username="" and password="" {This is for explanation purpose}
+
+You see when you enter your username and password it will be placed where the ""(Double quotes are placed) and then it will execute the SQL and in return if there is information present then it will grant you the access and you get logged in, else it will deny the access.
+
+Now  to manipulate or "insert" malicious query you have to understand the SQL language and understand this query
+
+SELECT * from users where username="admin""OR"1"="1 and password="1234" ( You can insert any password that you like)
+
+->When you insert the text in the name field like this admin"OR"1"="1 
+
+*The first thing is that is closes the first quote which is the "admin"
+*Then it checks the other condition which is the OR condition OR"1"="1 (The OR Condition means that aleast 1 of the condition is true unlike AND which needs both of them to be true and by logically 1 is equal to 1) This will you give you the access to the account.
+
+Let me write it in clear so you can understand it clearly 
+
+SELECT * FROM users where username = admin"OR"1"="1(The actual input that you will be giving)  and password=1234
+
+***There are more "payloads" besides the "OR" payload which you can check it out and aside from the payload there are 2 or more types of SQL injection which are
+
+
+(i) In-Band SQL Injection (Error-Based, Union-Based) 
+(ii) Blind SQL Injection (Boolean-Based, Time-Based)
+(iii)Out-of-Band SQL Injection
+(iv)Second-Order SQL Injection
+(v)Stored SQL Injection
+(vi)Dynamic SQL Injection
+
+#The First 2 are mostly used for bug bounty and CTF challenges,Since the explanation is done lets head on over to the Solution
+
+#Solution
+
+1.Login to the website using the credentials mentioned above.
+
+2.After logging in to the website you will be given 2 input box which are username and password.
+
+3.Take a look at the source code to understand the logic behind it.
+
+ $query = "SELECT * from users where username=\"".$_REQUEST["username"]."\" and password=\"".$_REQUEST["password"]."\"";
+
+#This is the main part of the code which basically takes the input from the user and then it executes the query, and this part is unsanitized hence SQli is possible.
+
+4.Give the value as username=natas15"OR"1"="1; password = 1234 {Again you give anything you want because of 1=1 it is always trur}
+
+5.Finally you will displayed with the output as 
+
+ Successful login! The password for natas15 is SdqIqBsFcz3yotlNYErZSZwblkm0lrvx
+
+6.Done
+
+#Note: You can even use the burpsuite's repeater section instead of going back and forth in the website
+
+#Note: There is a tool called "sqlmap" which basically does sqlinjection for you but since this website asks for authentication I can't find a way to give the username and password otherwise this tool can be used.
+
+
+

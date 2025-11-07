@@ -1,0 +1,65 @@
+Title:Natas Level 1 → Level 2 (IDOR Insecure Direct Object Reference)
+
+Username: natas2
+Password:TguMNxKo1DSa1tujBLuZJnDUlCcUAPlI
+URL:http://natas2.natas.labs.overthewire.org
+
+#Explanation:In this level this is mostly called the "Insecure Direct Object Reference(IDOR)" This occurs when an application exposes a reference to an internal implementation object. In this case, the application allows access to files (like users.txt) without proper authorization checks. By navigating to specific paths, you can access sensitive files that should not be publicly accessible
+
+
+#Solution:
+1.Go to the specific URL and enter the crendentials to the page.
+
+2.Either You can "View Page Source" or "Use Inspect Element" to the Source Code
+
+<html>
+<head>
+<!-- This stuff in the header has nothing to do with the level -->
+<link rel="stylesheet" type="text/css" href="http://natas.labs.overthewire.org/css/level.css">
+<link rel="stylesheet" href="http://natas.labs.overthewire.org/css/jquery-ui.css" />
+<link rel="stylesheet" href="http://natas.labs.overthewire.org/css/wechall.css" />
+<script src="http://natas.labs.overthewire.org/js/jquery-1.9.1.js"></script>
+<script src="http://natas.labs.overthewire.org/js/jquery-ui.js"></script>
+<script src=http://natas.labs.overthewire.org/js/wechall-data.js></script><script src="http://natas.labs.overthewire.org/js/wechall.js"></script>
+<script>var wechallinfo = { "level": "natas2", "pass": "TguMNxKo1DSa1tujBLuZJnDUlCcUAPlI" };</script></head>
+<body>
+<h1>natas2</h1>
+<div id="content">
+There is nothing on this page
+<img src="files/pixel.png">
+</div>
+</body></html>
+
+#From the source code you can see that there is an "img src" full form as  "Image Source" which means that the image file is stored in this particular path, you can got that path and check it out but the more interesting thing is that we can see that the first path is leads to "file" Which means there may contain other files as well so lets check it out.
+
+3.Type the following path http://natas2.natas.labs.overthewire.org/files
+
+Index of /files
+[ICO]	Name	Last modified	Size	Description
+[PARENTDIR]	Parent Directory	 	- 	 
+[IMG]	pixel.png	2025-04-10 14:18 	303 	 
+[TXT]	users.txt	2025-04-10 14:18 	145 	 
+Apache/2.4.58 (Ubuntu) Server at natas2.natas.labs.overthewire.org Port 80
+(I wish I can upload the screenshot here but it is not quite possible)
+
+#From this we can see that there are 2 files present pixel.png and "users.txt",The "users.txt" is really interesting and you can actually feel the sweetness in your tounge (Like a hacker) and lets click on that.
+
+4.After clicking on the "users.txt" you can see that it contains the usernames along with there password.
+
+#Output
+
+# username:password
+alice:BYNdCesZqW
+bob:jw2ueICLvT
+charlie:G5vCxkVV3m
+natas3:3gqisGdR0pjm6tpkDKdIWO2hSvchLeYH
+eve:zo4mJWyNj2
+mallory:9urtcpzBmH
+
+
+#Boom we can see that there it contains the password for "natas3"
+
+5.Done
+
+
+#Note:This is bascially called IDOR well there might be the other types of IDOR ( I am not completely sure but there may exist) and there some bug bounties present for this aswell make sure to report it reponsibily.

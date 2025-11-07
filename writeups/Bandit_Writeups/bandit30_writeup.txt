@@ -1,0 +1,61 @@
+Title:Bandit Level 29 → Level 30
+
+Challenge:There is a git repository at ssh://bandit29-git@localhost/home/bandit29-git/repo via the port 2220. The password for the user bandit29-git is the same as for the user bandit29.
+
+Clone the repository and find the password for the next level.
+
+Commands_Used: git, git branch, git switch
+
+#Explanation:In this level we have to do perform similar steps from the previous 2 levels and in this level we need to perform some extra steps which is "branching" -> Git branching allows developers to create separate lines of development within a project. This enables them to work on features, bug fixes, or experiments independently without affecting the main codebase.{In a nutshell basically it is saying that the "git branching is used whenever you want to add some features in a software instead of direclty chainging the code in the orginal application you can create a copy of it in other words create a branch for it and then you can add or alter the codes with out anything to worry about} 
+
+#Solution:
+1.Login to the level using the password obatined from the previous level.
+
+2.Change your directory to the temporary directory using the "cd" command. {Or create a new one using the mktemp -d and change to that directory}
+
+3.Clone the repository which is mentioned in the challenge using "git clone". { The password is same as the current level}
+
+4.Change the directory to the clone directory using the "cd" command.
+
+5.Display the content of the README.md file using the "cat" command.
+
+-> #Bandit Notes
+Some notes for bandit30 of bandit.
+
+## credentials
+
+- username: bandit30
+- password: <no passwords in production!>
+
+{from the output we can observe that there is no password present in the file but rather it says that no passwords are in production which means that there are other branches present for this repository}
+
+6.Type "git branch -a " To display the branches present for this repository 
+
+->Output  of the command looks like this 
+* master
+  remotes/origin/HEAD -> origin/master
+  remotes/origin/dev
+  remotes/origin/master
+  remotes/origin/sploits-dev
+
+# There are 4 branches present for this repository so lets change our branch to the "dev" branch.
+
+7.To change your branch type the following command git switch <branch name> or git checkout <branchname>
+
+8.After changing your branch to the "dev" branch type "ls" to display the list of files present.
+->We can see that there is a README.md file present}
+
+9.Display the content of the README.md file using the cat command.
+
+-> ome notes for bandit30 of bandit.
+
+## credentials
+
+- username: bandit30
+- password: 5b90576bedb2cc04c86a9e924ce42faf
+
+->Bingo the dev branch had the password for bandit30, copy/store the password somewhere and move on to the next level.
+
+10.Done.
+
+#Note: For the first time I Created a shell script regarding for storing password of bandit levels it's called bandit_appendet.sh do check it out.

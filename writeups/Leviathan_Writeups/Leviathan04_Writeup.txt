@@ -1,0 +1,48 @@
+Title:Leviathan Level 4 → Level 5
+
+Challenge: A directory which can be seen through a special glasses which have a password in written in some language in order to reveal it you have to reverse it in human language ( Not Written in the game) ( I Wrote it)
+
+#Commands_Used: None
+
+#Explanation:In this challenge there is a hidden directory which contains the password for "leviathan5" and in the directory there is a file which is written in binary language{Which is a language which only the machines can understand it} and from that you can decode it using some tools present in your arsenal.
+
+#Solution:
+1.Login to level using the password obtained from the previous level.
+
+2.Display the files and hidden files along with the permission using the command "ls -la"
+
+total 24
+drwxr-xr-x  3 root root       4096 Aug 26  2019 .
+drwxr-xr-x 10 root root       4096 Aug 26  2019 ..
+-rw-r--r--  1 root root        220 May 15  2017 .bash_logout
+-rw-r--r--  1 root root       3526 May 15  2017 .bashrc
+-rw-r--r--  1 root root        675 May 15  2017 .profile
+dr-xr-x---  2 root leviathan4 4096 Aug 26  2019 .trash
+
+#We can see that there is directory called .trash which is unique in this level so that solves the first clue now lets access it
+
+3.Change your directory and display the files present in it using the "cd" command and "ls" command respectively.
+
+
+dr-xr-x--- 2 root       leviathan4 4096 Aug 26  2019 .
+drwxr-xr-x 3 root       root       4096 Aug 26  2019 ..
+-r-sr-x--- 1 leviathan5 leviathan4 7352 Aug 26  2019 bin
+
+#Oo There is a file present  which I am curious about "bin" it is executable and also has set bit present ( you know what that means ;) {Check out my previous levels or in bandit levels to understand what does the (s) mean}
+
+4.Run the Executable file using the ./ command -> ./bin
+
+
+00110000 01100100 01111001 01111000 01010100 00110111 01000110 00110100 01010001 01000100 00001010
+
+
+#This is binary language which only the machines can understand but in order for humans to understand it you need to reverse it using some tools present in your arsenal, let's decode it.
+
+5.Copy the binary code and go to this website "https://gchq.github.io/CyberChef/" and reverse the binary.
+
+0dyxT7F4QD -> This is the output which you will get by reversing the binary.
+
+#There are some other ways which you can decode this binary like making a program for it, I mostly use "CyberChef" as it contains most of the tools which are used to perform most of the cipher convertions and etc.
+
+6.Done
+

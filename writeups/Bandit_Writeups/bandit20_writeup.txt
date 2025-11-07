@@ -1,0 +1,32 @@
+Title:Bandit Level 19 → Level 20
+
+Challenge:To gain access to the next level, you should use the setuid binary in the homedirectory. Execute it without arguments to find out how to use it. The password for this level can be found in the usual place (/etc/bandit_pass), after you have used the setuid binary
+
+Commands_used: None Actually ( This level contains file which we have to use)
+
+#Explanation: This level explains about the 'setuid' the setuid is not a command but a permission setting that allows a normal user to execute a file with the permissions of the file's owner.In the permissions section we have three users which are th'user(u)','other(o)','group(g)' and have 4 types of permission which are 'read(r)','write(w)','execute(x)', and finally setuid(s). To give certain permission to the particular user we can use the 'chmod' command for example: chmod u+s,o-r where  the '+' means granting permission and '-' means revoking/removing the permission.
+
+#Note:To give setuid permission we use the "chmod u+s".
+
+#ANALOGY(For better understanding of the concept)
+->Lets say about a "cleaner(normal user)[bandit19 in this case]" who cleans the rooms in an organization and lets say he/she wants to clean the room of the CEO(Bandit20) office . Now the CEO's office cannot be entered by anyone nor the employees or anybody but he gives the "key(setuid)" to the cleaner(bandit19) as he is a trusted friend hence the cleaner can access to the CEO(bandit20) room believing that the cleaner(bandit19) won't do such thing or the cleaner can do anything once he/she entered the room. (This is how I grasp the concept of setuid).
+
+
+#Solution:
+1.Login to the level using the password obtained from the previous level.
+2.Display the list of file along with the permission using 'ls -l' command 
+-> The Output will be displayed like this 
+-rwsr-x--- 1 bandit20 bandit19 14884 Apr 10 14:23 bandit20-do
+
+From the output we observe that the Owner/user of the file is 'bandit20' which has the permissions as read(r),write(w),and setuid(s) while the group is the 'bandit19' which has the permission has 'read(r)' and 'execute(x)' so this mean that the bandit19 has the ability to execute the binary file.
+
+3.To execute the file we simply type './<filename>' to execute it in this case ./bandit20-do
+-> After running this command we see that it says "Run a command as another user". Example: ./bandit20-do id
+So in other words "we can run any command as bandit20 user" (as long as the bandit20 set the permission of setuid then we can use it otherwise we can't)
+
+4.Normally the passwords are stored in /etc/bandit_pass/bandit20(let me tell you before hand you can't read the file unless you are bandit20 user I've tried it :p) .
+
+5.We type the command ./bandit20-do cat /etc/bandit_pass/bandit20 
+-> This will give the output as "0qXahG8ZjOVMN9Ghs7iOWsCfZyXOUbY"(The password)
+
+6.Done

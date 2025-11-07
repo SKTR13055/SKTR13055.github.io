@@ -1,0 +1,46 @@
+Title:Bandit Level 32 → Level 33
+
+Challenge:After all this git stuff, it’s time for another escape. Good luck!
+
+Commands_used: sh, man
+
+#Note:In this challenge Its quite difficult for the beginners to figure out the solution as I was confused with limited clues.
+
+#Explanation:In this level as the challenge mentioned that we have to perform another escape, after all the git challenges are over, I'll explain more in the challenges section so you can get the clear idea.
+
+#Solution:
+1.Login to the level using the password obtained from the previous level.
+->The output will be shown like this
+WELCOME TO THE UPPERCASE SHELL
+
+#Now for me this is the first time I am encountering such shell which is the "uppercase shell" but as the sentence mentioned "UPPERCASE SHELL" I thought all the commands would work in the uppercase letters so lets give it a try.
+
+2.I gave such commands such as "ls" or "pwd" 
+-The output gave as 
+sh: Permission Denied (or) For other people "LS not found"
+
+#I was so confused that none of the commands would work in the uppercase style nor in lowercase pretty much confused,somehow it seems to not give any errors while giving any "$" in the begining.
+
+3.After some research I found that in linux/Unix there is a special variable called "$0"(Pretty much new for me) So this variable normally would give the what type of shell is used.
+
+ex:Normally if you type $0 it would give you as /bin/bash 
+
+4.When Typing "$0" it basically creates a new instance of the shell which is not affected by the uppercase transformation.
+->Hence we now can normally use the normal shell hence "escaping the shell"
+
+5.After escaping the shell we can normally type "ls -la" to display the list of files along with the permission.
+
+6.We can see that there is a file called "uppershell" which has setuid permission set as "bandit33" which means we can run the commands as "bandit33"
+
+7.Let's type "whoami" to check which user we are running as.
+->Output
+bandit33
+
+#As expected since we are running as the bandit33 we can retrieve the password from the password direcotry.
+
+8.Type "cat /etc/bandit_pass/bandit33"
+->tQdtbs5D5i2vJwkO8mEyYEyTL8izoeJ0
+
+9.Done.
+
+

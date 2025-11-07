@@ -1,0 +1,33 @@
+Title:Bandit Level 18 → Level 19
+
+Challenge:The password for the next level is stored in a file readme in the homedirectory. Unfortunately, someone has modified .bashrc to log you out when you log in with SSH.
+
+Commands used: ssh,ls,cat
+
+#Note: This one of the amazing challenges I have ever faced yet
+
+#Explanation:- Lets start with the '.bashrc' file, the bashrc file is a powerful tool for customizing the Bash shell environment Kali Linux and other Linux Distribution. Basically it allows you to setup your terminal according to your workflow. The bashrc always runs whenever a 'new terminal' is initialized/started
+
+I was confused in the begining that whenever I try to login it just says 'byebye!' and logs me out little did I know that we can append command at the end of the 'ssh' command [Thanks to MayaDevbe] I was shockingly amazed when you can do such things in linux 
+
+So All credits go to the MayaDevbe :)
+
+#Solution
+1.Silly me you can't login xD
+2.Use the following command ssh bandit18@bandit.labs.overthewire.org -p2220 ls
+->This is will display the files present in the working directory.
+3.Again Use the following command "ssh bandit18@bandit.labs.overthewire.org -p2220 cat readme
+->This will display the contents of the file named "readme" which contains password to the next level
+4.Done.
+
+***Alternative_Way
+MayaDevBe Also found alternative way to run such commands instead of repeating the 'ssh' command here are other commands used
+1. ssh bandit18@bandit.labs.overthewire.org -p2220 /bin/bash
+2. ssh bandit18@bandit.labs.overthewire.org -p2220 -t /bin/sh
+
+1.The first command basically lets you execute commands with ssh  using the 'bash' shell
+2.On the other hand the second command does the same thing but uses the '-t' flag which allows 'pseudo-terminal' to run on the target machine.
+
+This is especially useful if we have to do multiple commands because we do not need to repeat the SSH statement and password -> Mayadevbe
+
+#Note: I know that I didn't completely solve this level without the help and I feel kinda disappointed I did try my best to findout the solution, so always remember that it's ok to ask for help sometimes :)

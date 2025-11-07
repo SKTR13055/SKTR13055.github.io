@@ -1,0 +1,20 @@
+Title:Bandit Level 6 → Level 7
+
+Challenge:The password for the next level is stored somewhere on the server and has all of the following properties:
+
+    owned by user bandit7
+    owned by group bandit6
+    33 bytes in size
+
+Commands Used in this level:ls , cd , cat , file , du , find , grep
+
+Solution: This challenge is similar to the previous level
+1.Login to the level using the password obtained from the previous level
+2.Change your directory to the root section by typing "cd /"
+3.Now in the current working directory to find a file owned by user bandit7 we can you this command
+ " find ./* -type f -exec ls -la {} + | grep bandit7 "
+4.The command will display all the files which contains the characters bandit7
+5.Finally you can see ./var/lib/dpkg/info/bandit7.password which is owned by the user bandit7 and group by bandit6.
+6.Display the file using the cat command {morbNTDkSW6jIlUc0ymOdMaLnOlFVAaj}
+7.Use the password for the next level.
+

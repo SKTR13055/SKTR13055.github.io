@@ -1,0 +1,23 @@
+Title: Bandit Level 14 → Level 15
+
+Challenge: The password for the next level can be retrieved by submitting the password of the current level to port 30000 on localhost.
+
+Commands Used in this level: nc or netcat
+
+#Explanation: nc aka netcat is a command which allows to "read and write" data over a network connection. Can be used for TCP(Transmission Control Protocol) and UDP (User Datagram Protocol).
+
+To connect to a service using the nc command the following syntax is to be followed nc <host:port>. You can also create a server which can listen to incoming packets like this nc -l <port> [Where l basically stands for listen]
+
+#Solution
+1.Login to the level using the password obtained from the previous level.
+2.Since we stored the password of bandit14 we can directly go to the next step, if not saved you can perform the previous challenge to get the password.
+3.Now use the following command -> bandit15@bandit:~$ nc localhost 30000
+Enter/Paste the password of bandit14 and the output will be displayed as down below:
+
+MU4VWeTyJk8ROof1qqmcBPaLh7lDCPvS    #Bandit14 level password
+Correct!
+8xCjnmgoKbGLhHFAZlGE5Tmu4M2tKJQo    #Bandit15 level password
+
+4.Done
+
+#Note: Whenever you want to "listen" or  "write" data over a network connection use "nc"!.

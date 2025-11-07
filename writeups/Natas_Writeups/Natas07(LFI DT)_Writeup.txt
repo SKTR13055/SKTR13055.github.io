@@ -1,0 +1,45 @@
+Title:Natas Level 6 → Level 7 (Local File Inlcusion) /Directory traversal
+
+#Credentials
+Username: natas7 
+Password: bmg8SvU1LizuWjx3y7xkNERkHxGre0GS
+URL:      http://natas7.natas.labs.overthewire.org
+
+
+#Concept
+In this level the concept involved is the Local File Inclusion(LFI).This vulnerability allows an attacker to manipulate a web application to include files from the server's filesystem,potientially exposing sensitive information.
+
+#Analogy: The Locked Room
+
+Imagine a house with several rooms. Each room has a specific purpose, and some rooms are locked to keep certain things private.
+
+    Normal Access: You can enter the living room and kitchen without any issues. This is like accessing files that you are allowed to see on a website.
+
+    Exploiting the System: Now, imagine you find a way to trick the homeowner into thinking you have permission to enter a locked room. You say, "I need to get something from the storage room," even though you shouldn't have access.
+
+    Directory Traversal: If the homeowner believes you and lets you in, you can access whatever is in that locked room, which might include sensitive items (like passwords).
+
+
+#Solution:
+1.Login to given website using the credentials mentioned above.
+
+2.After logging in you will be displayed with 2 things "Home" and "About"
+#You can explore around like I did and find out some hidden clues.
+
+3.Go to anyone of the page and check the source page, in there it will be displyed this
+
+<!-- hint: password for webuser natas8 is in /etc/natas_webpass/natas8 -->
+
+#Since it is mentioned that the password is stored in this file path we have to use a technique called "Directory Traversal"
+
+#The Directory Traversal bascially involves accessing the page which is completely is restricted to normal users, you can simply bypass it by appending /../../file path at the end of the URL.
+(This does not work all the time but just for this level)
+
+4.Append the file path at the end of the URL like this " http://natas7.natas.labs.overthewire.org/index.php?page=/../../etc/natas_webpass/natas8"
+
+#The output will be displayed as the following
+
+xcoXLmzMkoIP9D7hlgPlh9XD7OgLAe5Q ->The password for natas8
+
+5.Done
+

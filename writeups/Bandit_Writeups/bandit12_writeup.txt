@@ -1,0 +1,23 @@
+Title:Bandit Level 11 → Level 12
+
+Challenge:The password for the next level is stored in the file data.txt, where all lowercase (a-z) and uppercase (A-Z) letters have been rotated by 13 positions
+
+Commands used: tr - translate
+
+#Explanation:- This challenge basically refers to a old encryption method called 'substitution cipher' where each the characters are substitued with another character this also refered as the 'Caesar-Cipher' and the 'key' would be the number of times the alphabets will be shifted for example if the key is '2' and the text you want to encrypt is 'CAT' then it encrypted text will be 'ECV' this is because they are being shifted 2 letters forward like this C->E,A->C,T->V and for decryption you have to remember the 'key' in this case it was '2' and reverse the process by simply going back same way we have done for encryption.
+
+->Now similarly for this challenge aswell ROT13 basically states that the characters have been shifted 13 characters ,now there is no built-in command for ROT13 and most of the people use online decryption for this such as 'Cyber-Chef' ( That Includes me aswell) but thanks to 'MayaDevBlog' he went through terminal way.
+
+#Solution
+1.Login to the level using the password obtained from the previous level.
+2.Display the list of file using the 'ls' (optional).
+3.Use the Command " tr  'A-Za-z' N-ZA-Mn-za-m' " ( I'll explain the command at the end)
+4.The Output will be displayed as "The password is 7x16WNeHIi5YkIhWsfFIqoognUTyj9Q4"
+5.Done.
+
+#Command-Explanation:- To use the tr they syntax is tr <old_chars> <new_chars> 
+1.The First Argument A-Za-z basically refers to charcters starting from A to Z (capital letters and small letters) so hence the first argument
+
+2.The Second Argument "N-ZA-Mn-za-m" this argument changes the characters by beginning from N to Z now why start from N? well remember that our key is 13 hence if we begin from A after 13 characters would be N so hence we begin from N, similary for the next part as well 'A-M' from 'Z' after 13 characters would be 'M' and samething for the smaller letters.
+
+#Note: MayaDevbe Really an amazing job for finding out the answer he also mentions that you can use ROT by giving an 'alias' to the 'tr' command if you are using this command too much in challenges.

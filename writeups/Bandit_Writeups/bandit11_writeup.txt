@@ -1,0 +1,24 @@
+Title:Bandit Level 10 → Level 11
+
+Challenge:The password for the next level is stored in the file data.txt, which contains base64 encoded data
+
+Commands used in this level: base64
+
+#Explanation -> The base64 is an encoder which converts  a plain text in to unreadable text and vice-versa There are three ways to identify that a particular text is base64 encoded
+
+1.The Text only should contain A-Z,a-z,0-9,+,/,=.
+2.If the base64 text contains punctuations,spaces other than ( +,/,=) Then that is not a base64 encoded
+3.In some cases base64 adds 1 or 2  '=' at the end of the text for padding if you see this then it means that it is base64 encoded.
+
+#Solution
+1.Login to the level using the password obtained from the previous level.
+2.If you display the content of the file you can see the output like this [VGhlIHBhc3N3b3JkIGlzIGR0UjE3M2ZaS2IwUlJzREZTR3NnMlJXbnBOVmozcVJyCg==] ( The last characters are '=' Which means it a base64 encoded)
+
+3.Type the following command base64 -d ( A flag/argument which helps to decode the text) {Where the -d stands for 'decode'}
+
+4.The output will be displayed as "The password is dtR173fZKb0RRsDFSGsg2RWnpNVj3qRr".
+
+5.Done.
+
+#Note: This level Provides a basic understanding on base64 which is very useful in CTF challenges
+

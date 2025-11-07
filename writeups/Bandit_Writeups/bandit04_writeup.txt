@@ -1,0 +1,21 @@
+Title: Bandit Level 3 -> Level 4
+
+Challenge:The password for the next level is stored in a hidden file in the "inhere" directory.
+
+Tools used:ls , cd , cat , file , du , find(new tool)
+
+find - search for files in a directory hierarchy
+
+Solution: To search the password for the next level we need to find a hidden file in the "inhere" directory The following steps are as follows 
+
+1.Connect to the level3 and the password is obtained from the previous level
+2.Typing 'ls' to list out the files present in the directory after getting connected.
+3.A 'inhere' file will be displayed on the console and move to the directory using 'cd' command.
+4.After accessing to the particular  directory you can type the command 'ls-a' to display hidden files in the current  directory
+5.You will see a hidden file named '...Hiding-From-You' 
+6.you can read the contents of the file using the cat command(eg:cat ...Hiding-From-You)
+7.Store the key which can be used for the next level.
+
+{Optional}
+From step 4 after accessing the directory after displaying the hidden file I used the 'find' command to confirm the hidden file {IDK I just want to try the new command}
+

@@ -1,0 +1,141 @@
+Title:Natas Level 10 → Level 11 (Session Jacking)
+
+Username: natas11
+Password: UJdqkK1pTu6VLt9UHWAgRZz6sVUZ3lEk
+URL:      http://natas11.natas.labs.overthewire.org
+
+#Concept
+Natas Level 11 utilizes XOR encryption for session management, allowing users to manipulate cookie values directly in their browsers. The challenge demonstrates how the simplicity of XOR can lead to vulnerabilities, enabling attackers to change parameters like showpassword in the cookie to gain unauthorized access to sensitive information. This highlights the risks associated with weak encryption methods and poor session management practices.
+
+#Note: This level is really complex to understand in the beginning and it takes a lot of time to understand especially for the beginners like me so i'll try my best to explain the solution in the simple manner.
+
+#Solution
+
+1.Login to the website using the credentials mentioned above.
+
+2.After logging in the website will display a message saying "Cookies are protected with XOR encryption",along with it you can change the background color by mentioning the color in hexadecimal.
+
+3.Now the main challenge lies in the source code and the cookie section,head over to the "view source code" page.
+
+$defaultdata = array( "showpassword"=>"yes", "bgcolor"=>"#ffffff");
+
+function xor_encrypt($in) {
+    $key = '<censored>';
+    $text = $in;
+    $outText = '';
+
+    // Iterate through each character
+    for($i=0;$i<strlen($text);$i++) {
+    $outText .= $text[$i] ^ $key[$i % strlen($key)];
+    }
+
+    return $outText;
+}
+
+_#_#_#_#_#_#_#_#_#_#_#_#_#__#_#_#_#_#_#_#_#_#_#__#_#_#_#_#_#_#__#_#_#_#_#_#_#_#_#_#_
+function loadData($def) {
+    global $_COOKIE;
+    $mydata = $def;
+    if(array_key_exists("data", $_COOKIE)) {
+    $tempdata = json_decode(xor_encrypt(base64_decode($_COOKIE["data"])), true);
+    if(is_array($tempdata) && array_key_exists("showpassword", $tempdata) && array_key_exists("bgcolor", $tempdata)) {
+        if (preg_match('/^#(?:[a-f\d]{6})$/i', $tempdata['bgcolor'])) {
+        $mydata['showpassword'] = $tempdata['showpassword'];
+        $mydata['bgcolor'] = $tempdata['bgcolor'];
+        }
+    }
+    }
+    return $mydata;
+}
+
+_#_#_#_#_#_#_#_#__#_#_#_#_#_#__#_#_#_#__#_#_#_#__#_#_#_#__#_#_#__#_#_#_#_#_
+function saveData($d) {
+    setcookie("data", base64_encode(xor_encrypt(json_encode($d))));
+}
+*****_*__*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_
+
+
+
+
+#Here are three functions present in the code where 1st function perform XOR_Encryption 2nd functions load the data and 3rd function saves the data.
+------------xx-x--x-x-x-x-x-x--x-x-x-x-x-x-x-x-x--x-x-x-x-x--x-x-x-x-x-x-x-x-x-x-x-x--x-x
+#What is the XOR Encryption
+It is an cipher technique which operates according to the principles
+
+A xor B = C
+A xor C = B
+B xor C = A
+
+So 
+if 
+
+ Key xor DefaultData = Cookie Data
+then
+
+ DefaultData xor Cookie Data = key  {Credits to Han Y From Youtube}
+-----------------------------------------x-x-x-x-x-x---------
+#If you scroll down towards the main function or where you can see the main heading
+if($data["showpassword"] == "yes") {
+    print "The password for natas12 is <censored><br>";
+}
+
+You can see that the if the $data showpassword is equal to yes then the password will be revealed for natas12
+
+#Now the first thing first is to identify the "key" (which is censored) the key is very important (why?)
+{In the XOR_encrypt function we see that the key is used to encrypt the key hence we need the key}
+
+
+Since we have the "Default Data" and "Cookie Data" by simply "XORing" Then will get the "key".
+
+4.Open up an online php compiler (Or you can choose to open in your own terminal),copy the "xor_encrypt"function and paste it in the online compiler.
+
+function xor_encrypt($in) {
+    $key =json_encode(array( "showpassword"=>"yes", "bgcolor"=>"#ffffff")); #Copy the default data and paste it here
+    $text = $in;
+    $outText = '';
+
+    // Iterate through each character
+    for($i=0;$i<strlen($text);$i++) {
+    $outText .= $text[$i] ^ $key[$i % strlen($key)];
+    }
+
+    return $outText;
+}
+
+$cookie = <Grab your cookie and paste it here>;
+echo xor_encrypt(base64_decode($cookie))
+
+#The output will reveal as this 
+eDWoeDWoeDWoeDWoeDWoeDWoeDWoeDWoe0;FPoeL
+
+->From the output we can see the repeated characters (Your case might different repeating characters)
+{In this case it is eDWo -> This is the "Key" actual key}
+
+#Now copy the "Key" and the place it in the xor function and then remove the cookie part and then 
+ reverse this part
+
+$tempdata = json_decode(xor_encrypt(base64_decode($_COOKIE["data"])), true) (why?) {If we see this in the load data function we obsereve that for the cookie it 
+
+i)Decodes the cookie using the base64.
+ii)Encrypts decoded base64 output.
+iii)Decodes it using the json_decode.
+
+#Hence we need to reverse it by simply adding it like this
+
+echo base64_encode(xor_encrypt(json_encode(array( "showpassword"=>"yes", "bgcolor"=>"#ffffff")))); or 
+
+echo base64_encode(xor_encrypt(json_encode($defaultdata)));
+
+5.Run the new program to get the cookie
+HmYkBwozJw4WNyAAFyB1VUcqOE1JZjUIBis7ABdmbU1GIjEJAyIxTRg= (The new cookie)
+
+6.Copy the cookie and then place it in the cookie section(Inspect element/Developer tools) and refresh the page
+
+7.Finally you will get the website displaying this 
+
+
+The password for natas12 is yZdkjAYZRd3R7tq7T5kXMjMJlOIkzDeB 
+
+8.Done
+
+#Note:When I actually saw the challenge I was pretty discouraged as how hard it was to understand but by seeing this and solving it with the help of some internet researching it became easy to understand, now imagine how skillful ethical hackers are.

@@ -1,0 +1,63 @@
+Title:Leviathan Level 3 → Level 4
+
+Challenge: There is a file present which gives you the privilege  of leviathan4,to get to the next world you have to get the correct password.
+
+Commands_Used: ltrace
+
+#Explanation: This level is similar to the previous leviathan1 level where you have to understand the working of the file using the ltrace command
+
+#Solution:
+1.Login to the level using the password obtained from the previous level.
+
+2.Display the list of files present along with the permissions in the current directory using the "ls -l" command.
+
+->Output will be displayed as 
+
+-r-sr-x---  1 leviathan4 leviathan3 10288 Aug 26  2019 level3
+
+#Ooo the set bit is enabled which means when we execute it we are running as the owner of the file which is "leviathan4"
+
+3.Execute the file using the ./ -> ./level3
+->The output will be shown as 
+Enter the password> test
+bzzzzzzzzap. WRONG
+
+#Yup thats expected, but whats the acutal password lets try to find out using the ltrace command.
+
+4.Type "ltrace ./level3" To find the working of the file.
+
+->Output
+
+__libc_start_main(0x8048618, 1, 0xffffd784, 0x80486d0 <unfinished ...>
+strcmp("h0no33", "kakaka")                                             = -1
+printf("Enter the password> ")                                         = 20
+fgets(Enter the password> test
+"test\n", 256, 0xf7fc55a0)                                       = 0xffffd590
+strcmp("test\n", "snlprintf\n")                                        = 1
+puts("bzzzzzzzzap. WRONG"bzzzzzzzzap. WRONG
+)                                             = 19
++++ exited (status 0) +++
+
+#Well there are 2 strings comparison but that is happening before the input is being taken so the two presents in the second line won't be the password, let's move on the second "string comparisions" in which our input is being compared with the actual password "snlprintf" since that is not the password it prints the "wrong password" statement.Lets try to give the correct password.
+
+5.Run the file and give the password as "snlprintf".
+
+-> Output
+
+Enter the password> snlprintf
+[You've got shell]!
+$ whoami
+leviathan4
+
+#Whoo we got the the shell and additionally checking which user I am by typing "whoami" and we are the "leviathan4" due to set bit command.Now let's get the password from the "leviathan password directory".
+
+6.Display the password for "leviathan4" from the /etc/leviathan_pass/leviathan4 using the "cat" command.
+
+cat /etc/leviathan_pass/leviathan4
+
+->Output
+WG1egElCvO -> Password for leviathan4
+
+7.Done
+
+

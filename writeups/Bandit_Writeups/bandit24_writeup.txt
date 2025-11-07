@@ -1,0 +1,97 @@
+Title:Bandit Level 23 → Level 24
+
+Challenge:A program is running automatically at regular intervals from cron, the time-based job scheduler. Look in /etc/cron.d/ for the configuration and see what command is being executed.
+
+NOTE: This level requires you to create your own first shell-script. This is a very big step and you should be proud of yourself when you beat this level!
+
+NOTE 2: Keep in mind that your shell script is removed once executed, so you may want to keep a copy around…
+
+Commands_Used: chmod,date,cp
+
+#Explanation: In this level it is the combination of the previous 2 levels (level 22 and Level 23) so basically in the previous level we had to understand how the programed worked by understadnding the shell script similarly in this level we have to create a shell script(Now this kinda big deal though because most people don't like programming I can relate it)
+
+#Note: In this level there might be some confusion if you see it on other people writeups there may be some change becuase it is outdated and there are some changes to this level.
+
+Solution:
+1.Login to the level using the password obatined from the previous level.
+
+2.Change your direcotry to /etc/cron.d/ using the "cd" command.
+
+3.Display the files using the "ls" command.
+
+4.Display the content of cronjob_bandit24 file using the "cat" command.
+
+5.The output of the file will lead to the shell script file path(usr/bin/cronjob_bandit24.sh) which is running every minute.
+
+6.Normally you can read the contents of the shell script without changing the directory using the "cat" command (cat /usr/bin/cronjob_bandit24.sh)
+
+->The output of this command will be as follows
+
+#!/bin/bash
+
+myname=$(whoami)
+
+cd /var/spool/$myname/foo
+echo "Executing and deleting all scripts in /var/spool/$myname/foo:"
+for i in * .*;
+do
+    if [ "$i" != "." -a "$i" != ".." ];
+    then
+        echo "Handling $i"
+        owner="$(stat --format "%U" ./$i)"
+        if [ "${owner}" = "bandit23" ]; then
+            timeout -s 9 60 ./$i
+        fi
+        rm -f ./$i
+    fi
+done
+
+In a nutshell this script basically executes ans deletes all the file in the particular path file
+
+*Since you can't create a script in the current directory nor in the particular file path, You can create your own script in the tmp folder using the "mktemp -d
+
+7.Create a temporary directory in the temp folder using the "mktemp -d".
+
+8.Change the directory permission to "rwx" for all the users using "chmod 777 <directoryname>" (This will ensure that the particular directory is able to perform this certain operation.)
+
+9.Open a text editor(I Used "vim" because I like it, you can use "nano" or other text editor) and type in the following command.
+
+-> #!/bin/bash
+cat /etc/bandit_pass/bandit24 > /tmp/<your temp directory name>/password.txt
+
+*This basically copies the password of bandit24 fom the banditpass directory and then it pastes the password in the particular text file (password.txt).
+
+10.Change the permissions of the file to everyone having "rwx" permission (chmod +rwx or chmod 777 password.txt)
+
+11.Copy the file using the "cp" command and paste in the following file path /var/spool/bandit24/foo (Why? -> from the hint we can see that the cron shell program basically executes and deletes the program as bandit24 so its best to paste in that directory)
+
+12.You have to wait for 1 min Because from the cron.d file we saw that it executes every "minute" You can use the "date" command to check how much the time has passed.
+
+13.You have to perform the "cp" command as quickly as possible because if you didn't the file will be deleted.
+
+14.After a minute you can see in the temp directory that there will be a file names as "password.txt"
+
+15.Display the password using the "cat" command.
+-> gb8KRRCsshuZXI0tUuR6ypOFjiZbf3G8
+
+16.Done
+
+
+***Alternative Way
+#There is an alternate to perform without creating the file in the directory but you have to create a temp directory.
+
+1.After creating the temp directory and giving all the permissions (read,write,execute) to the directory.
+
+2.Change you directory to /var/spool/bandit24/foo using the "cd" command.
+
+3.And perform the echo command (echo "cat /etc/bandit_pass/bandit24 > /tmp/<your temp directory name> /password.txt" > program.sh)
+
+4.Give the read,write and execute permission to the particular shell file(program.sh) 
+
+5.You can check the particular file present using the "ls" command along with the file name.
+
+6.Wait about for a minute and then move to the temp directory to check if the txt file is present or not (if not repeat the previous steps) 
+
+7.Display the file using the "cd" command and then BOOM you got the password to the next level.
+
+8.Done

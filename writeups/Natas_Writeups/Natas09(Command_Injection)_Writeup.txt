@@ -1,0 +1,107 @@
+Title:Natas Level 8 → Level 9  (COMMAND INJECTION)
+
+#Credentials
+Username: natas9
+Password: ZE1ck82lmdGIoErlhQgWND6j2Wzz6b6t
+URL:      http://natas9.natas.labs.overthewire.org
+
+#Explanation/Concept
+In this level it talks about a vulnerability called "Command Injection". A Command Injection is where you can inject commands to execute any commands such as "ls","cat" etc, and this vulnerability occurs due to poor sanitization of the input taken from the user,First and foremost is that you have to understand the code by which you can see if the code injection vulnerability is present or not after that depeding on the code you can perform code injection, now lets go to the solution phase in order to understand more clearly.
+
+#Solution
+
+1.Login to the website using the credentials mentioned above.
+
+2.After logging into the website; it will be display and input box in which you can type and the output will return all the matching words from a file called "dictionary.txt"
+
+#There is no point in showing you the output as it is too long
+
+3.On the right side of the box you can see an option to see the "source code" click on that.
+
+
+
+$key = "";
+
+if(array_key_exists("needle", $_REQUEST)) {
+    $key = $_REQUEST["needle"];
+}
+
+if($key != "") {
+    passthru("grep -i $key dictionary.txt");
+}
+?>
+
+#This is the main logic or the main code of the challenge now lets explain this code in three steps
+i) The first is the "key" variable which takes an empty string.
+ii)The second part is where the user inputs a particular text and that text gets stored in the "key" variable.
+iii)The third part is the part where the "grep -i(case insensitive" command actually searches the word given by the user in the dictionary.txt with the help of the "passthru" function
+
+
+#Now the problem arises is the part the "key" variable is not sanitized properly hence we give commands.
+
+4.In the input box type the following 
+
+hello; cat /etc/natas_webpass/natas10
+
+#Explanation of the command
+
+when we enter the above command in the input field it gets executed like this 
+
+i) grep hello; cat /etc/natas_webpass/natas10
+
+now the "semi-colon"(;) is a crucial part if you have been executing commands in Linux/Unix then you might've an idea about the semi-colon
+
+The semi-colon basically tell the terminal that it is the end of the command, this is basically done if you want to execute two commands at the same time,to put in the simpler words it's like this
+
+***the grep searchers for words "hello" in the dictionary.txt and then it executes the cat command.
+
+lets make it more simpler
+
+grep hello;(end of the first command) cat /etc/natas_webpass/Natas10 (Second command)
+
+output will be 
+matching words with "hello"
+{Password for natas10}
+
+#Note:The semi-colon is not similar to the piping(|) command. why? the differences is that the in the semi-colon both codes gets executed meaning the first command output will not be given to the second command as the input.Whereas in the pipe(|) thefirst command output will be given to the input of the second command.
+
+to put it into perspective
+
+i) echo "hello"; cat ls -la
+
+ii) cat dictionary.txt | grep "hello"
+
+i != ii ( i is not equal to ii)
+
+
+5.Enter the malicious command into the text box to display the password for "natas10"
+
+Output:
+
+t7I5VHvpa14sJTUGV0cbEsbYfFP2dmOu   --> Password for Natas10
+
+African
+Africans
+Allah
+Allah's
+American
+Americanism
+Americanism's
+Americanisms
+Americans
+April
+April's
+Aprils
+Asian
+Asians
+August
+August's
+Augusts
+B
+B's
+British
+Britisher
+Brown
+....
+
+6.Done

@@ -1,0 +1,60 @@
+Title:Levithan Level 0
+
+Challenge:There is no information for this level,intentionally
+
+#Note: Yup that's the actual challenge description,TBH i was confused the same way you are right now,  yes thats the actual challenge, but how are we going to know what to find? Good question! Yup I asked an AI to tell what are the objectives of all the levels and it mentioned the challenges so let's give you the real objectives. 
+
+p.s: There is no information for the rest of the levels "Intentionally" provided by the Overthewire.
+
+Real_Challenge: Find the Hidden password of Leviathan1.
+
+Commands_Used: grep, ls, cat
+
+#Explanation: In this challenge there is a "backup" file which contains the password for the "leviathan1" so we need retrieve the password and login to the next level, What is a "backup"? A backup is basically "proactively" (Doing things early before something happens) Storing data in a device which may be used to recover during in case of power failures, corrupted files, or cyber attacks, It depends upon the "frequency" ( Security+ Terminology).
+
+#Credentials
+Username:leviathan0
+password:leviathan0
+
+#Solution:
+1.Login to the level using the "credentials" given using ssh leviathan.labs.overthewire.org -p2223 
+
+2.Display the list of files along with the hidden files using "ls -la"
+
+->Output will be displayed as
+
+total 24
+drwxr-xr-x  3 root       root       4096 Aug 26  2019 .
+drwxr-xr-x 10 root       root       4096 Aug 26  2019 ..
+drwxr-x---  2 leviathan1 leviathan0 4096 Aug 26  2019 .backup
+-rw-r--r--  1 root       root        220 May 15  2017 .bash_logout
+-rw-r--r--  1 root       root       3526 May 15  2017 .bashrc
+-rw-r--r--  1 root       root        675 May 15  2017 .profile
+
+#We can see a file called ".backup" lets check it out
+
+3.Change your directory to the .backup using the "cd" command
+
+4.Display the list of files using the "ls" command.
+->The output
+
+total 140
+drwxr-x--- 2 leviathan1 leviathan0   4096 Aug 26  2019 .
+drwxr-xr-x 3 root       root         4096 Aug 26  2019 ..
+-rw-r----- 1 leviathan1 leviathan0 133259 Aug 26  2019 bookmarks.html
+
+#There a file present called bookmarks.html you can also create an own file by simply exporting from the web browser (These contains the list of websites for later use similar to book marks)
+
+5.Display the content of the "bookmarks.html" using "cat" command.
+
+->The Output is will so huge so I won't paste it here but you'll get the point
+
+6.To find the password for the next level we can use the "grep" command.
+
+-> cat bookmarks.html | grep password (or) leviathan1
+
+<DT><A HREF="http://leviathan.labs.overthewire.org/passwordus.html | This will be fixed later, the password for leviathan1 is 3QJ3TgzHDq" ADD_DATE="1155384634" LAST_CHARSET="ISO-8859-1" ID="rdf:#$2wIU71">password to leviathan1</A>
+
+#There we go we can see the password for the leviathan1 lets store it somewhere in the localmachine and we move on to the next level.
+
+7.Done.

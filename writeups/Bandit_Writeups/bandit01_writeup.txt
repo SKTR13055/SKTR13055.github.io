@@ -1,0 +1,27 @@
+Title: Bandit Level 0 -> Level 1
+
+Challenge:The password for the next level is stored in a file called readme located in the home directory. Use this password to log into bandit1 using SSH. Whenever you find a password for a level, use SSH (on port 2220) to log into that level and continue the game.
+
+Tools Used: ls - used to display the list of files
+
+cd - change directory used to change directory of the files
+
+cat - used to retrieve the content of any file
+
+file - determines the file type
+
+du - estimates file space usage
+
+find - used to find a particular file in the system
+
+
+Solution: I am keeping this short and simple to understand and you can follow along too.
+
+1.Connect to the server using the password(Aquired from the previous level) using ssh
+2.display the files using ls(list) command.
+3.A readme file will be present in the current directory.
+4.To read the content of the file(readme) you can simply type the cat(concatenate) command to directly display it or you can use a text editor such as VIM or NANO to read the content of the file.
+5.The password will be displayed on the screen and save the password in your device which can you used to access the next level.
+6.Exit the SSH using the exit command.
+7.Done
+

@@ -1,0 +1,14 @@
+Title: Bandit_Overthewire level 0
+
+Challenge: The challenge of this level is for to login into the game using SSH and connect it to bandit.labs.overthewire.org on the port 2220
+
+Tools used: SSH(Secure Shell)
+
+Solution: This is a basic level and can be easily solved using the ssh command simply, you can simply type the following command and following sytnax should be followed 
+
+ssh username@website_you_want_to_connect/ipaddress -p portnumber
+or
+ssh website_you_want_to_connect(You can later on enter the username and password)
+
+ssh bandit0@bandit.labs.overthewire.org -p2220
+

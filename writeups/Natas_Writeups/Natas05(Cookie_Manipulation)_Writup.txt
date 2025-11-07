@@ -1,0 +1,61 @@
+Title:Natas Level 4 → Level 5
+
+#Credentials
+
+Username: natas5
+Password: 0n35PkggAPm2zbEpOU802c0x0Msn1ToK
+URL:      http://natas5.natas.labs.overthewire.org
+
+
+#Concept:
+Cookies are small pieces of data that websites store on your computer or device when you visit them. They help websites remember information about you, making your browsing experience smoother and more personalized.
+
+Cookies are like little notes that a website saves on your device. They can contain information such as your login status, preferences, or items in your shopping cart.
+
+How Do They Work?: When you visit a website, it sends a cookie to your browser, which then stores it. The next time you visit the same website, your browser sends the cookie back to the server, allowing the website to remember you.
+
+
+#Analogy:
+Cookies are like name tags at a party:
+
+ When you arrive at the party, you get a name tag that says your name and maybe a fun fact about you (like your favorite drink). This helps others remember who you are and what you like.
+
+ As you mingle, the name tag helps people recognize you and recall your preferences, making conversations easier.
+
+When you leave the party, the name tag is taken off and discarded, just like session cookies that disappear when you close your browser.
+
+If you attend the party regularly, the host might remember your favorite drink and write it on your name tag for next time. This is like persistent cookies that remember your preferences for future visits.
+
+#Solution:
+
+1.Login to the above URL using the credentials mentioned.
+
+2.The screen will be displayed as "Access disallowed. You are not logged in"
+
+#My_Way
+
+3.Open Burpsuite and change your proxy on the web browser(Foxy Proxy) and turn on the "intercept" in the Proxy section(Burp suite)
+
+4.Refresh the page to intercept the request from the burpsuite,After intercepting it you have to send it to "Repeater".
+
+#From there will be a lots information similar to the previous level and in the cookies section you can see the "loggedin" which is set to '0' 
+
+5.Change the value from '0' to '1' and send the request.
+
+#From the response Tab, click on Raw (or not) you can see the message saying "Access granted. The password for natas6 is 0RoJwHdSKWFTYR5WuiAewauSuNaBXned"
+
+6.Done
+
+#Alternate_Way
+
+#There is also an another way to solve this without the need of using the tool.
+
+1.After logging into the website open "Developer Tools"
+
+2.Look for "Storage" section and check for the keyword "loggedin" which again will be set to "0" and changed it to "1"
+
+3.Refresh the page which will give you the password for "nastas6"
+
+4.Done
+
+

@@ -1,0 +1,38 @@
+Title:Bandit Level 27 → Level 28
+
+Challenge:There is a git repository at ssh://bandit27-git@localhost/home/bandit27-git/repo via the port 2220. The password for the user bandit27-git is the same as for the user bandit27.
+
+Clone the repository and find the password for the next level.
+
+Commands_Used: git
+
+#Explanation:Git is a dstributed version control system that is widely used for tracking changes in source code during software development.It allows multiple developers to work on a project simultaneously without interfering with each other's changes.In this level You have to clone a repository of bandit27-git and the password is same for the bandit27.This is the basic introduction of "git"
+
+#Solution:
+1.Login to the level using the password obtained from the previous level.
+
+2.Create a random directory in the temporary directory or you can type the following command "mkdir -d".
+
+3.Change your directory to the temporary directory using the "cd" command.
+
+4.Type the following command " git clone ssh://bandit27-git@localhost:2220/home/bandit27-git/repo"
+->git clone :- It basically clones a particular repository.
+
+The program will ask the password of the bandit27-git in which you have to enter same password for bandit27
+
+5.Type "ls" command to display the list of files after cloning.
+
+-> You will see a directory called "2220"
+
+6.Change your directory to "2220" using the "cd" command.
+
+7.Type "ls" command to display the files
+
+-> A file will be present called "README"
+
+8.Finally display the contents of the file using the "cat" command.
+->The output will display the password for bandit28. {Yz9IpL0sBcCeuG7m9uQFt8ZNpS4HZRcN}
+
+9.Done
+
+#Note: The git is an intriguing thing to understand as most of the software developers use it, I have used it aswell in the particular website called github an amazing place to upload your project, codes etc.

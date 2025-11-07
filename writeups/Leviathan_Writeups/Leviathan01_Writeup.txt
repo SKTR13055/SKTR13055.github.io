@@ -1,0 +1,80 @@
+Title:Leviathan Level 1 → Level 2
+
+#Ai_challenge: The goal of this challenge is to find the password for leviathan2 by executing the "check" file in the home directory,determine the password by analyzing the program's behavior to get the correct password
+
+Commands_Used: ltrace ( not mentioned in the level)
+
+#Explanation:There is a particular file called the 'check' which is an executable file and from that executable you have to get the password for 'leviathan2', Analyzing how the program works and finding out how it works is called "Reverse Engineering". This really important in terms of malware analysis in order to find out how the malware works, I personally this is a cool thing to learn and keep it in your arsenal.
+
+-> "ltrace" is a debugging utility in Linux that traces calls made by a program to shared libraries. It works by intercepting and recording dynamic library calls, allowing users to analyze how a program interacts with its libraries during execution.
+#Solution:
+1.Login to the level using the password obtained from the previous level.
+
+2.Type "ls -la" to display the list of files and hidden files along with their permissions in the current directory.
+
+->Output
+total 36
+drwxr-xr-x  2 root       root        4096 Apr 10 14:23 .
+drwxr-xr-x 83 root       root        4096 Apr 10 14:24 ..
+-rw-r--r--  1 root       root         220 Mar 31  2024 .bash_logout
+-rw-r--r--  1 root       root        3771 Mar 31  2024 .bashrc
+-r-sr-x---  1 leviathan2 leviathan1 15084 Apr 10 14:23 check
+-rw-r--r--  1 root       root         807 Mar 31  2024 .profile
+
+
+#From this output we obseve that the file "check" has the permissions "execute" for the user "leviathan1" and also a setbit(s) is also present for "leviathan2"(Check out the Bandit levels for more detailed explanation)
+
+3.Try to execute the "check" file by typing "./check"
+
+->Output
+password:
+
+#It seems that it is asking for some kind of password and if try to give something as an input ex:hello
+
+it gives this output
+
+Wrong password, Good Bye ...
+
+In order to find out the working of this executable we have to reverse engineer it in some way  the file using 'ltrace' command.
+
+4.Type the following command " ltrace ./check"
+-> Output
+
+__libc_start_main(0x80490ed, 1, 0xffffd494, 0 <unfinished ...>
+printf("password: ")                                                                            = 10
+getchar(0, 0, 0x786573, 0x646f67password: hello
+)                                                               = 104
+getchar(0, 104, 0x786573, 0x646f67)                                                             = 101
+getchar(0, 0x6568, 0x786573, 0x646f67)                                                          = 108
+strcmp("hel", "sex")                                                                            = -1
+puts("Wrong password, Good Bye ..."Wrong password, Good Bye ...
+)                                                            = 29
++++ exited (status 0) +++
+
+#We can see from this the "ltrace" basically lists all the calls used in the program, in the calls  I gave "hello" as input and from the strcmp('hel', "sex") You can clearly understand is that it compares the two values like a if-else condition so normally it is saying this 
+
+if('hel' == 'sex'):
+  print("The password for leviathan2 is ...)
+else:
+  print("Wrong password, Good Bye...")
+
+so its like this.
+
+and also it also checks the first 3 letters of the word, Now we will give the input as 'sex'.
+
+5.Run the program and give the input as 'sex' for the password.
+->Output
+
+password: sex
+$ whoami
+leviathan2
+
+#We see  it gives an interactive shell and typing the "whoami" command we can see that it tells that we are  as "leviathan2" (How?) {Due to the "setbit"}
+
+6.Now as we are "leviathan2" we can display the password of the leviathan2 from the password directory
+
+"cat /etc/leviathan_pass/leviathan2"
+NsN1HwFoyN -> Pasword for leviathan2
+
+7.Done.
+

@@ -1,0 +1,62 @@
+Title:Leviathan Level 6 → Level 7
+
+#Challenge: Four digits hold your destiny tight,Enter them straight, reveal the light.From smallest start to largest way,Findthe rhyme the machine will say.
+
+Speak the secret with perfect tone,Unlock the path to lands unknown.The gate awaits your numbered song,Discover where you now belong.
+
+#Commands_Used: Shell scripting
+
+#Explanation:This level is similar to one of the bandit levels which involves you to write a script in order to get the password.
+
+#Solution:
+1.Login into the level using the password obtained from the previous level.
+
+2.Display the list of files and hidden files along with the permission by using the command "ls -la"
+
+total 28
+drwxr-xr-x  2 root       root       4096 Aug 26  2019 .
+drwxr-xr-x 10 root       root       4096 Aug 26  2019 ..
+-rw-r--r--  1 root       root        220 May 15  2017 .bash_logout
+-rw-r--r--  1 root       root       3526 May 15  2017 .bashrc
+-r-sr-x---  1 leviathan7 leviathan6 7452 Aug 26  2019 leviathan6
+-rw-r--r--  1 root       root        675 May 15  2017 .profile
+leviathan6@leviathan:~$ ./leviathan6 
+usage: ./leviathan6 <4 digit code>
+leviathan6@leviathan:~$ ./leviathan6 0000
+Wrong
+
+#There is a file present called leviathan6 lets try to run it, well it gives a usage to run the code where you have to run the code and give with unique 4 digit code, Well I personally gave 0000 and it turns out to be "wrong" thats pretty expected lets try to decode it using ltrace.
+
+3.Since there a "unique" 4 digit code then we might have to create script to perform automated bruteforce, create a directory in the "temporary" directory.
+
+4.Open up the vim to write the shell script
+
+-> 
+
+#!/bin/bash
+
+for i in {1000..9999}; do
+	output=$(/home/leviathan6/./leviathan6 $i)
+	echo "Trying $i: $output"
+done
+
+#This would try every possible combination from 1000 to 9999 (why?) {Because it said so that's why!} and also mention which number it works
+
+-> After all the possible combination the script stops at "7122" which basically means that the password would be "7123" because it didn't give the output for that 4-value number.
+
+5.Run the leviathan6 executable file along with it give the value "7123"
+
+#Boom we got ourselves the a "SHELL", typing "whoami" gives the output as "leviathan7".
+
+6.Retrive the password for "leviathan7"  from the password directory.
+
+qEs5Io5yM8 -> The password for leviathan7
+
+***ALTERNATE_SOLUTION
+
+-> There is an alternate solution which is done by "MayAdevbe" this guy actually does the proper "Reverse Engineering" I mean actual reverse Engineering It will long to explain it here but  I link the website here :
+
+https://mayadevbe.me/posts/overthewire/leviathan/level7/
+
+
+

@@ -1,0 +1,29 @@
+Title: Level 7
+
+#Solution
+
+1.Login to the level using the password obtained from the previous level.
+
+2.Display the list of files obtained using the "ls" command.
+
+CONGRATULATIONS  -> This is an actual file
+
+3.Display the contents of the file using the "cat" command.
+
+cat CONGRATULATIONS 
+
+Well Done, you seem to have used a *nix system before, now try something more serious.
+(Please don't post writeups, solutions or spoilers about the games on the web. Thank you!)
+
+
+#Note: Yup this an actual ending for the "leviathan" user and to be honest this level involved a bit more cool tools to reverse engineering Which I really love to do it 
+
+The commands I learned from this user are 
+
+ltrace
+
+Symbolic link (ln)  
+
+gdb( MayAdevbe )
+
+ONTO TO THE NEXT WORLD "NATAS"

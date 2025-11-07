@@ -1,0 +1,74 @@
+Title:Natas Level 7 → Level 8
+
+#Credentials
+Username: natas8
+Password: xcoXLmzMkoIP9D7hlgPlh9XD7OgLAe5Q
+URL:      http://natas8.natas.labs.overthewire.org
+
+#Concept
+This level involves decoding/deciphering the and basically logicly understanding the code part,basically in this level there is a php code given in order to receive the secret password we have to understand the logic part of the coding, it is really essential to understand the logic of the code because most of the cybersecurity mostly in malware analysis you have to understand the code in order to understand what triggers the malware, and in CTF similar to this challenge you have to understand to get this code.
+
+#Solution
+1.Login to the Website using the credentials mentioned above.
+
+2.After logging in to the website you will be displayed with a text box asking for the secret password.
+
+#You might've encountred with this similar level before but that's not the case for this level
+
+3.On the right side you can see there is "View source code" click on that.
+
+#Output
+
+$encodedSecret = "3d3d516343746d4d6d6c315669563362";
+
+function encodeSecret($secret) {
+    return bin2hex(strrev(base64_encode($secret)));
+}
+
+if(array_key_exists("submit", $_POST)) {
+    if(encodeSecret($_POST['secret']) == $encodedSecret) {
+    print "Access granted. The password for natas9 is <censored>";
+    } else {
+    print "Wrong secret";
+    }
+}
+
+#Explanation of this code 
+->In the begining of this code it has already given us the secret code but it has not been used anywhere in the code (Maybe its a clue for us that it is the hidden code)
+
+->The next line talks about the function which takes the secret value (from the user) and performs encoding {Which is first converting it to "base64" and then reverses it using the "strrev" and finally converts it into a "hexadecimal form"
+
+->The Part of the code checks the condition whether it is equal to the secret code or not if "true" it will reveal the code otherwise it prints "Wrong Secret"
+
+#To decode the secret value there are 2 things given i) the encoded secret value ii) the function converting it into secret value.
+
+#To put it in to perspective lets image a chocolate/candy wrapped around layers of wrappers 
+where the chocolate/candy signifies the code and the wrapper signifies the encoding.
+which means the 
+
+*1st part is to reverse from hexadecimal to base64 (The first Wrapper) {The outer part}
+*2nd part is to reverse the string (The second Wrapper) {The middle part}
+*3rd part is to decode the base64 (The Third Wrapper) {The innermost part}
+*** Finally the Chocolate/Candy :P ( Yummy!)
+
+4.Open up the "Cyber Chef" website( The Swiss army of convertion) and paste in the "secret value" present in the 1st part of the code.
+
+5.Choose the option "From Hex" and place it in the recipe section {If you can't find it you can either filter it out or you can press the "magic wand" for auto "}
+
+==QcCtmMml1ViV3b {This will be the output after reversing the hex}
+
+6.Add the "Reverse" from the operations section 
+
+b3ViV1lmMmtCcQ==
+
+7.Finally you can now decode using the "From base 64" or press the magic wand.
+
+oubWYf2kBq {This will be the final conversion or in other words the chocolate part}
+
+8.Go back to the challenge website and then enter the new secret value which you got it after decoding the encoded secret value.
+
+9.Finally the output will be displayed as the following
+
+Access granted. The password for natas9 is ZE1ck82lmdGIoErlhQgWND6j2Wzz6b6t 
+
+10.Done

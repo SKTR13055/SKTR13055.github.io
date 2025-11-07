@@ -1,0 +1,21 @@
+Title:Bandit Level 13 → Level 14
+
+Challenge:The password for the next level is stored in /etc/bandit_pass/bandit14 and can only be read by user bandit14. For this level, you don’t get the next password, but you get a private SSH key that can be used to log into the next level. Note: localhost is a hostname that refers to the machine you are working on
+
+Commands Used: ssh,cat
+
+#Explanation: In this level the password for level 14 is stored in /etc/bandit_pass/bandit14 which can only be seen by user bandit14 but we are logged in as bandit13 so we have to use login to the level usingssh(secure shell) secure shell is basically use to connect another computer/device securely this can be done either user authentication or through keys.
+
+SSH syntax: ssh <ip_address> or ssh <username>@<ip_address>or<websitename> < -p for port number> < -i identity_file>
+
+Solution:
+1.Login to the level using the password obtained from the previous level.
+2.Display the list of files using 'ls' command, a file will be displayed (sshkey.private).
+3.Use the following command ssh bandit14@bandit.labs.overthewire.org -p 2220 -i sshkey.private.
+-> The -i flag lets you selects  a file from which the identity (private key) for public key authentication is read.
+4.After getting connected to bandit14 display the contents of the file from /etc/bandit_pass/bandit14 using the 'cat' command [cat /etc/bandit_pass/bandit14
+MU4VWeTyJk8ROof1qqmcBPaLh7lDCPvS]
+5.Use the password to login to the next level.
+6.Done
+
+#Note: From this level onwards the commands mostly involve using telnet,netcat,openssl,s_client,nmap mostly I would call this phase as "network commands" challenge.

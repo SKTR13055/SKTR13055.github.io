@@ -1,0 +1,59 @@
+Title:Bandit Level 22 → Level 23
+
+Challenge:A program is running automatically at regular intervals from cron, the time-based job scheduler. Look in /etc/cron.d/ for the configuration and see what command is being executed.
+
+NOTE: Looking at shell scripts written by other people is a very useful skill. The script for this level is intentionally made easy to read. If you are having problems understanding what it does, try executing it to see the debug information it prints.
+
+Commands_Used: cd, cat,
+
+#Explanation:In this level it is similar to the previous level but here in this specific level we have to understand about shell scripts, Understanding the scripts gives us an insight about the specific program runs or its working, this level also mentions that if you can't understand the scripting language you can debubg it by its working. It is very useful skill to understand how the scripts work.
+
+Solution:
+1.Login to the level using the password obtained from the previous level.
+
+2.Change you directory to /etc/cron.d using the "cd".
+
+3.List the files using the "ls" command. {There will more than 4 files}.
+
+4.Display the content of the cronjob_bandit23 using the "cat" command.
+-> This will show where the shell script is located /usr/bin/cronjob_bandit23.sh 
+
+Which means the script is located inside "bin" section.
+
+5.Change you directory to the location where is the script is stored using the "cd" command.
+
+6.You can display the contents of the shell script using the "cat" command or you can run the script using "./cronjob_bandit23" to understand its working.
+
+####
+myname=$(whoami)
+mytarget=$(echo I am user $myname | md5sum | cut -d ' ' -f 1)
+
+echo "Copying passwordfile /etc/bandit_pass/$myname to /tmp/$mytarget"
+
+cat /etc/bandit_pass/$myname > /tmp/$mytarget
+
+-> In this shell script it shows the inner working of the script 
+
+here $(whoami) is basically telling to the run the command "whoami" and store that value in "myname" variable.
+
+->Next is running the echo command and using the "myname" variable {which is basically bandit22}
+and after that it creates an "md5" hash of the text.
+
+->Later on it copies the pasword from the usernames password directory to the temp file (which is the md5 hash of the username)
+
+7.Since there no way we can change the username from the script but we use the command from the shell script like this
+
+-> echo I am user bandit23 | md5sum | cut -d ' ' -f 1
+Just replacing the "myname" variable with username we want.
+8ca319486bfbbc3663ea0fbe81326349 {The output of the above command} ( This is the hash of the username)
+
+8.Display the content of the directory using the cat command in the "tmp" section
+
+-> cat /tmp/8ca319486bfbbc3663ea0fbe81326349
+0Zf11ioIjMVN551jX3CmStKLYqjk54Ga { The output of the command} (Bandit23 password)
+
+9.Save the password and move to the next level.
+
+10.Done
+
+

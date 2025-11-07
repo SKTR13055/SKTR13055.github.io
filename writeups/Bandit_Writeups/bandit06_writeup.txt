@@ -1,0 +1,48 @@
+Title:Bandit Level 5 → Level 6
+
+Challenge: The password for the next level is stored in a file somewhere under the inhere directory and has all of the following properties:
+
+    human-readable
+    1033 bytes in size
+    not executable
+
+Commands you may need to solve this level
+
+ls , cd , cat , file , du , find
+
+A brief talk about this challenge: From the previous challenge a quite learned a lot from a maybeadev blog on how he explained certain things and finding answers in an efficient way so I learned a thing a twofrom him/her and applied in this level
+
+before we move on the solution the challenge basically says that the password is stored in a 
+1.human-readable which is either ASCII text or UNI-Code
+2.1033 bytes in size can easily be done using du
+3.Not Executable :- This basically means the file is not runnable 
+
+There are many ways to solve this level but I choose to solve this level in an efficient manner
+
+Solution:
+1.Login to the level obtained from the previous level using SSH {4oQYVPkxZOOEOO5pTW81FB8j8lxXGUQw}
+2.Change the directory to "inhere" using the cd command.
+3.List out the files using the ls command.
+#Now here comes the most overwhelming part you could say, because here there are "19 directories" present in the "inhere" directory you could either check each and every directories and check for the file butI pretty much found to be a time consuming or you could either solve using a "bash programming"(I am bad in bash).
+
+#So I thought myself why go inside each directories why not just search from the inhere directory
+
+4.Type the command: find ./maybehere* (or) maybehere*/  -type f -exec ls -la {} + | grep 1033
+
+# now the explanation of each command goes like this the .(dot) represents the current working directory by adding the ./ you are indicating that you want to look for items in the current directory
+->maybehere* (asterisk) is a wildcard that matches any characters following the 'maybehere' This means it will match any file or directory in the current directory that starts with maybehere
+
+->The -type f stands for the data type where f stands for "file" 
+-> The -exec is telling to execute the next command which is ls -la {} + (list out the files along with the hidden files and their permissions) the flower brackets is a placeholder for the files during the execution and the "+" check and more files present in the directories 
+->Finally the | (aka Piping) this is used to transfer the output of the left command to the right command grep command
+
+-> The "grep" is a basic command which captures characters given by the user in this case it is 1033(bytes given as a clue in the challenge)
+
+5.The resulting output will be given as -rw-r----- 1 root bandit5 1033 Sep 19  2024 ./maybehere07/.file2which shows the location of the file and infact it is a hidden file 
+
+6.Display the file using the cat command and the key to the next level is obtained.{HWasnPhtq9AVKe0dmk45nxy20cvUa6EG}
+
+7.Done
+
+
+ON TO THE NEXT LEVEL MUAHAHAHAH.

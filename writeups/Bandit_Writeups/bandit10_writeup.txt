@@ -1,0 +1,19 @@
+Title:Bandit Level 9 → Level 10
+
+Challenge:The password for the next level is stored in the file data.txt in one of the few human-readable strings, preceded by several ‘=’ characters
+
+Commands used in this level: cat , grep ,sort
+
+#Explanation:- This Challenge is similar to the previous one as you need to find the password preceded by several '=' Characters
+
+Solution:
+1.Login to the level using the password obtained from the previous level.
+2.Type 'ls' to list out the file in the current working directory [1 file will be displayed data.txt]
+3.As I said in the previous level[ level 9] First Sort the file then use the grep command.
+4.Since the challenge gave a clue about the password which is preceded with the '=' charcters we can simply type grep =
+5.The output will be displayed along with the password.
+6.Copy the password and use for the next level [level 11]
+7.Done
+
+Note: This level is not that hard once you know how to use grep and sort commands
+

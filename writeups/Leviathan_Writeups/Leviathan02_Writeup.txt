@@ -1,0 +1,98 @@
+Title:Leviathan Level 2 → Level 3
+
+Challenge:An Executable file present in the home directory which we can be used to retrieve the password for the next level,In order to retrieve the password you need to by pass the permission restrictions by creating a link.
+
+Commands_Used: ln ( Symbolic link)
+
+#Explanation:A symbolic link (or symlink) is a type of file that acts as a pointer to another file or directory. It allows you to create a reference to a file or directory in a different location without duplicating the actual content.
+
+#Solution:
+1.Login to the level using the password obtained from the previous level.
+
+2.Display the list of files with hidden files along with the permissions  using "ls -la" command.
+
+total 28
+drwxr-xr-x  2 root       root       4096 Aug 26  2019 .
+drwxr-xr-x 10 root       root       4096 Aug 26  2019 ..
+-rw-r--r--  1 root       root        220 May 15  2017 .bash_logout
+-rw-r--r--  1 root       root       3526 May 15  2017 .bashrc
+-r-sr-x---  1 leviathan3 leviathan2 7436 Aug 26  2019 printfile
+-rw-r--r--  1 root       root        675 May 15  2017 .profile
+
+#From the output we can see that there is a file called "printfile" which has persmission for "executable" for leviathan2 and "setuid" permission for leviathan3. Let's try to execute the file.
+
+3.Execute the file using the ./ -> (./printfile)
+
+./printfile 
+*** File Printer ***
+Usage: ./printfile filename
+
+#So this Basically prints out the contents of a particular file (Let's say similar to "cat" command)
+
+We will what happens if we try to print out the password for the leviathan3
+
+4. Type in ./printfile /etc/leviathan_pass/leviathan3
+
+You cant have that file...
+
+#This should have worked out as the set bit permission is enabled but there may be another way.
+Normally the executable executes in the current working directory 
+
+#We can try to use the "ltrace" command to map out the function additionally we can give two more files
+lets see
+
+5. Type in " ltrace ./printfile .bash_logout .profile"
+
+_libc_start_main(0x804852b, 3, 0xffffd774, 0x8048610 <unfinished ...>
+access(".bash_logout", 4)                                              = 0
+snprintf("/bin/cat .bash_logout", 511, "/bin/cat %s", ".bash_logout")  = 21
+geteuid()                                                              = 12002
+geteuid()                                                              = 12002
+setreuid(12002, 12002)                                                 = 0
+system("/bin/cat .bash_logout"# ~/.bash_logout: executed by bash(1) when login shell exits.
+
+# when leaving the console clear the screen to increase privacy
+
+if [ "$SHLVL" = 1 ]; then
+    [ -x /usr/bin/clear_console ] && /usr/bin/clear_console -q
+fi
+ <no return ...>
+--- SIGCHLD (Child exited) ---
+<... system resumed> )                                                 = 0
++++ exited (status 0) +++
+
+#Well it only excutes the first file only but not the second file.What if we give the space in the file name?
+
+6.Create temporary directory using the "mktemp -d" and change your directory to that temp directory
+
+7.Create file using the "touch" command and give the space in the name like this "password file.txt"
+
+#Now if we run the exe file once again (./printfile /tmp/tempdirectoryname/password file.txt) we observer that it gives the output as "file.txt" not found, in other words it didn't ask for the full file name it ignored the password and from this we can create a "symbolic link"
+
+8.To create symbolic link (Clear the terminal first using the {clear} command) and then type the following command
+
+"ln -s /etc/leviathan_pass/leviathan3 /tmp/tempdirectoryname/password"
+
+#Lets check the temp directory once again if the file is created or not.
+
+9.Type "ls -la" to check the symbolic link is created or not.
+
+total 228
+drwx--S---   2 leviathan2 root   4096 Jul  5 09:11 .
+drwxrws-wt 181 root       root 225280 Jul  5 09:10 ..
+lrwxrwxrwx   1 leviathan2 root     30 Jul  5 09:11 test -> /etc/leviathan_pass/leviathan3
+-rw-r--r--   1 leviathan2 root      0 Jul  5 09:03 test file.txt
+
+10.Lastly change the permission of the directory to ensure the ./printfile is exectuable for the direcotory using the "chmod" command. 
+
+-> chmod "777" /tmp/tempdirectoryname/
+
+11.Run the exectuable file along with the file path 
+
+-> ./printfile /tmp/tempdirectoryname/"password file.txt"
+
+Output will given as 
+
+f0n8h2iWLP
+
+12.Done

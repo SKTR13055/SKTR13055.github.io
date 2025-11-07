@@ -1,0 +1,55 @@
+Title:Level5 -> Level6
+
+#Challenge:
+
+
+#Commands_Used: ln(Symbolic link)
+
+
+#Explanation:This is Similar to level 3
+
+
+#Solution:
+
+1.Login to the level using the password obtained from the previous level.
+
+2.Display the list of files and hidden files along with the permission using "ls -la"
+->Output
+
+total 28
+drwxr-xr-x  2 root       root       4096 Aug 26  2019 .
+drwxr-xr-x 10 root       root       4096 Aug 26  2019 ..
+-rw-r--r--  1 root       root        220 May 15  2017 .bash_logout
+-rw-r--r--  1 root       root       3526 May 15  2017 .bashrc
+-r-sr-x---  1 leviathan6 leviathan5 7560 Aug 26  2019 leviathan5
+-rw-r--r--  1 root       root        675 May 15  2017 .profile
+leviathan5@leviathan:~$ ./leviathan5 
+Cannot find /tmp/file.log
+leviathan5@leviathan:~$ ltrace ./leviathan5 
+__libc_start_main(0x80485db, 1, 0xffffd784, 0x80486a0 <unfinished ...>
+fopen("/tmp/file.log", "r")                                            = 0
+puts("Cannot find /tmp/file.log"Cannot find /tmp/file.log
+)                                      = 26
+exit(-1 <no return ...>
++++ exited (status 255) +++
+
+#Basically there is a file called it is "leviathan5" and after running this file we can see that it is saying that " it cannot find a file called file.log" but why does it need this file, lets try giving one to know what it gives.
+
+3.Create a file called "file.log" in the temporary directory using "touch" -> "touch file.log" and run the executable "leviathan5"
+
+4.Lets check the permission of the "file.log" file to see did it changed anything.
+
+->Output 
+
+it creates a symbolic link like this /etc/leviathan_pass/leviathan6 /tmp/file.log
+
+#I guess we should create somesort of symbolic link in order to get the pasword for it
+
+5.To create a symbolic link type in the following command "ln -s /etc/leviathan_pass/leviathan6 /tmp/file.log
+
+6.Execute the file once again.
+
+->./leviathan5
+0dyxT7F4QD -> Password for the next level
+
+7.Done 

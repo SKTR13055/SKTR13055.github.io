@@ -1,0 +1,45 @@
+Title:Natas Level 5 → Level 6
+
+#Credentials
+Username: natas6
+Password: 0RoJwHdSKWFTYR5WuiAewauSuNaBXned
+URL:      http://natas6.natas.labs.overthewire.org
+
+#Explanation:
+The level is built to teach the concept of insecure file inclusion and poor access control.Web applications often use include files to separate out data or logic (like secrets or config values).If these include files are stored in a web-accessible directory, they might be accessed directly via the browser.This is a security risk because sensitive data (like passwords or secrets) can be exposed to anyone who know or guesses the file path.
+
+#Solutions
+1.Login to the website using the credentials given above.
+
+2.Once Logged in you will see a page which asks for secret password.
+
+3.On the side you can observe that there is a "view source code" option click on that.
+
+#Output 
+
+include "includes/secret.inc";
+
+    if(array_key_exists("submit", $_POST)) {
+        if($secret == $_POST['secret']) {
+        print "Access granted. The password for natas7 is <censored>";
+    } else {
+        print "Wrong secret";
+    }
+    }
+
+#From this output we see that it basically checks if the secret password is correct or not, one more thing is that in the first line we see that it includes one of the pathways which says "includes/secret.inc; lets go to that path.
+
+4.Type this in the end of the URL section /includes/secret.inc, when you visit that page you will see a blank page (Don't Worry That is the part of the challenge),View the "page source" and you will see the secret password
+
+#Output
+<?
+$secret = "FOEIUWGHFEEUHOFUOIU";
+?>
+
+5.Copy the password and go back to the first page,then enter the secret password to the input field you've copied
+
+6.Finally the output will be given as 
+
+Access granted. The password for natas7 is bmg8SvU1LizuWjx3y7xkNERkHxGre0GS 
+
+7.Save the password and store it somewhere in your localmachine,Done.

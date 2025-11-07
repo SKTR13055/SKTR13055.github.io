@@ -1,0 +1,40 @@
+Title:Bandit Level 21 → Level 22
+
+Challenge:A program is running automatically at regular intervals from cron, the time-based job scheduler. Look in /etc/cron.d/ for the configuration and see what command is being executed.
+
+#Commands_Used: cron, crontab,crontab(5) (not actually used)
+
+#Explanation:In this level it talks about the "cron" now what is cron? cron is basically a program which runs automatically at regular intervals, it contains multiple folders like cron.d, cron.daily, cron.hourly, cron.monthly, crontab, cron.weekly
+these files baiscally contains instructions on the particular program are executed. To identify at what time they are executed it represents in 5 coloumns like this * * * * * where the
+1st star/coloumn determines the "minute"
+2nd star/coloumn determines the "hour"
+3rd star/coloumn determines the "day of the month(1-31)"
+4th star/coloumn determines the "month(1-12)".
+5th star/coloumn determines the "day of the week(0-6,where 0 is sunday)
+
+These star determines at what time will be executed.
+
+#Solution:
+1.Login to the level using the password obtained from the previous level.
+2.Change you directory to the /etc/cron.d using the "cd" command.
+3.Display the list of files and permission using the "ls -l" command.
+4.We can see a lists of files containing such as "cronjob_bandit22.sh", "cronjob_bandit23.sh" ... and do so on.
+5.Display the contents of the file "cronjob_bandit22" using the "cat" command.
+
+#Since the permission of the file is give every permission to the 'user(bandit22)' and read and execute for bandit21 hence we can display the content of the particular file.
+-rwxr-x--- 1 bandit22 bandit21 130 Apr 10 14:23 /usr/bin/cronjob_bandit22.sh
+
+->The Output will be displayed as 
+
+chmod 644 /tmp/t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv
+cat /etc/bandit_pass/bandit22 > /tmp/t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv
+
+6.The Output basically states that it creates a temporary file in the /tmp section and gives the read permisson to every users, after that it displays the output the password of bandit22 copies and pastes(redirects the output) into the temporary file which was previously created.
+
+7.Simply type the following command "cat /tmp/t706lds9S0RqQh9aMcz6ShpAoZKF7fgv <Yours might be different from me> to display the content of the temp file. 
+
+8.Finally the password will be displayed for the next level.
+
+9.Done.
+
+#Note:Remember that the password always changes so when you re-login to the this level the password will be changed for bandit22 level.
