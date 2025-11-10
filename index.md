@@ -10,10 +10,10 @@ Keep track of the latest additions and updates to this portfolio.
 
 | Date | Title | Category | Domain | Mode |
 |:-----|:------|:---------|:-------|:-----|
-| Oct 28, 2025 | [WebStrike Lab](/docs/WebStrike%20Lab/) | Documentation | Blue Team | Hands-On |
-| Oct 25,2025 | [Sysmon & MITRE Detection](/docs/Sysmon%20&%20MITRE%20Detection) | Documentation | Blue Team | Hands-on Practice |
-| Oct 20,2025 | TryHackMe – Agent_T Writeup | Writeup | Red Team | Hands-on Practice |
-| Oct 05,2025 | Timer Controller: Remote System Management Tool | Project | IT | Hands-on Practice |
+| November 6,2025| [SMB Vulnerability Detection](/docs/SMB%20vulnerability%20detection/) | Documentation | Red Team | Hands-On, Learning|
+| October 28, 2025 | [WebStrike Lab](/docs/WebStrike%20Lab/) | Documentation | Blue Team | Hands-On |
+| October 25,2025 | [Sysmon & MITRE Detection](/docs/Sysmon%20&%20MITRE%20Detection) | Documentation | Blue Team | Hands-on Practice |
+| October 20,2025 | TryHackMe – Agent_T Writeup | Writeup | Red Team | Hands-on Practice |
 
 ➡️ [View All Writeups](./writeups/index.md)  
 ➡️ [View All Documentation](./docs/index.md)
