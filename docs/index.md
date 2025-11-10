@@ -12,7 +12,8 @@ Welcome to the documentation section.
 
 | Date | Title | Domain | Category | Link |
 |------|--------|---------|-----------|------|
-| Oct 28, 2025 | WebStrike Lab | Blue Team | Network Forensics | [View Documentation](./WebStrike%20Lab/) |
-| Oct 25, 2025 | Sysmon Detection Lab | Blue Team | Endpoint Detection | [View Documentation](./Sysmon%20&%20MITRE%20Detection/) |
+| November 6, 2025| SMB vulenerability Detection Lab| Red Team| Enumeration| [View Documentation](./SMB%20vulnerability%20detection/)
+| October 28, 2025 | WebStrike Lab | Blue Team | Network Forensics | [View Documentation](./WebStrike%20Lab/) |
+| October 25, 2025 | Sysmon Detection Lab | Blue Team | Endpoint Detection | [View Documentation](./Sysmon%20&%20MITRE%20Detection/) |
 
 ---
