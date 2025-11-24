@@ -4,8 +4,8 @@ date: 2025-10-28 10:00:00 +0530
 categories: [Writeups, NetworkForensics]   
 tags: [wireshark,cyberdefenders,soc] 
 image:
-  path: /assets/img/headers/your-thumbnail.jpg
-  alt: Banner Description
+  path: assets/img/headers/WebStrike-400x237.webp
+  alt: Analyze network traffic using Wireshark
 ---
 # WebStrike Lab with example report
 
