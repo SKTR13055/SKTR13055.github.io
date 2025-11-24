@@ -60,7 +60,7 @@ Your task is to analyze the provided PCAP file to uncover how the file appeared 
 1. The First Question basically ask to analyze from which city does this attack originate from? In order to find out the city from where the attack has originated is we have to look at the “Source IP Address” and use a “Third Party Service” which is “[IP geo location](https://ipgeolocation.io/)” to find out since that is how the attack started.
 2. Copy the “Source IP Address” and then paste it on to the search bar of the ip geo location website, the results will be display that the IP originated from the Country “China” and State is “Tianjin” → This is the answer to the First Question.
 
-![Screenshot 2025-10-28 at 7.09.31 PM.png](Experiment%207%20WebStrike%20Lab%20297c704c659681c5bebef80c8df5b1f7/Screenshot_2025-10-28_at_7.09.31_PM.png)
+![Screenshot 2025-10-28 at 7.09.31 PM.png](assets/img/webstrike/Screenshot_2025-10-28_at_7.09.31_PM.png)
 
 <aside>
 ❓
@@ -70,7 +70,7 @@ Your task is to analyze the provided PCAP file to uncover how the file appeared 
 
 1.The User-Agent basically displays what system is the attacker using which can appended in  the allow/deny lists to protect from future attack. In order to find out the User-Agent click a packet which contains the “HTTP” Protocol then on the “Packet Information Window” I observed that in the HTTP section There was “***User Agent”*** present which is 
 
-![Screenshot 2025-10-28 at 7.18.53 PM.png](Experiment%207%20WebStrike%20Lab%20297c704c659681c5bebef80c8df5b1f7/Screenshot_2025-10-28_at_7.18.53_PM.png)
+![Screenshot 2025-10-28 at 7.18.53 PM.png](assets/img/webstrike/Screenshot_2025-10-28_at_7.18.53_PM.png)
 
 User- Agent: Mozilla/5.0 (X11; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/115.0 → Answer to the Second Question.
 
@@ -83,17 +83,17 @@ User- Agent: Mozilla/5.0 (X11; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/11
 1. Malicious web shell in other words what malicious file was used to exploit the vulnerabilities, to find out in the Wireshark’s “search bar” type in the following filter “http.request.method ==POST” ( This will find the packets which used the POST method in the website)
 2. There are total of 3 packets which used the “POST” method, I observed the first 2 packets which the info was written “/reviews/upload.php” follow the HTTP stream of the first packet (Ctrl+Alt+Shift+H) and observe the details.
 
-![Screenshot 2025-10-28 at 7.27.56 PM.png](Experiment%207%20WebStrike%20Lab%20297c704c659681c5bebef80c8df5b1f7/Screenshot_2025-10-28_at_7.27.56_PM.png)
+![Screenshot 2025-10-28 at 7.27.56 PM.png](assets/img/webstrike/Screenshot_2025-10-28_at_7.27.56_PM.png)
 
 
 
-![Screenshot 2025-10-28 at 7.28.21 PM.png](Experiment%207%20WebStrike%20Lab%20297c704c659681c5bebef80c8df5b1f7/Screenshot_2025-10-28_at_7.28.21_PM.png)
+![Screenshot 2025-10-28 at 7.28.21 PM.png](assets/img/webstrike/Screenshot_2025-10-28_at_7.28.21_PM.png)
 
 3. I observed in the last section of the client side (Colored in Red) that the name of the file was “uploadedFile” and the file name is “image.php” now it is malicious file however if you see in the server side (Colored in Blue) The response was “Invalid file format” now that is great thing that it blocked the malicious file.
 
 
 
-![Screenshot 2025-10-28 at 7.28.48 PM.png](Experiment%207%20WebStrike%20Lab%20297c704c659681c5bebef80c8df5b1f7/Screenshot_2025-10-28_at_7.28.48_PM.png)
+![Screenshot 2025-10-28 at 7.28.48 PM.png](assets/img/webstrike/Screenshot_2025-10-28_at_7.28.48_PM.png)
 
 4. However if we take a look the details of the second “POST” Packet that file name was changed from “image.php” to  “image.jpg.php” by which the server accepted the file bypassing the file upload restriction.
     
@@ -110,7 +110,7 @@ User- Agent: Mozilla/5.0 (X11; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/11
 
 (insert the GET filter picture)
 
-![Screenshot 2025-10-28 at 8.29.27 PM.png](Experiment%207%20WebStrike%20Lab%20297c704c659681c5bebef80c8df5b1f7/Screenshot_2025-10-28_at_8.29.27_PM.png)
+![Screenshot 2025-10-28 at 8.29.27 PM.png](assets/img/webstrike/Screenshot_2025-10-28_at_8.29.27_PM.png)
 
 2. I observed in the packet number “138” where the info was “ GET /reviews/uploads/image.jpg.php HTTP/1.1\r\n” as I know that the malicious file was “image.jpg.php”  it was uploaded in /reviews/uploads/ → Answer to the 4th question.
 
@@ -124,7 +124,7 @@ User- Agent: Mozilla/5.0 (X11; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/11
 
 (insert the 8080 image) 
 
-![Screenshot 2025-10-28 at 8.39.53 PM.png](Experiment%207%20WebStrike%20Lab%20297c704c659681c5bebef80c8df5b1f7/Screenshot_2025-10-28_at_8.39.53_PM.png)
+![Screenshot 2025-10-28 at 8.39.53 PM.png](assets/img/webstrike/Screenshot_2025-10-28_at_8.39.53_PM.png)
 
 <aside>
 ❓
@@ -134,7 +134,7 @@ User- Agent: Mozilla/5.0 (X11; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/11
 
 1. Finally I need to recognize which file the attacker was trying to exfiltrate? In order to know I went again to the packets which contained the POST method, since I mentioned previously that there were 3 packets contained the method POST I followed the HTTP stream of the last packet from that the User-Agent was changed to “curl” which indicated that it was using the “curl” command from the “Terminal” and the command which was used is “/etc/passwd/.
 
-![Screenshot 2025-10-28 at 8.46.35 PM.png](Experiment%207%20WebStrike%20Lab%20297c704c659681c5bebef80c8df5b1f7/4f299593-3bfa-41e1-8aa5-285be86d2e75.png)
+![Screenshot 2025-10-28 at 8.46.35 PM.png](assets/img/webstrike/4f299593-3bfa-41e1-8aa5-285be86d2e75.png)
 
 In other words the attacker was trying to exfiltrate the “passwords” file which  is a critical target as it contains a list of system users and their associated configuration information which was stored in the server. Technically this where every Linux OS stores its passwords. 
 
