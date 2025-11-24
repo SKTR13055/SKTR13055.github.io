@@ -1,13 +1,12 @@
+---
+title: "TryHackMe - Easy-Peasy"
+date: 2025-11-14 10:00:00 +0530
+categories: [TryHackMe]   
+tags: [boot2root, linux, privilege escalation, web]
+image:
+  path: assets/img/headers/TryHackMe-Easy-Peasy.png
+---
 # Try Hack Me - Easy Peasy Writeup
-
-Status: Success
-Owner: Syed Khalid Tipu Razvi
-Objective: Learning, Writeup
-Experiment Start: November 12, 2025
-Experiment End: November 14, 2025
-Website: Try Hack Me
-Domain: Red Team
-Category: Enumeration
 
 ![Screenshot 2025-11-10 at 8.38.35 PM.png](/assets/img/easy-peasy/Screenshot_2025-11-10_at_8.38.35_PM.png)
 
@@ -45,11 +44,11 @@ Practice using tools such as Nmap and GoBuster to locate a hidden directory to g
 
 ## Task 1: Enumeration through Nmap
 
-1. Start up the machine and answer the following questions.
+Start up the machine and answer the following questions.
 
 <aside>
 
-1. How Many ports are open?
+1. ### How Many ports are open?
 </aside>
 
 1. In order to find out how many ports were you can use the nmap tool{ Since nmap was taking to much time I’ve used Rustscan in order to enumerate ports much faster}
@@ -76,7 +75,7 @@ Nmap output report
 
 <aside>
 
-1. What is the version of nginx?
+2. ### What is the version of nginx?
 </aside>
 
 1. In order to determine the version of the nginx we can use the command “nmap -p80 -sV 10.49.151.176” This is will display the version of the nginx.
@@ -93,7 +92,7 @@ Nmap output report
 
 <aside>
 
-1. What is running on the highest port?
+3. ### What is running on the highest port?
 </aside>
 
 1. From the 1st task output I observe that the highest port number is “65524” now to know what service is running we can use this command “sudo nmap -sV 10.49.151.176 -p65524”
@@ -102,7 +101,7 @@ Nmap output report
 
  Output of service of the highest port.
 
-1. When I first entered the answer as “http” I got the answer as wrong since I thought that was the service, but later on the answer was “Apache”.
+2. When I first entered the answer as “http” I got the answer as wrong since I thought that was the service, but later on the answer was “Apache”.
 
 <aside>
 
@@ -211,7 +210,7 @@ Hidden 3rd flag
 
 <aside>
 
-4.What is the hidden directory?
+4. ### What is the hidden directory?
 
 </aside>
 
@@ -222,14 +221,14 @@ Hidden 3rd flag
 
 Source code of the index.html
 
-1. Looking at the source code of the index.html once again, I observed that there is indeed again a hidden information but this time the information is semi-complete.
-2. Since half of the message says that “it is encoded with ba” that surely means it is encoded with one of the “base encoding method” and according to my cheat sheet(which I created for other CTF purposes) it is encoded in “base62”.
+3. Looking at the source code of the index.html once again, I observed that there is indeed again a hidden information but this time the information is semi-complete.
+4. Since half of the message says that “it is encoded with ba” that surely means it is encoded with one of the “base encoding method” and according to my cheat sheet(which I created for other CTF purposes) it is encoded in “base62”.
 
 ![Cyber Chef Flag 4 answer](/assets/img/easy-peasy/Screenshot_2025-11-13_at_8.07.54_PM.png)
 
-Cyber Chef Flag 4 answer
+_Fig:Cyber Chef Flag 4 answer_
 
-1. After inserting the encoded hash in the “cyber chef” website and giving the recipe as “base62” we got the output as a “hidden directory”.
+5. After inserting the encoded hash in the “cyber chef” website and giving the recipe as “base62” we got the output as a “hidden directory”.
 
 <aside>
 
@@ -241,9 +240,7 @@ Cyber Chef Flag 4 answer
 
 <aside>
 
-1. Using the wordlist that provided to you in this task crack the hash
-
-what is the password?
+5. ### Using the wordlist that provided to you in this task crack the hash what is the password?
 
 </aside>
 
@@ -254,27 +251,27 @@ what is the password?
 
 ![Hidden Directory page](/assets/img/easy-peasy/Screenshot_2025-11-13_at_8.17.02_PM.png)
 
-Hidden Directory page
+_Fig:-Hidden Directory page_
 
-1. At first the image seems to be showing a matrix style background but it didn’t contain some kind of hash displayed in front so lets look at the source code of this page.
+5. At first the image seems to be showing a matrix style background but it didn’t contain some kind of hash displayed in front so lets look at the source code of this page.
 
 ![Source Code](/assets/img/easy-peasy/Screenshot_2025-11-13_at_8.17.16_PM.png)
 
 Source Code
 
-1. After looking in the source code there is again a hidden message encoded in some manner that I’ve never seen.
-2. I used “cyber chef” in order to determine the encoded message.
+6. After looking in the source code there is again a hidden message encoded in some manner that I’ve never seen.
+7. I used “cyber chef” in order to determine the encoded message.
 
 ![Analyzing the Encoded message](/assets/img/easy-peasy/Screenshot_2025-11-13_at_8.25.38_PM.png)
 
-Analyzing the Encoded message
+_Fig:-Analyzing the Encoded message_
 
-1. I analyzed and tried other hashing methods in a sequence order (which are displayed in the output of cyberchef) using the johntheripper tool.
-2. Except one hashing method others were a complete failure, I used this command in the john ripper tool“john - -wordlist=easypeasy.txt - -format==gost hash.txt”
+8. I analyzed and tried other hashing methods in a sequence order (which are displayed in the output of cyberchef) using the johntheripper tool.
+9. Except one hashing method others were a complete failure, I used this command in the john ripper tool“john - -wordlist=easypeasy.txt - -format==gost hash.txt”
 
 ![Screenshot 2025-11-13 at 8.27.35 PM.png](/assets/img/easy-peasy/Screenshot_2025-11-13_at_8.27.35_PM.png)
 
-1. Finally the decoded hash message is the “mypasswordforthatjob” and submit it as the answer.
+10. Finally the decoded hash message is the “mypasswordforthatjob” and submit it as the answer.
 
 <aside>
 
@@ -286,7 +283,7 @@ Analyzing the Encoded message
 
 <aside>
 
-1. What is the password to login to the machine via SSH?
+6. ### What is the password to login to the machine via SSH?
 </aside>
 
 1. One more thing I noticed in the previous question is that the source code contain an image which is the “binarycodepixabay.jpg” after clicking on it, it lead me to the actual source of the image, more like a downloaded image which was stored in the server.
@@ -297,16 +294,16 @@ Analyzing the Encoded message
 
 ![Screenshot 2025-11-13 at 8.53.45 PM.png](/assets/img/easy-peasy/Screenshot_2025-11-13_at_8.53.45_PM.png)
 
-1. A “secrettext.txt” was extracted and lets display the contents of it.
-2. Type in the command “cat secrettext.txt” to display the content.
+5. A “secrettext.txt” was extracted and lets display the contents of it.
+6. Type in the command “cat secrettext.txt” to display the content.
 
 ![Screenshot 2025-11-13 at 8.54.07 PM.png](/assets/img/easy-peasy/Screenshot_2025-11-13_at_8.54.07_PM.png)
 
-1. We found the username aswell as password but somehow it is in binary lets again use the cyberchef to decode the message.
+7. We found the username aswell as password but somehow it is in binary lets again use the cyberchef to decode the message.
 
 ![Screenshot 2025-11-13 at 8.55.09 PM.png](/assets/img/easy-peasy/Screenshot_2025-11-13_at_8.55.09_PM.png)
 
-1. The password was finally revealed and it is “iconvertedmypasswordtobinary” and submit it as the answer.
+8. The password was finally revealed and it is “iconvertedmypasswordtobinary” and submit it as the answer.
 
 <aside>
 
@@ -318,7 +315,7 @@ Analyzing the Encoded message
 
 <aside>
 
-1. What is the user flag?
+7. ### What is the user flag?
 </aside>
 
 1. This part was the easiest one just login in to the ssh using the ssh command “ssh -p6498 -l boring 10.49.177.158. and the password is “iconvertedmypasswordtobinary”
@@ -327,11 +324,6 @@ Analyzing the Encoded message
 
 Logging into the “boring” using ssh on port 6498
 
-<aside>
-
-*Note: When I logged into this I got scared because I thought I logged into some government’s computer I checked it twice and apparently its not real government thing.*
-
-</aside>
 
 ![Screenshot 2025-11-13 at 8.57.58 PM.png](/assets/img/easy-peasy/Screenshot_2025-11-13_at_8.57.58_PM.png)
 
@@ -339,7 +331,7 @@ Logging into the “boring” using ssh on port 6498
 
 ![Screenshot 2025-11-13 at 8.58.50 PM.png](/assets/img/easy-peasy/Screenshot_2025-11-13_at_8.58.50_PM.png)
 
-1. Turns out I was right it was encoded in the Caesar Cipher method and got the flag and submit it as the answer.
+2. Turns out I was right it was encoded in the Caesar Cipher method and got the flag and submit it as the answer.
 
 <aside>
 
@@ -351,7 +343,7 @@ Logging into the “boring” using ssh on port 6498
 
 <aside>
 
-8.What is the root flag? (Final flag)
+8. ### What is the root flag? (Final flag)
 
 </aside>
 
@@ -363,30 +355,30 @@ Logging into the “boring” using ssh on port 6498
     ![Screenshot 2025-11-13 at 9.22.14 PM.png](/assets/img/easy-peasy/Screenshot_2025-11-13_at_9.22.14_PM.png)
     
 
-1. As far as I know the cron tab is basically the number of times the command will be executed during the uptime of the operating system(it can be  set seconds,minutes,hours,weeks,months,year)
-2. Now I Observed that there is a hidden file called “.mysecretcronjob.sh” and where it is located it is in cd /var/www, lets go into that directory using the “cd” command.
-3. After going to that directory, I used “nano” file editor to see the contents of the file.
+3. As far as I know the cron tab is basically the number of times the command will be executed during the uptime of the operating system(it can be  set seconds,minutes,hours,weeks,months,year)
+4. Now I Observed that there is a hidden file called “.mysecretcronjob.sh” and where it is located it is in cd /var/www, lets go into that directory using the “cd” command.
+5. After going to that directory, I used “nano” file editor to see the contents of the file.
 
 ![Screenshot 2025-11-13 at 9.23.12 PM.png](/assets/img/easy-peasy/Screenshot_2025-11-13_at_9.23.12_PM.png)
 
-1. From the contents I saw that it will start as a bash shell and then it will run as “root” user.
-2. Now this where you have to apply a privilege escalation technique( *note: I’ve heard about the privilege escalation but I actually never performed it, so this would be first learning of privilege escalation, so in this step I took help from the internet)*
-3. Now from the research which I’ve done is that they are performing “[reverse shell](https://www.revshells.com/)”{you can also check out the website for this.
-4. From the website I gave an IP & port number{This port number is where it will connect to us} and they payload was given and pasted in the file {You can see the payload in the picture below} and then we are changing the permissions of the file by giving the S-bit {That’s another story for another time}.
+6. From the contents I saw that it will start as a bash shell and then it will run as “root” user.
+7. Now this where you have to apply a privilege escalation technique( *note: I’ve heard about the privilege escalation but I actually never performed it, so this would be first learning of privilege escalation, so in this step I took help from the internet)*
+8. Now from the research which I’ve done is that they are performing “[reverse shell](https://www.revshells.com/)”{you can also check out the website for this.
+9. From the website I gave an IP & port number{This port number is where it will connect to us} and they payload was given and pasted in the file {You can see the payload in the picture below} and then we are changing the permissions of the file by giving the S-bit {That’s another story for another time}.
 
 ![Screenshot 2025-11-13 at 9.23.01 PM.png](/assets/img/easy-peasy/Screenshot_2025-11-13_at_9.23.01_PM.png)
 
-1. Now typing in the command nc -lvnp 6499” will start the “reverse shell”.
+10. Now typing in the command nc -lvnp 6499” will start the “reverse shell”.
 
 ![Screenshot 2025-11-13 at 9.23.52 PM.png](/assets/img/easy-peasy/Screenshot_2025-11-13_at_9.23.52_PM.png)
 
-1. From the picture, there was a successful connection and we can perform some the bash commands.
-2. If you type in the command “whoami” you will get the answer as the “root”(which is basically what we want) and lets change the directory to the “root” and display the list of the files/hidden files.
-3. After displaying the list of the files/hidden files, I observed that there is a hidden file called “.root.txt” in which it contains the flag and using the “cat” command to display it.
+11. From the picture, there was a successful connection and we can perform some the bash commands.
+12. If you type in the command “whoami” you will get the answer as the “root”(which is basically what we want) and lets change the directory to the “root” and display the list of the files/hidden files.
+13. After displaying the list of the files/hidden files, I observed that there is a hidden file called “.root.txt” in which it contains the flag and using the “cat” command to display it.
 
 ![Screenshot 2025-11-13 at 9.21.14 PM.png](/assets/img/easy-peasy/Screenshot_2025-11-13_at_9.21.14_PM.png)
 
-1. Finally I got the final flag which is then submitted as the answer and I’ve successfully completed this room.
+14. Finally I got the final flag which is then submitted as the answer and I’ve successfully completed this room.
 
 <aside>
 
