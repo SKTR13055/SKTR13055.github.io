@@ -17,8 +17,8 @@ Currently, I am pursuing my Masters in **Computer Networks and Information Secur
 
 I am actively learning and using these tools in my labs and CTFs:
 
-* **Offense (Red Team):** Burp Suite, Nmap, Metasploit, Nessus
-* **Defense (Blue Team):** Splunk, Wireshark, Incident Response
+* **Offense (Red Team):** Burp Suite, Nmap, Metasploit, Nessus, Wire Shark, OSINT.
+* **Defense (Blue Team):** Splunk, Wireshark,
 * **Scripting:** Python, Bash, HTML
 
 ## 📬 Connect
