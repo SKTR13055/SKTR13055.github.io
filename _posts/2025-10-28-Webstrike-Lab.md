@@ -1,7 +1,7 @@
 ---
 title: "Webstrike-Lab"
 date: 2025-10-28 10:00:00 +0530
-categories: [Writeups, NetworkForensics]   
+categories: [CyberDefenders, NetworkForensics]   
 tags: [wireshark,cyberdefenders,soc] 
 image:
   path: assets/img/headers/WebStrike-400x237.webp
