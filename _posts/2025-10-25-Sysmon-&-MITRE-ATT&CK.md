@@ -7,7 +7,7 @@ image:
   path: /assets/img/headers/Sysmon.jpg
   alt: Sysmon and MITRE Lab Banner
 ---
-# Experiment 3: Sysmon & MITRE ATT&CK
+# Sysmon & MITRE ATT&CK
 
 # Summary
 
