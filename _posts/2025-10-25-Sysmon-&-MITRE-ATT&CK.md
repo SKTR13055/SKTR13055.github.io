@@ -156,7 +156,7 @@ Power Shell Command Getting Detected in the Sysmon Tool
 | Execution | Windows Command Execution | T1059.003 |
 | Execution | Power Shell Command Execution | T1059.001 |
 
-# Results
+### Results
 
 ---
 
@@ -165,23 +165,22 @@ Power Shell Command Getting Detected in the Sysmon Tool
 | 1. | Virtual machine | Failed | - Sysmon failed to install due to virtualization security restrictions  inside the virtual machine. |
 | 2. | Physical Desktop | Success | - Sysmon was successfully installed and able to detect and log the attack activity. |
 
-**Additional results**
+--- 
+### Learnings
 
-# Learnings
-
----
 
 - Learned how to install the System monitor(Sysmon) in a windows machine.( ./Sysmon64.exe -i sysmonconfig.xml)
 - Able to detect the malicious command line through “Event Viewer”. (Event ID 1)
 - Handled the cyber attack by mapping it to the MITRE ATT&CK Matrix.
 - Check which services are running using the “Services” tool.
 - Able to remove the “Sysmon” tool using the “regedit”(Registry Editor). (You can remove it using ./Sysmon64.exe -u) asvwell.
+--- 
 
-# Resources Used
+### Resources Used
 
----
 
 1. Sysmon Installation:- [https://learn.microsoft.com/en-us/sysinternals/downloads/sysmon](https://learn.microsoft.com/en-us/sysinternals/downloads/sysmon) (More information about Event IDs)
 2. Sysmon Config file(Olafhartong):-[https://github.com/olafhartong/sysmon-modular/blob/master/sysmonconfig.xml](https://github.com/olafhartong/sysmon-modular/blob/master/sysmonconfig.xml)
 3. MITRE ATT&CK Framework:- [https://attack.mitre.org/](https://attack.mitre.org/)
 
+--- 
