@@ -4,7 +4,7 @@ date: 2025-10-25 18:00:00 +0530
 categories: [Documentation, Blue Team]
 tags: [sysmon, mitre att&ck, log analysis, windows, endpoint security]
 image:
-  path: /assets/img/headers/sysmon-lab.jpg  
+  path: /assets/img/headers/Sysmon.jpg
   alt: Sysmon and MITRE Lab Banner
 ---
 # Experiment 3: Sysmon & MITRE ATT&CK
