@@ -9,13 +9,6 @@ image:
 ---
 # Experiment 3: Sysmon & MITRE ATT&CK
 
-Status: Success
-Owner: Syed Khalid Tipu Razvi
-Objective: Hands-On Lab
-Experiment Start: October 25, 2025
-Experiment End: October 26, 2025
-Domain: Blue Team
-
 # Summary
 
 Successful beginner-level endpoint detection lab. Demonstrated installing and using Sysmon (and fallback to native Windows auditing where necessary), generating benign PowerShell activity, locating and extracting telemetry in Event Viewer, mapping the activity to MITRE ATT&CK (T1059.001), and verifying service management. Next steps: add logging ingestion to a SIEM (Kibana/Splunk), craft Sigma rules, and run a small set of additional ATT&CK-mapped experiments
@@ -104,7 +97,7 @@ Sysmon’s driver was blocked due to system protection features, preventing it f
 8. To ensure it has been logged open up the Event-viewer→Applications and Service Logs → Microsoft → Windows → Sysmon.
 9. On the Actions side{Which is on the right side} Operational Section click on the “Filter Current Log”, this opens up a dialogue box in the “filter” tab there is a section which says <All Event  IDs> in that you should include “1” where  1 means “Process Create (most useful for validating process creation logging). 
 
-![image.png](Experiment%203%20Sysmon%20&%20MITRE%20ATT&CK/image.png)
+![image.png](assets/img/sysmon-detection-lab-photos/image.png)
 
 ---
 
@@ -130,19 +123,19 @@ Other various Events such as.
 
 Technique: **T1059.003 — Windows Command Shell.** In your notes, record: victim ran a Windows Command Line process with suspicious flags (benign in lab), captured in Sysmon Event ID 1, command line visible.
 
-![Windows Command Getting Logged in the Sysmon](Experiment%203%20Sysmon%20&%20MITRE%20ATT&CK/Capture.png)
+![Windows Command Getting Logged in the Sysmon](assets/img/sysmon-detection-lab-photos/Capture.png)
 
 Windows Command Getting Logged in the Sysmon
 
-![Mapping the Attack using the MITRE Framework](Experiment%203%20Sysmon%20&%20MITRE%20ATT&CK/Screenshot_2025-10-26_at_12.53.17_PM.png)
+![Mapping the Attack using the MITRE Framework](assets/img/sysmon-detection-lab-photos/Screenshot_2025-10-26_at_12.53.17_PM.png)
 
 Mapping the Attack using the MITRE Framework
 
-![Mitigations For the Attack](Experiment%203%20Sysmon%20&%20MITRE%20ATT&CK/Screenshot_2025-10-26_at_1.03.27_PM.png)
+![Mitigations For the Attack](assets/img/sysmon-detection-lab-photos/Screenshot_2025-10-26_at_1.03.27_PM.png)
 
 Mitigations For the Attack
 
-![Execution Prevention Technique to mitigate the particular attack.](Experiment%203%20Sysmon%20&%20MITRE%20ATT&CK/Screenshot_2025-10-26_at_1.03.36_PM.png)
+![Execution Prevention Technique to mitigate the particular attack.](assets/img/sysmon-detection-lab-photos/Screenshot_2025-10-26_at_1.03.36_PM.png)
 
 Execution Prevention Technique to mitigate the particular attack.
 
@@ -150,13 +143,13 @@ Execution Prevention Technique to mitigate the particular attack.
 
 Technique: **T1059.001- Power Shell. I**n your notes, record: victim ran a PowerShell process with suspicious flags (benign in lab), captured in Sysmon Event ID 1, command line visible.
 
-![Power Shell Command Getting Detected in the Sysmon Tool](Experiment%203%20Sysmon%20&%20MITRE%20ATT&CK/PowerShell_Experiment.png)
+![Power Shell Command Getting Detected in the Sysmon Tool](assets/img/sysmon-detection-lab-photos/PowerShell_Experiment.png)
 
 Power Shell Command Getting Detected in the Sysmon Tool
 
-![Screenshot 2025-10-27 at 12.31.56 PM.png](Experiment%203%20Sysmon%20&%20MITRE%20ATT&CK/Screenshot_2025-10-27_at_12.31.56_PM.png)
+![Screenshot 2025-10-27 at 12.31.56 PM.png](assets/img/sysmon-detection-lab-photos/Screenshot_2025-10-27_at_12.31.56_PM.png)
 
-![Screenshot 2025-10-27 at 12.32.17 PM.png](Experiment%203%20Sysmon%20&%20MITRE%20ATT&CK/Screenshot_2025-10-27_at_12.32.17_PM.png)
+![Screenshot 2025-10-27 at 12.32.17 PM.png](assets/img/sysmon-detection-lab-photos/Screenshot_2025-10-27_at_12.32.17_PM.png)
 
 | Tactic | Technique | ID | Notes |
 | --- | --- | --- | --- |
@@ -193,4 +186,4 @@ Power Shell Command Getting Detected in the Sysmon Tool
 3. MITRE ATT&CK Framework:- [https://attack.mitre.org/](https://attack.mitre.org/)
 
 
-[Untitled](Experiment%203%20Sysmon%20&%20MITRE%20ATT&CK/Untitled%20297c704c659681949c39f2ac7fa78264.csv)
+[Untitled](assets/img/sysmon-detection-lab-photos/Untitled%20297c704c659681949c39f2ac7fa78264.csv)
