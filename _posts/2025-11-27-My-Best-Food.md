@@ -8,7 +8,7 @@ image:
   alt: GlacierCTF
 ---
 
-# My Best Food
+# My Best Food CTF Writeup
 
 # Description
 
