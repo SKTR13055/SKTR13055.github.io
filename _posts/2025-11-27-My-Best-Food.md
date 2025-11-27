@@ -151,41 +151,42 @@ gctf{g00d f00d, hum0r0u5 f00d r3v13w5}
 
 ## **My (Incorrect) Process**
 
-### **1. OSINT Rabbit Hole**
+### **1. Incorrect Hypothesis #1 — OSINT Rabbit Hole**
 
-I initially focused on OSINT:
+I first tried to solve the challenge using OSINT:
 
 - Found the challenge author’s website
-- Looked up their social media (GitLab, PixelFed)
-- Found food pictures
-- Saw a photo of a church (Votivekirche)
-- Assumed the restaurant was nearby
+- Looked at their social media (GitLab, PixelFed)
+- Saw food pictures and assumed they were hints
+- Found a picture of Votivekirche
+- Assumed the restaurant must be somewhere nearby
 
 This led me to:
 
 - Searching restaurants near Votivekirche
-- Reading dozens of reviews by hand
-- Trying to correlate timestamps
+- Going through dozens of Google reviews manually
+- Trying to match timestamps and patterns
 
-None of this was relevant.
+None of this was relevant to the actual challenge.
 
 ---
 
-### **2. Incorrect Hypothesis**
+### **2. Incorrect Hypothesis #2 — Photo Location Deduction**
 
-I tried:
+I doubled down on the church photo:
 
-- Pinpointing the *exact location* where the church photo was taken
-- Checking nearby restaurants
-- Reading their reviews for hours
+- Tried to find the **exact place** where the photo was taken
+- Looked for the nearest restaurants
+- Checked their Google reviews for several hours
 
-This was all incorrect because:
+This approach was also incorrect because:
 
 - The photos were personal posts
-- They were not related to the challenge
-- The real solution was fully contained inside the Rust file
+- They were not connected to the challenge
+- The correct solution was entirely inside the Rust file
 
 ---
+
 ## What I Learned From My Mistakes
 
 This challenge taught me several important lessons about solving OSINT + geolocation problems more effectively.
