@@ -99,8 +99,8 @@ The intended method:
 5. The intersection = **the restaurant’s coordinates**.
 6. Search the restaurant’s Google reviews → retrieve the flag.
     
-    ![ale_image.webp](/assets/img/glacier_ctf_photos/ale_image.webp)
-    
+    ![ale_image.webp](/assets/img/My-Best-Food-photos/ale_image.webp)
+   
 
 **Note:** For this step, I executed the trilateration using **Ale’s Python code**, which she shared *after the challenge*. Her script helped automate the distance-based intersection calculation.
 
@@ -125,7 +125,7 @@ This yields approximate coordinates around:
 
 Plotting this location in Google Maps leads directly to the restaurant.
 
-![Screenshot 2025-11-24 at 7.05.21 PM.png](/assets/img/glacier_ctf_photos/Screenshot_2025-11-24_at_7.05.21_PM.png)
+![Screenshot 2025-11-24 at 7.05.21 PM.png](/assets/img/My-Best-Food-photos/Screenshot_2025-11-24_at_7.05.21_PM.png)
 
 ---
 
