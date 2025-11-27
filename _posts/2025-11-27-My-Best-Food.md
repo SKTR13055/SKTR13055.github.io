@@ -1,6 +1,6 @@
 ---
 title: "GlacierCTF – My Best Food"
-date: 2025-10-27 18:00:00 +0530
+date: 2025-11-27 18:00:00 +0530
 categories: [GlacierCTF, Writeups]
 tags: [osint, geolocation, overpass-api, osm, trilateration, python, ctf]
 image:
