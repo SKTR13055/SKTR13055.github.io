@@ -8,7 +8,7 @@ image:
   alt: GlacierCTF
 ---
 
-# My Best Food CTF Writeup
+# Glacier CTF My Best Food Writeup
 
 # Description
 
@@ -186,7 +186,58 @@ This was all incorrect because:
 - The real solution was fully contained inside the Rust file
 
 ---
+## What I Learned From My Mistakes
 
+This challenge taught me several important lessons about solving OSINT + geolocation problems more effectively.
+
+### 1. Don’t rely on unrelated visual clues
+I initially focused on:
+- The challenge author’s website
+- His food collage
+- A photo of Votivkirche
+- Nearby restaurants and their reviews
+
+None of these were actual clues. The intended solution was not based on images or social media, so this approach wasted time.
+
+### 2. Properly analyze the provided code
+The real hints were inside `main.rs`:
+- Bar, ATM, and taxi categories
+- Distances for each
+- A commented hint about centroid calculations
+- A missing Overpass API function
+
+The challenge was solvable entirely through the code, not external OSINT.
+
+### 3. Overpass API data varies by year
+Solvers got slightly different coordinates because:
+- Some Overpass API instances used older 2022 OpenStreetMap data
+- Others used newer 2023–2024 snapshots
+
+This taught me that geolocation challenges may not produce pixel-perfect identical results depending on API data age.
+
+### 4. Mathematical trilateration is more accurate than manual guessing
+My early attempts relied on:
+- Visually checking the map
+- Proximity-based guessing
+- Searching random restaurant reviews
+
+Only proper trilateration with real distance calculations produced the correct coordinates.
+
+### 5. Reproducibility matters
+Using Ale’s Python script (shared after the CTF ended) provided:
+- Correct centroid calculation
+- Proper trilateration
+- Coordinates that matched the intended solution
+
+This reinforced the importance of using precise, repeatable methods.
+
+### 6. Failed hypotheses still provide lessons
+Even though my two initial hypotheses were incorrect, they helped me understand:
+- The pitfalls of overthinking OSINT challenges
+- Why staying within the problem scope is important
+- The value of trusting mathematical hints over subjective clues
+
+--- 
 # **Acknowledgments**
 
 A special thanks to **ale**, who shared a clean Python trilateration script with me **after the CTF had ended**.
