@@ -24,6 +24,7 @@ def overpass_query(query):
     return r.json()
 
 def build_query(city, amenity):
+    # The brackets below are escaped or inside a code block to prevent Markdown link errors
     return f"""
 [out:json][timeout:25];
 area[name="{city}"]->.a;
