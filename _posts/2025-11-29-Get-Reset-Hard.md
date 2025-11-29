@@ -36,8 +36,8 @@ Downloadable file: gitresethard.tar.gz
 tar -xzvf gitresethard.tar.gz”
 ```
 
-1. After decompressing the file change the directory to “gitresethard/repo” 
-2. Type in the following command to reveal any hidden/dangling commit
+3. After decompressing the file change the directory to “gitresethard/repo” 
+4. Type in the following command to reveal any hidden/dangling commit
 
 ```bash
 git fsck --lost-found
@@ -45,7 +45,7 @@ git fsck --lost-found
 
 ![Screenshot 2025-11-23 at 7.52.45 AM.png](/assets/img/getresethard-photos/40d37ebf-657a-4e39-901f-fb347f466bd4.png)
 
-1. A hidden/dangling commit is present, lets see the contents using the “git show” command.
+5. A hidden/dangling commit is present, lets see the contents using the “git show” command.
 
 ```bash
 git show <dangling commit>
@@ -53,11 +53,11 @@ git show <dangling commit>
 
 ![Screenshot 2025-11-23 at 7.52.45 AM.png](/assets/img/getresethard-photos/e28271b2-4d9e-49d3-b4f8-4d1126199cb9.png)
 
-1. The dangling commit shows a connection using “openssl” and also includes a password which is being encrypted so lets try to use command., we could use ssl but I choose to use “echo” command for faster process.
+6. The dangling commit shows a connection using “openssl” and also includes a password which is being encrypted so lets try to use command., we could use ssl but I choose to use “echo” command for faster process.
 
 ![Screenshot 2025-11-23 at 7.52.54 AM.png](/assets/img/getresethard-photos/8e8e57cf-843e-4aaf-bfa6-67c15cc161f5.png)
 
-1. After using the command we got the flag.
+7. After using the command we got the flag.
 
 <aside>
 
