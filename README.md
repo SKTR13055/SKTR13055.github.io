@@ -8,9 +8,12 @@ Welcome to the source code of my personal portfolio and knowledge base. This sit
 **[Visit my Portfolio](https://sktr13055.github.io)**
 
 ### 👨‍💻 About Me
-I am an **Information Security Analyst** and **CTF Player**
+I am an **Information Security Analyst**,**Penetration Tester** and **CTF Player**
 * **Focus:** Blue Team Operations, Splunk, VAPT.
-* **Certifications**: **CompTIA Security+**,**Ethical Hacking (NPTEL):Elite + Gold (Top 2%)**,**Google Cyber Security Professional Certificate**,**Cisco Cybersecurity Fundamentals & Essentials**
+* **Certifications**: **CompTIA Security+**,
+  - **Ethical Hacking (NPTEL):Elite + Gold (Top 2%)**,
+  - **Google Cyber Security Professional Certificate**,
+  - **Cisco Cybersecurity Fundamentals & Essentials**
 
 ### 🛠️ Built With
 * **Engine:** [Jekyll](https://jekyllrb.com/)
