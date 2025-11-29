@@ -48,7 +48,7 @@ Start up the machine and answer the following questions.
 
 <aside>
 
-1. ### How Many ports are open?
+1. How Many ports are open?
 </aside>
 
 1. In order to find out how many ports were you can use the nmap tool{ Since nmap was taking to much time I’ve used Rustscan in order to enumerate ports much faster}
@@ -75,7 +75,7 @@ Nmap output report
 
 <aside>
 
-2. ### What is the version of nginx?
+2. What is the version of nginx?
 </aside>
 
 1. In order to determine the version of the nginx we can use the command “nmap -p80 -sV 10.49.151.176” This is will display the version of the nginx.
@@ -92,7 +92,7 @@ Nmap output report
 
 <aside>
 
-3. ### What is running on the highest port?
+3. What is running on the highest port?
 </aside>
 
 1. From the 1st task output I observe that the highest port number is “65524” now to know what service is running we can use this command “sudo nmap -sV 10.49.151.176 -p65524”
@@ -128,7 +128,7 @@ Now you've enumerated the machine, answer questions and compromise it!
 
 Output of GoBuster on port 80
 
-1. From the output there is a hidden directory was discovered which is the “/whatever” directory, lets go to that directory and find it out.
+2. From the output there is a hidden directory was discovered which is the “/whatever” directory, lets go to that directory and find it out.
 
 ![Hidden directory ](/assets/img/easy-peasy/Screenshot_2025-11-11_at_8.06.50_PM.png)
 
@@ -136,14 +136,14 @@ Hidden directory
 
 ![Screenshot 2025-11-11 at 8.07.03 PM.png](/assets/img/easy-peasy/Screenshot_2025-11-11_at_8.07.03_PM.png)
 
-1. Looking in to the source code of this page there is a “hidden piece of information” which is encoded in base64.
-2. Lets Decode it using the “Cyber Chef” website.
+3. Looking in to the source code of this page there is a “hidden piece of information” which is encoded in base64.
+4. Lets Decode it using the “Cyber Chef” website.
 
 ![Decoded Information from the Cyber Chef Website](/assets/img/easy-peasy/Screenshot_2025-11-11_at_8.07.16_PM.png)
 
 Decoded Information from the Cyber Chef Website
 
-1. After the message has been decoded I found the first flag which is “flag{f1rs7_fl4g}”
+5. After the message has been decoded I found the first flag which is “flag{f1rs7_fl4g}”
 
 <aside>
 
@@ -168,9 +168,9 @@ Decoded Information from the Cyber Chef Website
 
 Output for the /robots.txt
 
-1. In order to verify that it was a hash I quickly opened up a “hash identifier” website and pasted this information and the result was just as I expected it was an “**MD5 Hash”.**
-2. I used tools such as hash cat to crack the hash but I failed and tried to find other websites which can crack the hashes luckily I found a website which was able to.
-3. I inserted the hash code to decode it and after some time to process I got the output which was a flag. ([https://md5hashing.net/hash](https://md5hashing.net/hash))
+5. In order to verify that it was a hash I quickly opened up a “hash identifier” website and pasted this information and the result was just as I expected it was an “**MD5 Hash”.**
+6. I used tools such as hash cat to crack the hash but I failed and tried to find other websites which can crack the hashes luckily I found a website which was able to.
+7. I inserted the hash code to decode it and after some time to process I got the output which was a flag. ([https://md5hashing.net/hash](https://md5hashing.net/hash))
 
 ![Decoded Hash](/assets/img/easy-peasy/Screenshot_2025-11-11_at_8.50.06_PM.png)
 
@@ -186,7 +186,7 @@ Decoded Hash
 
 <aside>
 
-1. Crack the hash with easypeasy.txt, What is the flag 3?
+3. Crack the hash with easypeasy.txt, What is the flag 3?
 </aside>
 
 *Note: This part took me a lot of time, because this challenge was somehow misleading.*
@@ -198,7 +198,7 @@ Decoded Hash
 
 Hidden 3rd flag
 
-1. I gave this flag as the answer and it was the correct answer, there might some context behind this challenge but I find this question to be somewhat misleading.
+3. I gave this flag as the answer and it was the correct answer, there might some context behind this challenge but I find this question to be somewhat misleading.
 
 <aside>
 
@@ -210,7 +210,7 @@ Hidden 3rd flag
 
 <aside>
 
-4. ### What is the hidden directory?
+4. What is the hidden directory?
 
 </aside>
 
@@ -240,7 +240,7 @@ _Fig:Cyber Chef Flag 4 answer_
 
 <aside>
 
-5. ### Using the wordlist that provided to you in this task crack the hash what is the password?
+5. Using the wordlist that provided to you in this task crack the hash what is the password?
 
 </aside>
 
@@ -283,7 +283,7 @@ _Fig:-Analyzing the Encoded message_
 
 <aside>
 
-6. ### What is the password to login to the machine via SSH?
+6. What is the password to login to the machine via SSH?
 </aside>
 
 1. One more thing I noticed in the previous question is that the source code contain an image which is the “binarycodepixabay.jpg” after clicking on it, it lead me to the actual source of the image, more like a downloaded image which was stored in the server.
@@ -315,7 +315,7 @@ _Fig:-Analyzing the Encoded message_
 
 <aside>
 
-7. ### What is the user flag?
+7. What is the user flag?
 </aside>
 
 1. This part was the easiest one just login in to the ssh using the ssh command “ssh -p6498 -l boring 10.49.177.158. and the password is “iconvertedmypasswordtobinary”
@@ -327,11 +327,11 @@ Logging into the “boring” using ssh on port 6498
 
 ![Screenshot 2025-11-13 at 8.57.58 PM.png](/assets/img/easy-peasy/Screenshot_2025-11-13_at_8.57.58_PM.png)
 
-1. I displayed the list of files using “ls” command  and found “user.txt” file, using the cat command to displayed the contents of the file, which is somehow a kind of flag which is rotated and I immediately went to cyber chef  and use the ROT13 decoding method (aka Caesar Cipher Method)
+2. I displayed the list of files using “ls” command  and found “user.txt” file, using the cat command to displayed the contents of the file, which is somehow a kind of flag which is rotated and I immediately went to cyber chef  and use the ROT13 decoding method (aka Caesar Cipher Method)
 
 ![Screenshot 2025-11-13 at 8.58.50 PM.png](/assets/img/easy-peasy/Screenshot_2025-11-13_at_8.58.50_PM.png)
 
-2. Turns out I was right it was encoded in the Caesar Cipher method and got the flag and submit it as the answer.
+3. Turns out I was right it was encoded in the Caesar Cipher method and got the flag and submit it as the answer.
 
 <aside>
 
@@ -343,7 +343,7 @@ Logging into the “boring” using ssh on port 6498
 
 <aside>
 
-8. ### What is the root flag? (Final flag)
+8. What is the root flag? (Final flag)
 
 </aside>
 
