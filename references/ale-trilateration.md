@@ -15,7 +15,7 @@ import math
 import time
 import requests
 
-OVERPASS = "[https://overpass-api.de/api/interpreter](https://overpass-api.de/api/interpreter)"
+OVERPASS = "https://overpass-api.de/api/interpreter"
 EARTH_R = 6371000.0  # meters
 
 def overpass_query(query):
@@ -24,13 +24,12 @@ def overpass_query(query):
     return r.json()
 
 def build_query(city, amenity):
-    # Note: A space is added before (area.a) to ensure the site builds correctly.
     return f"""
-    [out:json][timeout:25];
-    area[name="{city}"]->.a;
-    node["amenity"="{amenity}"] (area.a);
-    out;
-    """
+[out:json][timeout:25];
+area[name="{city}"]->.a;
+node["amenity"="{amenity}"](area.a);
+out;
+"""
 
 def fetch_coords(city, amenity):
     q = build_query(city, amenity)
@@ -89,9 +88,9 @@ def trilaterate(a, b, c):
 
 def main():
     print("---------------------------------------")
-    print(" OSINT Trilateration Solver")
-    print("---------------------------------------")
-    
+    print(" OSINT Trilateration Solver (General)")
+    print("---------------------------------------\n")
+
     # ---- USER INPUT ----
     city = input("Enter city (e.g., Graz): ").strip()
 
