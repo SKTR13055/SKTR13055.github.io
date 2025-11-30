@@ -48,7 +48,7 @@ Start up the machine and answer the following questions.
 
 <aside>
 
-1. How Many ports are open?
+### 1. How Many ports are open?
 </aside>
 
 1. In order to find out how many ports were you can use the nmap tool{ Since nmap was taking to much time I’ve used Rustscan in order to enumerate ports much faster}
@@ -76,7 +76,7 @@ Start up the machine and answer the following questions.
 
 <aside>
 
-2. What is the version of nginx?
+### 2. What is the version of nginx?
 </aside>
 
 1. In order to determine the version of the nginx we can use the following command, this is will display the version of the nginx.
@@ -97,7 +97,7 @@ Start up the machine and answer the following questions.
 
 <aside>
 
-3. What is running on the highest port?
+### 3. What is running on the highest port?
 </aside>
 
 1. From the 1st task output I observe that the highest port number is “65524” now to know what service is running we can use this command.
@@ -131,7 +131,7 @@ Now you've enumerated the machine, answer questions and compromise it!
 
 <aside>
 
-1. Using GoBuster, find flag 1?
+### 1. Using GoBuster, find flag 1?
 </aside>
 
 1. Let’s use the GoBuster on the first port which is the port 80 using the command.
@@ -141,22 +141,16 @@ Now you've enumerated the machine, answer questions and compromise it!
 
    ![Output of GoBuster on port 80](/assets/img/easy-peasy/Screenshot_2025-11-11_at_8.05.09_PM.png)
 
-
-
 2. From the output there is a hidden directory was discovered which is the “/whatever” directory, lets go to that directory and find it out.
 
-    ![Hidden directory ](/assets/img/easy-peasy/Screenshot_2025-11-11_at_8.06.50_PM.png)
+     ![Hidden directory ](/assets/img/easy-peasy/Screenshot_2025-11-11_at_8.06.50_PM.png)
 
-Hidden directory 
-
-   ![Screenshot 2025-11-11 at 8.07.03 PM.png](/assets/img/easy-peasy/Screenshot_2025-11-11_at_8.07.03_PM.png)
+     ![Screenshot 2025-11-11 at 8.07.03 PM.png](/assets/img/easy-peasy/Screenshot_2025-11-11_at_8.07.03_PM.png)
 
 3. Looking in to the source code of this page there is a “hidden piece of information” which is encoded in base64.
 4. Lets Decode it using the “Cyber Chef” website.
 
-    ![Decoded Information from the Cyber Chef Website](/assets/img/easy-peasy/Screenshot_2025-11-11_at_8.07.16_PM.png)
-
-Decoded Information from the Cyber Chef Website
+     ![Decoded Information from the Cyber Chef Website](/assets/img/easy-peasy/Screenshot_2025-11-11_at_8.07.16_PM.png)
 
 5. After the message has been decoded I found the first flag which is “flag{f1rs7_fl4g}”
 
@@ -170,7 +164,7 @@ Decoded Information from the Cyber Chef Website
 
 <aside>
 
-2.Further enumerate the machine, what is flag 2?
+### 2.Further enumerate the machine, what is flag 2?
 
 </aside>
 
@@ -190,8 +184,6 @@ Decoded Information from the Cyber Chef Website
 
       ![Decoded Hash](/assets/img/easy-peasy/Screenshot_2025-11-11_at_8.50.06_PM.png)
 
-Decoded Hash
-
 <aside>
 
 ✅ The answer to the second question is “flag{1m_s3c0nd_fl4g}”
@@ -202,7 +194,7 @@ Decoded Hash
 
 <aside>
 
-3. Crack the hash with easypeasy.txt, What is the flag 3?
+### 3. Crack the hash with easypeasy.txt, What is the flag 3?
 </aside>
 
 *Note: This part took me a lot of time, because this challenge was somehow misleading.*
@@ -224,7 +216,7 @@ Decoded Hash
 
 <aside>
 
-4. What is the hidden directory?
+### 4. What is the hidden directory?
 
 </aside>
 
@@ -238,8 +230,6 @@ Decoded Hash
 
     ![Cyber Chef Flag 4 answer](/assets/img/easy-peasy/Screenshot_2025-11-13_at_8.07.54_PM.png)
 
-_Fig:Cyber Chef Flag 4 answer_
-
 5. After inserting the encoded hash in the “cyber chef” website and giving the recipe as “base62” we got the output as a “hidden directory”.
 
 <aside>
@@ -252,7 +242,7 @@ _Fig:Cyber Chef Flag 4 answer_
 
 <aside>
 
-5. Using the wordlist that provided to you in this task crack the hash what is the password?
+### 5. Using the wordlist that provided to you in this task crack the hash what is the password?
 
 </aside>
 
@@ -263,27 +253,21 @@ _Fig:Cyber Chef Flag 4 answer_
 
      ![Hidden Directory page](/assets/img/easy-peasy/Screenshot_2025-11-13_at_8.17.02_PM.png)
 
-_Fig:-Hidden Directory page_
-
 5. At first the image seems to be showing a matrix style background but it didn’t contain some kind of hash displayed in front so lets look at the source code of this page.
 
-    ![Source Code](/assets/img/easy-peasy/Screenshot_2025-11-13_at_8.17.16_PM.png)
-
-Source Code
+     ![Source Code](/assets/img/easy-peasy/Screenshot_2025-11-13_at_8.17.16_PM.png)
 
 6. After looking in the source code there is again a hidden message encoded in some manner that I’ve never seen.
 7. I used “cyber chef” in order to determine the encoded message.
 
-    ![Analyzing the Encoded message](/assets/img/easy-peasy/Screenshot_2025-11-13_at_8.25.38_PM.png)
-
-_Fig:-Analyzing the Encoded message_
+     ![Analyzing the Encoded message](/assets/img/easy-peasy/Screenshot_2025-11-13_at_8.25.38_PM.png)
 
 8. I analyzed and tried other hashing methods in a sequence order (which are displayed in the output of cyberchef) using the johntheripper tool.
 9. Except one hashing method others were a complete failure, I used this command in the john ripper tool
 ```bash
 “john - -wordlist=easypeasy.txt - -format==gost hash.txt”
 ```
-    ![Screenshot 2025-11-13 at 8.27.35 PM.png](/assets/img/easy-peasy/Screenshot_2025-11-13_at_8.27.35_PM.png)
+  ![Screenshot 2025-11-13 at 8.27.35 PM.png](/assets/img/easy-peasy/Screenshot_2025-11-13_at_8.27.35_PM.png)
 
 10. Finally the decoded hash message is the “mypasswordforthatjob” and submit it as the answer.
 
@@ -297,7 +281,7 @@ _Fig:-Analyzing the Encoded message_
 
 <aside>
 
-6. What is the password to login to the machine via SSH?
+### 6. What is the password to login to the machine via SSH?
 </aside>
 
 1. One more thing I noticed in the previous question is that the source code contain an image which is the “binarycodepixabay.jpg” after clicking on it, it lead me to the actual source of the image, more like a downloaded image which was stored in the server.
@@ -334,7 +318,7 @@ steghide extract -sf image.jpeg { `-sf` (or `--stegofile`)
 
 <aside>
 
-7. What is the user flag?
+### 7. What is the user flag?
 </aside>
 
 1. This part was the easiest one just login in to the ssh using the ssh command. 
@@ -363,7 +347,7 @@ the password is “iconvertedmypasswordtobinary”
 
 <aside>
 
-8. What is the root flag? (Final flag)
+### 8. What is the root flag? (Final flag)
 
 </aside>
 
@@ -426,35 +410,31 @@ The answer for the eighth question is “flag{63a9f0eabb98050796b649e85481845}�
 | **User Flag** | flag{n0wits33msn0rm4l} |
 | **Root Flag** | flag{63a9f0eabb98050796b649e85481845} |
 
+--- 
+
 # Learnings
 
----
-
-What did you learn from this experiment? Was your hypothesis validated or not? Why or why not?
-
-This room significantly improved my understanding of:
-
-### ✔️ Enumeration
+ ✔️ **Enumeration**
 
 Rustscan + Nmap combinations, and how to quickly spot unusual services.
 
-### ✔️ Web directory discovery
+ ✔️ **Web directory discovery**
 
 Gobuster approaches for different ports.
 
-### ✔️ Encoding & decoding
+ ✔️** Encoding & decoding**
 
 Base64, Base62, Caesar shift, binary decoding.
 
-### ✔️ Hash cracking
+ ✔️ **Hash cracking**
 
 Using John’s different formats, identifying GOST hashes.
 
-### ✔️ Steganography
+ ✔️ **Steganography**
 
 Extracting embedded data from images using Steghide.
 
-### ✔️ Privilege escalation
+ ✔️ **Privilege escalation**
 
 Identifying vulnerable cronjobs and exploiting them with a reverse shell.
 
