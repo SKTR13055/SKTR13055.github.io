@@ -1,7 +1,7 @@
 ---
 title: "GlacierCTF – GetResetHard"
 date: 2025-11-29 18:00:00 +0530
-categories: [Writeups, GlacierCTF]
+categories: [GlacierCTF]
 tags: [git, forensics, misc, glacierctf]
 image:
   path: /assets/img/headers/glacierCTF.png
