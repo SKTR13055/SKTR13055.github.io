@@ -1,8 +1,8 @@
 ---
 title: "SMB-Vulnerabilites-Detection-Using-Enum4Linux"
 date: 2025-11-06 12:00:00 +0530
-categories: [Documentation,Enumeration]
-tags: [enum4linux, smb, server message block]
+categories: [Documentation,Home Labs]
+tags: [enum4linux, smb, server message block,enumeration, network security]
 image:
   path: /assets/img/headers/SMB-Banner.png
 ---
