@@ -146,87 +146,93 @@ UDP 138           NetBIOS Datagram
  - **G -** get a list of the groups and their members
  - **P -** list the password policies
  - **i** - get a list of printers
-4. Type in the command “**enum4linux -U 172.17.0.2”** to find the configured users.
+4. Type in the following commandto find the configured users.
+       ```shell
+        enum4linux -U 172.17.0.2
+       ```
+
+
+
+      ```
+
+       Starting enum4linux v0.9.1
+
+       =========================================( Target Information )=========================================
+
+       Target ........... 172.17.0.2
+       RID Range ........ 500-550,1000-1050
+       Username ......... ''
+       Password ......... ''
+       Known Usernames .. administrator, guest, krbtgt, domain admins, root, bin, none
+
+       =============================( Enumerating Workgroup/Domain on 172.17.0.2 )=============================
+
+       [+] Got domain/workgroup name: WORKGROUP
+
+       ====================================( Session Check on 172.17.0.2 )====================================
+
+       [+] Server 172.17.0.2 allows sessions using username '', password ''
+
+       =================================( Getting domain SID for 172.17.0.2 )=================================
+
+       Domain Name: WORKGROUP
+       Domain Sid: (NULL SID)
+
+       [+] Can't determine if host is part of domain or part of a workgroup
+
+       ========================================( Users on 172.17.0.2 )========================================
+
+       index: 0x1 RID: 0x3f2 acb: 0x00000011 Account: games    Name: games     Desc: (null)
+
+       index: 0x2 RID: 0x1f5 acb: 0x00000011 Account: nobody   Name: nobody    Desc: (null)
+       index: 0x3 RID: 0x4ba acb: 0x00000011 Account: bind     Name: (null)    Desc: (null)
+       index: 0x4 RID: 0x402 acb: 0x00000011 Account: proxy    Name: proxy     Desc: (null)
+       index: 0x5 RID: 0x4b4 acb: 0x00000011 Account: syslog   Name: (null)    Desc: (null)
+       index: 0x6 RID: 0xbba acb: 0x00000010 Account: user     Name: just a user,111,, Desc: (null)
+       index: 0x7 RID: 0x42a acb: 0x00000011 Account: www-data Name: www-data  Desc: (null)
+       index: 0x8 RID: 0x3e8 acb: 0x00000011 Account: root     Name: root      Desc: (null)
+       index: 0x9 RID: 0x3fa acb: 0x00000011 Account: news     Name: news      Desc: (null)
+       …redacted…
+       enum4linux complete on Thu Nov  6 02:45:47 2025
+
+       ```
+
+  “Enum4linux” aggregates output from multiple Samba tools to produce a concise result, if you want to know how each feature is used you can use the “**-v(verbose)**” option to include       with it.
+
+   for example lets use the list of files shares on the target.
+
+5. Type in the following command
+
+   ```shell
+    enum4linux -Sv 172.17.0.2
+   ```
 
    ```
 
-   Starting enum4linux v0.9.1
+    [V] Dependent program "nmblookup" found in /usr/bin/nmblookup
+
+    [V] Dependent program "net" found in /usr/bin/net
+
+    [V] Dependent program "rpcclient" found in /usr/bin/rpcclient
+
+    [V] Dependent program "smbclient" found in /usr/bin/smbclient
+
+    [V] Dependent program "polenum" found in /usr/bin/polenum
+
+    [V] Dependent program "ldapsearch" found in /usr/bin/ldapsearch
+
+    Starting enum4linux v0.9.1 ( [http://labs.portcullis.co.uk/application/enum4linux/](http://labs.portcullis.co.uk/application/enum4linux/) ) on Thu Nov  6 02:54:58 2025
 
     =========================================( Target Information )=========================================
 
    Target ........... 172.17.0.2
+
    RID Range ........ 500-550,1000-1050
    Username ......... ''
    Password ......... ''
    Known Usernames .. administrator, guest, krbtgt, domain admins, root, bin, none
 
-   =============================( Enumerating Workgroup/Domain on 172.17.0.2 )=============================
-
-   [+] Got domain/workgroup name: WORKGROUP
-
-   ====================================( Session Check on 172.17.0.2 )====================================
-
-   [+] Server 172.17.0.2 allows sessions using username '', password ''
-
-   =================================( Getting domain SID for 172.17.0.2 )=================================
-
-   Domain Name: WORKGROUP
-   Domain Sid: (NULL SID)
-
-   [+] Can't determine if host is part of domain or part of a workgroup
-
-   ========================================( Users on 172.17.0.2 )========================================
-
-   index: 0x1 RID: 0x3f2 acb: 0x00000011 Account: games    Name: games     Desc: (null)
-
-   index: 0x2 RID: 0x1f5 acb: 0x00000011 Account: nobody   Name: nobody    Desc: (null)
-   index: 0x3 RID: 0x4ba acb: 0x00000011 Account: bind     Name: (null)    Desc: (null)
-   index: 0x4 RID: 0x402 acb: 0x00000011 Account: proxy    Name: proxy     Desc: (null)
-   index: 0x5 RID: 0x4b4 acb: 0x00000011 Account: syslog   Name: (null)    Desc: (null)
-   index: 0x6 RID: 0xbba acb: 0x00000010 Account: user     Name: just a user,111,, Desc: (null)
-   index: 0x7 RID: 0x42a acb: 0x00000011 Account: www-data Name: www-data  Desc: (null)
-   index: 0x8 RID: 0x3e8 acb: 0x00000011 Account: root     Name: root      Desc: (null)
-   index: 0x9 RID: 0x3fa acb: 0x00000011 Account: news     Name: news      Desc: (null)
-   …redacted…
-   enum4linux complete on Thu Nov  6 02:45:47 2025
-
-   ```
-
-  “Enum4linux” aggregates output from multiple Samba tools to produce a concise result, if you want to know how each feature is used you can use the “**-v(verbose)**” option to include with it.
-
-   for example lets use the list of files shares on the target.
-
-5. Type in the following command
- ```shell
-  enum4linux -Sv 172.17.0.2
- ```
-
- ```
-
-[V] Dependent program "nmblookup" found in /usr/bin/nmblookup
-
-[V] Dependent program "net" found in /usr/bin/net
-
-[V] Dependent program "rpcclient" found in /usr/bin/rpcclient
-
-[V] Dependent program "smbclient" found in /usr/bin/smbclient
-
-[V] Dependent program "polenum" found in /usr/bin/polenum
-
-[V] Dependent program "ldapsearch" found in /usr/bin/ldapsearch
-
-Starting enum4linux v0.9.1 ( [http://labs.portcullis.co.uk/application/enum4linux/](http://labs.portcullis.co.uk/application/enum4linux/) ) on Thu Nov  6 02:54:58 2025
-
-=========================================( Target Information )=========================================
-
-Target ........... 172.17.0.2
-
-RID Range ........ 500-550,1000-1050
-Username ......... ''
-Password ......... ''
-Known Usernames .. administrator, guest, krbtgt, domain admins, root, bin, none
-
-Attempting to get share list using authentication
+   Attempting to get share list using authentication
 
     Sharename       Type      Comment
     ---------       ----      -------
@@ -237,7 +243,7 @@ Attempting to get share list using authentication
     ADMIN$          IPC       IPC Service (metasploitable server (Samba 3.0.20-Debian))
 
 
-Reconnecting with SMB1 for workgroup listing.
+   Reconnecting with SMB1 for workgroup listing.
 
     Server               Comment
     ---------            -------
@@ -246,11 +252,11 @@ Reconnecting with SMB1 for workgroup listing.
     ---------            -------
     WORKGROUP            METASPLOITABLE
 
- ```
+    ```
 
 6. in the Share files enumeration section I observed that there are 5 file shares are present and there are 3 hidden shares (denoted by $ at the end of the name.)
 
-   Further more if the penetration testers have yet not obtained any known username/password and they want to achieve it by brute forcing they can do so by knowing the password policies used.
+   Further more if the penetration testers have yet not obtained any known username/password and they want to achieve it by brute forcing they can do so by knowing the password policies      used.
 
 7. Type in the command 
     ```shell
@@ -280,11 +286,14 @@ Smbclient is a component of Samba that can store and retrieve files, similar to 
     ![Screenshot 2025-11-06 at 4.38.18 PM.png](/assets/img/SMB-Lab-Photos/Screenshot_2025-11-06_at_4.38.18_PM.png)
 
 4. From the result the “tmp” file share will be used in the experiment for demonstration purposes
-2. Type in the command “**smbclient //172.17.0.2/tmp**” and press ENTER when asked for the password.
-3. Observed that the prompt changed to smb: \> 
-4. Type in the help command to see which commands are available.
-5. Type in the “dir” command to display the list of files which are available.
-6. Upload the **badfile**.**txt** to the target server using the **put** command. The syntax for the command is:
+5. Type in the following command
+   ```shell
+   smbclient //172.17.0.2/tmp
+   ```
+6. Observed that the prompt changed to smb: \> 
+7. Type in the help command to see which commands are available.
+8. Type in the “dir” command to display the list of files which are available.
+9. Upload the **badfile**.**txt** to the target server using the **put** command. The syntax for the command is:
 
    ```
    put local-file-name remote-file-name
@@ -292,15 +301,15 @@ Smbclient is a component of Samba that can store and retrieve files, similar to 
    Putting file badfile.txt as badfile.txt (19.5 kb/s) (average 19.5 kb/s)
    ```
 
-7. Finally verify the file has been uploaded by typing in the “dir” command.
+10. Finally verify the file has been uploaded by typing in the “dir” command.
 
     ![Screenshot 2025-11-06 at 4.42.40 PM.png](/assets/img/SMB-Lab-Photos/Screenshot_2025-11-06_at_4.42.40_PM.png)
 
-8. Type “quit” to exit from the prompt.
+11. Type “quit” to exit from the prompt.
+
+--- 
 
 # Results
-
----
 
 Lab target: `172.17.0.2` (isolated VM). Key findings from enumeration and manual verification:
 
@@ -321,7 +330,6 @@ Lab target: `172.17.0.2` (isolated VM). Key findings from enumeration and manual
         ```
         smbclient //172.17.0.2/tmp -N
         smb: \> put badfile.txt badfile.txt
-        
         ```
         
     - Verified presence via `dir` at the `smbclient` prompt.
@@ -330,9 +338,8 @@ Lab target: `172.17.0.2` (isolated VM). Key findings from enumeration and manual
 
 Overall severity in this lab: **Medium–High** (anonymous enumeration + writable share), depending on presence of sensitive files and network exposure.
 
+--- 
 # Learnings
-
----
 
 - Understood how **NetBIOS**, **LLMNR**, and **DNS** contribute to SMB name resolution and host identification.
 - Learned to use the **`enum4linux`** tool effectively for enumerating SMB services, users, groups, and shares.
