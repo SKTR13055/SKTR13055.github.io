@@ -67,7 +67,7 @@ Common Vulnerabilities
 - Most of the workgroup names are kept as the default name (WORKGROUP) and weak credentials often left unchanged
 - Attackers can list out machines and brute force passwords easily.
 
-# Practical Procedure
+Practical Procedure
 --- 
 
 <aside>
@@ -76,8 +76,8 @@ Common Vulnerabilities
 </aside>
 
 
-
- ## Topology
+Topology
+---
 
    ![Credit: Cisco.com](/assets/img/SMB-Lab-Photos/Screenshot_2025-11-06_at_2.11.40_PM.png)
 
@@ -154,7 +154,7 @@ UDP 138           NetBIOS Datagram
  - **G -** get a list of the groups and their members
  - **P -** list the password policies
  - **i** - get a list of printers
-4. Type in the following commandto find the configured users.
+4. Type in the following command to find the configured users.
 
 
         enum4linux -U 172.17.0.2
@@ -310,9 +310,9 @@ Smbclient is a component of Samba that can store and retrieve files, similar to 
 
 11. Type “quit” to exit from the prompt.
 
---- 
 
-# Results
+Results
+--- 
 
 Lab target: `172.17.0.2` (isolated VM). Key findings from enumeration and manual verification:
 
@@ -341,8 +341,8 @@ Lab target: `172.17.0.2` (isolated VM). Key findings from enumeration and manual
 
 Overall severity in this lab: **Medium–High** (anonymous enumeration + writable share), depending on presence of sensitive files and network exposure.
 
---- 
-# Learnings
+Learnings
+---
 
 - Understood how **NetBIOS**, **LLMNR**, and **DNS** contribute to SMB name resolution and host identification.
 - Learned to use the **`enum4linux`** tool effectively for enumerating SMB services, users, groups, and shares.
