@@ -27,8 +27,6 @@ The Aim is to scan for SMB vulnerabilities using enum4linux.
 
 # Theory
 
----
-
 NetBIOS is one of the important part of the networking, operating systems and applications. There are various name resolution such as DNS(Domain Name System), NetBIOS(Network Basic Input/Output) and LLMNR( Link-Local Multicast Name Resolution)
 
 The NetBIOS and LLMNR are basically used in Windows Operating System for the host identification, The LLMNR is based on the DNS format, which allows for local-link name resolution without the need for a particular DNS server.
@@ -58,22 +56,26 @@ UDP - 138 NetBIOS-DGS
 TCP -  139 NetBIOS SSN
 
 TCP - 445 SMB (file Sharing)
-
+--- 
 ### Common Vulnerabilities
 
 - Most of the workgroup names are kept as the default name (WORKGROUP) and weak credentials often left unchanged
 - Attackers can list out machines and brute force passwords easily.
-
+--- 
 # Practical Procedure
 
 <aside>
-⚠️ **This Lab is done for Educational Purposes and not to be performed for illegal activities**.
+⚠️ **This Lab is done for Educational Purposes and not to be performed for illegal activities** 
 
 </aside>
 
-## Topology
+
+
+ ## Topology
 
    ![Credit: Cisco.com](/assets/img/SMB-Lab-Photos/Screenshot_2025-11-06_at_2.11.40_PM.png)
+
+
 
 ### Part 1: Launching Enum4linux and exploring its capabilities
 
@@ -147,14 +149,10 @@ UDP 138           NetBIOS Datagram
  - **P -** list the password policies
  - **i** - get a list of printers
 4. Type in the following commandto find the configured users.
-       ```shell
+
+
         enum4linux -U 172.17.0.2
-       ```
-
-
-
-      ```
-
+   
        Starting enum4linux v0.9.1
 
        =========================================( Target Information )=========================================
@@ -194,12 +192,11 @@ UDP 138           NetBIOS Datagram
        index: 0x9 RID: 0x3fa acb: 0x00000011 Account: news     Name: news      Desc: (null)
        …redacted…
        enum4linux complete on Thu Nov  6 02:45:47 2025
-
        ```
 
-  “Enum4linux” aggregates output from multiple Samba tools to produce a concise result, if you want to know how each feature is used you can use the “**-v(verbose)**” option to include       with it.
+       “Enum4linux” aggregates output from multiple Samba tools to produce a concise result, if you want to know how each feature is used you can use the “**-v(verbose)**” option to include with it.
 
-   for example lets use the list of files shares on the target.
+       For example lets use the list of files shares on the target.
 
 5. Type in the following command
 
