@@ -7,15 +7,18 @@ image:
   path: /assets/img/headers/SMB-Banner.png
 ---
 
-## Summary
+ Summary
+--- 
 
 Practical assessment of SMB (Server Message Block) exposure using `nmap`, `enum4linux`, and `smbclient` to discover SMB services, enumerate users/shares, and demonstrate file transfer to a writable share in a controlled lab.
 
-# Aim
+Aim
+--- 
 
 The Aim is to scan for SMB vulnerabilities using enum4linux.
 
-# Objective
+Objective
+--- 
 
 **Learning objective**
 
@@ -25,7 +28,8 @@ The Aim is to scan for SMB vulnerabilities using enum4linux.
 - Use enum4linux to enumerate users and network file shares.
 - Use smbclient to transfer files between systems.
 
-# Theory
+Theory
+--- 
 
 NetBIOS is one of the important part of the networking, operating systems and applications. There are various name resolution such as DNS(Domain Name System), NetBIOS(Network Basic Input/Output) and LLMNR( Link-Local Multicast Name Resolution)
 
@@ -56,13 +60,15 @@ UDP - 138 NetBIOS-DGS
 TCP -  139 NetBIOS SSN
 
 TCP - 445 SMB (file Sharing)
+
+Common Vulnerabilities
 --- 
-### Common Vulnerabilities
 
 - Most of the workgroup names are kept as the default name (WORKGROUP) and weak credentials often left unchanged
 - Attackers can list out machines and brute force passwords easily.
---- 
+
 # Practical Procedure
+--- 
 
 <aside>
 ⚠️ **This Lab is done for Educational Purposes and not to be performed for illegal activities** 
