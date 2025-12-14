@@ -2,12 +2,11 @@
 title: "PicoCTF – Crack The Gate 1"
 date: 2025-12-08 12:00:00 +0530
 categories: [PicoCTF,Web Exploitation]
-tags: [forensics,exiftool,hidden_pdf,metadata,picoctf]
+tags: [webexploitation,burpsuite,base64,cryptography,caesarcipher]
 image:
   path: /assets/img/headers/picoctf-banner.jpg
   alt: PicoCTF Banner
 ---
-/assets/img/Crack-the-Gate-1-Photos
 
 # Crack the Gate 1
 
@@ -51,11 +50,11 @@ Process
 
 7. After Opening and Capturing the request and inserting the “X-Dev-Access” as yes and sending it I got the response as “200 OK” which gave the flag.
 
-<aside>
+```
 
 Flag: picoCTF{brut4_f0rc4_cbb8faa7}
 
-</aside>
+```
 
 Conclusion:
 --- 
