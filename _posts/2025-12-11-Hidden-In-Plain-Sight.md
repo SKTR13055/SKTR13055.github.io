@@ -40,7 +40,6 @@ Process
     ```bash
     #Decoded Information
     steghide:cEF6endvcmQ=
-
     ```
 
 6. This reveals additional clue which is the password for steghide (A tool for steganography) with the password which is again encoded in “base64”.
