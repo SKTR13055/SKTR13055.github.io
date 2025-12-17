@@ -63,11 +63,11 @@ Process
 9. Now the file type displays a “JPEG” file which is an image file.
 10. Using the “xdg” command to display the image.
 
-    ```bash
-    xdg-open file # -> thats the file name you can rename it to file.jpg
-    ```
+        ```bash
+        xdg-open file # -> thats the file name you can rename it to file.jpg
+        ```
 
-   ![Screenshot 2025-12-17 at 7.14.46 PM.png](/assets/img/Corrupted-file-Photos/ce069b67-cf9f-42dd-a38a-cdc83d0b3a2a.png)
+       ![Screenshot 2025-12-17 at 7.14.46 PM.png](/assets/img/Corrupted-file-Photos/ce069b67-cf9f-42dd-a38a-cdc83d0b3a2a.png)
 
 11. Finally the flag has been revealed.
 
