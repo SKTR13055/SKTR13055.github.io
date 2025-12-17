@@ -1,6 +1,6 @@
 ---
 title: "PicoCTF – Corrupted File"
-date: 2025-12-08 20:20:00 +0530
+date: 2025-12-17 20:20:00 +0530
 categories: [PicoCTF,Forensics]
 tags: [forensics,xxd,magic_bytes,hex_values,xdg,hexedit]
 image:
