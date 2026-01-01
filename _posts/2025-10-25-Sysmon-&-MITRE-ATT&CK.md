@@ -9,33 +9,30 @@ image:
 ---
 # Sysmon & MITRE ATT&CK
 
-# Summary
+Summary
+---
 
 Successful beginner-level endpoint detection lab. Demonstrated installing and using Sysmon (and fallback to native Windows auditing where necessary), generating benign PowerShell activity, locating and extracting telemetry in Event Viewer, mapping the activity to MITRE ATT&CK (T1059.001), and verifying service management. Next steps: add logging ingestion to a SIEM (Kibana/Splunk), craft Sigma rules, and run a small set of additional ATT&CK-mapped experiments
 
-# Aim of the Experiment
-
+Aim of the Experiment
 ---
 
 To map a Cyber attack to the MITRE ATT&CK Matrix.
 
-# Objective
-
+Objective
 ---
 
 **Learning objective**
 
 - To install “Sysmon” tool to detect a cyber attack and then map it to the MITRE ATT&CK Matrix/Framework
 
-# Prerequisites
-
+Prerequisites
 ---
 
 - Windows Operating System (With admin Privileges) ( Windows 10/11)
 - Stable Network Internet Connection.
 
-# Description
-
+Description
 ---
 
 **“Sysmon”** also known as the “SystemMonitor” is a Windows tool from Microsoft SysInternals that records detailed system activity such as process creation, network connections, and file changes. It helps detect and investigate suspicious behavior by providing decent quality logs that can be mapped to MITRE ATT&CK Matrix/Framework,
@@ -44,7 +41,8 @@ To map a Cyber attack to the MITRE ATT&CK Matrix.
 
 # Procedure
 
-## Hypothesis 1:-
+Hypothesis 1
+---
 
 Installing in the Virtual Machine.
 
@@ -56,7 +54,6 @@ Installing in the Virtual Machine.
 4. To install the Sysmon type in the following command “.\Sysmon64.exe -i “   (Where  “i” is install with a config file.).
 5. In Windows VM virtualization security it disabled hence unable to install “sysmon” (using windows 11 latest version)
 
----
 
 error: 
 
@@ -83,7 +80,8 @@ Access is denied.
 
 Sysmon’s driver was blocked due to system protection features, preventing it from starting.)
 
-## Hypotheses 2:
+Hypotheses 2
+---
 
 **Installing sysmon in the original windows desktop**
 
@@ -99,7 +97,7 @@ Sysmon’s driver was blocked due to system protection features, preventing it f
 
 ![image.png](/assets/img/sysmon-detection-lab-photos/image.png)
 
----
+
 
 Other various Events such as.
 
@@ -110,7 +108,6 @@ Other various Events such as.
 
 ***Note:*** For more Events Ids visit the website: [https://learn.microsoft.com/en-us/sysinternals/downloads/sysmon](https://learn.microsoft.com/en-us/sysinternals/downloads/sysmon)
 
----
 
 1. Click on the event which contains the “command”, underneath there will be 2 tabs “General” and “Details”.
 2. I observed the details which includes “Command line”, Rule name, technique name, User, parent Process Guid, Parent Process ID etc.
@@ -119,7 +116,8 @@ Other various Events such as.
 
 ***Conclusion:  Successfully detected the attacked using the sysmon and then diagnose it using the MITRE ATT&CK website.***
 
-### T1059.003- Windows Command Shell
+T1059.003- Windows Command Shell
+---
 
 Technique: **T1059.003 — Windows Command Shell.** In your notes, record: victim ran a Windows Command Line process with suspicious flags (benign in lab), captured in Sysmon Event ID 1, command line visible.
 
@@ -139,7 +137,8 @@ Mitigations For the Attack
 
 Execution Prevention Technique to mitigate the particular attack.
 
-### T1059.001-Power Shell
+T1059.001-Power Shell
+---
 
 Technique: **T1059.001- Power Shell. I**n your notes, record: victim ran a PowerShell process with suspicious flags (benign in lab), captured in Sysmon Event ID 1, command line visible.
 
@@ -156,8 +155,7 @@ Power Shell Command Getting Detected in the Sysmon Tool
 | Execution | Windows Command Execution | T1059.003 |
 | Execution | Power Shell Command Execution | T1059.001 |
 
-### Results
-
+Results
 ---
 
 | S.no | Installing Sysmon | Outcome | Observation/Analysis |
@@ -165,8 +163,8 @@ Power Shell Command Getting Detected in the Sysmon Tool
 | 1. | Virtual machine | Failed | - Sysmon failed to install due to virtualization security restrictions  inside the virtual machine. |
 | 2. | Physical Desktop | Success | - Sysmon was successfully installed and able to detect and log the attack activity. |
 
---- 
-### Learnings
+Learnings
+---
 
 
 - Learned how to install the System monitor(Sysmon) in a windows machine.( ./Sysmon64.exe -i sysmonconfig.xml)
@@ -174,9 +172,10 @@ Power Shell Command Getting Detected in the Sysmon Tool
 - Handled the cyber attack by mapping it to the MITRE ATT&CK Matrix.
 - Check which services are running using the “Services” tool.
 - Able to remove the “Sysmon” tool using the “regedit”(Registry Editor). (You can remove it using ./Sysmon64.exe -u) asvwell.
---- 
 
-### Resources Used
+
+Resources Used
+---
 
 
 1. Sysmon Installation:- [https://learn.microsoft.com/en-us/sysinternals/downloads/sysmon](https://learn.microsoft.com/en-us/sysinternals/downloads/sysmon) (More information about Event IDs)
