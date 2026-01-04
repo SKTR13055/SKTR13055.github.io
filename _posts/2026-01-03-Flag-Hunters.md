@@ -45,7 +45,7 @@ Process
 
     ![Screenshot 2026-01-03 at 7.31.10 PM.png](/assets/img/Flag-Hunters-Photos/Screenshot_2026-01-03_at_7.31.10_PM.png)
 
-  Examining the source code revealed several important behaviors:
+    Examining the source code revealed several important behaviors:
 
 8. At the beginning of the code, there is a **hidden intro section** that reads from `flag.txt`. This section is *not printed during normal execution*.
 
@@ -58,28 +58,28 @@ Process
     - Splits lyric lines using `;`
     - Iterates through them using an instruction pointer.
     - Supports control-flow commands such as `RETURN <number>`
-The most critical discovery was this logic:
+    The most critical discovery was this logic:
 
-    ```python
-    elif re.match(r"RETURN [0-9]+", line):
-    ```
+        ```python
+        elif re.match(r"RETURN [0-9]+", line):
+        ```
 
-  If a `RETURN` instruction is encountered, the program **jumps to a specific instruction index**, similar to a function return or a jump instruction in assembly.
+      If a `RETURN` instruction is encountered, the program **jumps to a specific instruction index**, similar to a function return or a jump instruction in assembly.
 
-  This means:
+      This means:
 
-  If user input contains a valid RETURN instruction, it can redirect execution
+      If user input contains a valid RETURN instruction, it can redirect execution
 10. Re running the program, in order to test my solution.
 
-   ![Screenshot 2026-01-03 at 7.33.06 PM.png](/assets/img/Flag-Hunters-Photos/Screenshot_2026-01-03_at_7.33.06_PM.png)
+       ![Screenshot 2026-01-03 at 7.33.06 PM.png](/assets/img/Flag-Hunters-Photos/Screenshot_2026-01-03_at_7.33.06_PM.png)
 
  
 
-   <aside>
+       <aside>
 
-   Note: The above picture is not the original flag but just the mimic of the original flag
+       Note: The above picture is not the original flag but just the mimic of the original flag
 
-   </aside>
+       </aside>
 
 11. After Running the program, the program revealed the flag ( Not the original flag, just a place holder).
 12. After starting the challenge instance on PicoCTF, I entered the following input when prompted.
