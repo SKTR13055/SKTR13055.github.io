@@ -217,7 +217,7 @@ picoCTF{tw0_1$_pr!m341c6ed35}
 2nd Way
 ---
 
-1. From the given code, The value of N is of 1024 bits, which is vulnerable then from the value of N we factorize it using the “[factordb](http://factordb.com)” website and the values of p and q are as follows.
+1. From the given code, The value of N is of 1024 bits, which is vulnerable then from the value of N we factorize it using the “[factordb](https://factordb.com)” website and the values of p and q are as follows.
 
     ```
     p: 2
