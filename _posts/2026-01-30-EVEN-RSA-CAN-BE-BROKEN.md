@@ -86,12 +86,8 @@ This value represents the number of integers less than n that are coprime to n a
 Choose an integer e such that:
 
 ```
-
 1<e<φ(n)
-
-
 gcd(e,φ(n))=1
-
 ```
 
 This ensures that e is co prime with φ(n)
@@ -99,9 +95,7 @@ This ensures that e is co prime with φ(n)
 Common choices include:
 
 ```
-
 e = 65537
-
 ```
 
 due to its efficiency and strong security properties.
@@ -113,9 +107,7 @@ due to its efficiency and strong security properties.
 The private exponent ddd is computed as the **modular multiplicative inverse** of e modulo 
 
 ```
-
 d≡e^−1(modφ(n))
-
 ```
 
 This means:
@@ -265,36 +257,34 @@ picoCTF{tw0_1$_pr!m341c6ed35}
     
     ```
 
-  - This give the value of d which is
+    - This give the value of d which is
 
-    ```
-    d = 5617843187844953170308463622230283376298685
-    ```
+      ```
+      d = 5617843187844953170308463622230283376298685
+      ```
 
 7. Now Applying the Decryption formula which is
 
-    ```
+      ```
+      m=c^d(modn)
+      ```
 
-    m=c^d(modn)
+      - We can decrypt the message by using this code
 
-   ```
+      ```python
+      from Crypto.Util.number import long_to_bytes
 
-    - We can decrypt the message by using this code
+      c = 11592086696783413111647889172801291397383557852015043536130425991638078723238054446356735964903847678064403422154004203233372810065628290565664257767342215
+      N = 17102525859120144002416542651391278337140077040833275221843824772555934230636354679425796336559609274359684076986516005760992508978915197682762402821578754
+      d = 5617843187844953170308463622230283376298685
 
-    ```python
-    from Crypto.Util.number import long_to_bytes
+      # Decrypt
+      m = pow(c, d, N)
 
-    c = 11592086696783413111647889172801291397383557852015043536130425991638078723238054446356735964903847678064403422154004203233372810065628290565664257767342215
-    N = 17102525859120144002416542651391278337140077040833275221843824772555934230636354679425796336559609274359684076986516005760992508978915197682762402821578754
-    d = 5617843187844953170308463622230283376298685
+      # Convert integer to bytes safely
+      print(long_to_bytes(m).decode())
 
-    # Decrypt
-    m = pow(c, d, N)
-
-    # Convert integer to bytes safely
-    print(long_to_bytes(m).decode())
-
-    ```
+      ```
 
 8. Finally the flag the has been revealed from the code.
 
@@ -314,4 +304,4 @@ Takeaway
 - **Even one weak prime (like p = 2) destroys RSA security entirely.**
 - Cryptography is only as strong as its implementation and parameter choices.
 
-Thank you for taking the time to read this write-up. I hope this walkthrough was helpful in understanding both how RSA works internally and how poor parameter choices can completely break its security. Happy hacking and learning!
+Thank you for taking the time to read this write-up. I hope this walkthrough was helpful in understanding both how RSA works internally and how poor parameter choices can completely break its security. Happy learning!
