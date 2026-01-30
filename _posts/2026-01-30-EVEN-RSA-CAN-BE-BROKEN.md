@@ -43,13 +43,13 @@ Theory
 
 Two large prime numbers are chosen:
 
-<aside>
+```
 
 p = A large prime number
 
 q = A large Prime number
 
-</aside>
+```
 
 These primes must be kept **secret** and are randomly generated to ensure security.
 
@@ -59,11 +59,10 @@ These primes must be kept **secret** and are randomly generated to ensure securi
 
 The modulus n is computed as:
 
-<aside>
 
+```
 n = p x q
-
-</aside>
+```
 
 The modulus nnn determines the key size (e.g., 2048-bit, 3072-bit) and is shared in both the public and private keys.
 
@@ -73,11 +72,10 @@ The modulus nnn determines the key size (e.g., 2048-bit, 3072-bit) and is shared
 
 Compute:
 
-<aside>
 
+```
 φ(n)=(p−1)(q−1)
-
-</aside>
+```
 
 This value represents the number of integers less than n that are coprime to n and is used to derive the private key.
 
@@ -87,27 +85,24 @@ This value represents the number of integers less than n that are coprime to n a
 
 Choose an integer e such that:
 
-<aside>
+```
 
 1<e<φ(n)
 
-</aside>
-
-<aside>
 
 gcd(e,φ(n))=1
 
-</aside>
+```
 
 This ensures that e is co prime with φ(n)
 
 Common choices include:
 
-<aside>
+```
 
 e = 65537
 
-</aside>
+```
 
 due to its efficiency and strong security properties.
 
@@ -117,19 +112,17 @@ due to its efficiency and strong security properties.
 
 The private exponent ddd is computed as the **modular multiplicative inverse** of e modulo 
 
-<aside>
+```
 
 d≡e^−1(modφ(n))
 
-</aside>
+```
 
 This means:
 
-<aside>
-
+```
 e⋅d≡1 (mod φ(n))
-
-</aside>
+```
 
 ---
 
@@ -137,19 +130,15 @@ e⋅d≡1 (mod φ(n))
 
 - **Public Key**:
 
-<aside>
-
+```
 Public Key=(n,e)
-
-</aside>
+```
 
 - **Private Key**:
 
-<aside>
-
+```
 Private Key=(n,d)
-
-</aside>
+```
 
 The private key implicitly depends on the secret values p and q. Disclosure of these primes allows an attacker to compute d, breaking the system.
 
@@ -159,19 +148,15 @@ The private key implicitly depends on the secret values p and q. Disclosure of t
 
  **Encryption** of a plaintext message m (where 0 ≤ m <n ):
 
-<aside>
-
+```
 c=m^e(modn)
-
-</aside>
+```
 
 - **Decryption** of ciphertext c:
 
-<aside>
-
+```
 m=c^d(modn)
-
-</aside>
+```
 
 ---
 
@@ -207,7 +192,7 @@ Process
 2. In the website insert the values which were given in the terminal.
 3. After giving all the values, the flag will be revealed on the “left side”.
 
-![Screenshot 2026-01-08 at 7.18.30 PM.png](/assets/img/EVEN_RSA_CAN_BE_BROKEN_Photos/Screenshot_2026-01-08_at_7.18.30_PM.png)
+    ![Screenshot 2026-01-08 at 7.18.30 PM.png](/assets/img/EVEN_RSA_CAN_BE_BROKEN_Photos/Screenshot_2026-01-08_at_7.18.30_PM.png)
 
 4. Final Flag
 ```
@@ -227,8 +212,7 @@ picoCTF{tw0_1$_pr!m341c6ed35}
 
 2. Now after getting the values of p and q we use the “Euler Totient” to get the value of phi(N) which is required to get the value of “d”.
 
-    <aside>
-
+   ```
     Getting the Value of  φ(n)
 
     ---
@@ -240,8 +224,7 @@ picoCTF{tw0_1$_pr!m341c6ed35}
     φ(n) = 1 x 8551262929560072001208271325695639168570038520416637610921912386277967115318177339712898168279804637179842038493258002880496254489457598841381201410789376
 
     φ(n) = 855126292956…  → Value of φ(n)
-
-    </aside>
+   ```
 
 3. Now the known values are “e” and “φ(n)” which can be used to calculate the value of “d” in the following formula
 
@@ -253,7 +236,7 @@ picoCTF{tw0_1$_pr!m341c6ed35}
 
 5. To find a modular inverse, we use the **Extended Euclidean Algorithm**, which finds integers x,y, such that:
 
-    <aside>
+   ```
 
     Extended Euclidean Algorithm (Theoritcally)
 
@@ -267,7 +250,7 @@ picoCTF{tw0_1$_pr!m341c6ed35}
 
     the value of x  mod  φ(N) is your **`d`**.
 
-    </aside>
+   ```
 
 6. Since doing this “theoretically” is quite difficult I created program to calculate the value of d.
 
@@ -290,11 +273,11 @@ picoCTF{tw0_1$_pr!m341c6ed35}
 
 7. Now Applying the Decryption formula which is
 
-    <aside>
+    ```
 
     m=c^d(modn)
 
-    </aside>
+   ```
 
     - We can decrypt the message by using this code
 
