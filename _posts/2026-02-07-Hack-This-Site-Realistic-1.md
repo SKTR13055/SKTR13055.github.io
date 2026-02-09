@@ -5,7 +5,7 @@ categories: [HackThisSite]
 tags: [Burpsuite,WebExploitation,Burpsuite_Repeater,Insecure_Design]
 image:
   path: /assets/img/headers/Hack-this-site-Realistic-1-Banner.png
-  alt: HackThisSite Banner
+  alt: HackThisSite-Realistic-1-Banner
 ---
 
 # Hack This Site - Realistic 1
