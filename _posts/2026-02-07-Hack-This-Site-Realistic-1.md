@@ -4,7 +4,7 @@ date: 2026-02-07 13:20:00 +0530
 categories: [HackThisSite]
 tags: [Burpsuite,WebExploitation,Burpsuite_Repeater,Insecure_Design]
 image:
-  path: /assets/img/headers/Hack-this-site-Realistic-1-Banner.png
+  path: /assets/img/headers/Hack-This-Site-Realistic-1-Banner.png
   alt: HackThisSite-Realistic-1-Banner
 ---
 
