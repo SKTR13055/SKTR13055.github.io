@@ -1,7 +1,7 @@
 ---
 title: "HackThisSite – Realistic 1"
 date: 2026-02-07 13:20:00 +0530
-categories: [HackThisSite]
+categories: [HackThisSite,Realistic]
 tags: [Burpsuite,WebExploitation,Burpsuite_Repeater,Insecure_Design]
 image:
   path: /assets/img/headers/Hack-This-Site-Realistic-1-Banner.png
