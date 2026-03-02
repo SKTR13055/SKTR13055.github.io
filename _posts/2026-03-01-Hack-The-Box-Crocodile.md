@@ -13,6 +13,7 @@ image:
 Machine : Linux
 
 Process
+---
 
 1. After launching the machine, I first verified that it was active by pinging the target IP address to confirm connectivity
 2. Next, I performed a port scan using **Nmap** to identify open ports:
