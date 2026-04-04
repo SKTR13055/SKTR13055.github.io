@@ -15,19 +15,19 @@ image:
 
 > Note: Some techniques may overlap across tactics depending on attacker intent and environment context.
 
-🎯 Why This Lab Matters
+Why This Lab Matters
 ---
 
 This lab demonstrates how weak credentials and exposed RDP services can lead to full system compromise. It highlights the importance of monitoring authentication logs and implementing strong access controls in enterprise environments.
 
-📌 Incident Summary
+Incident Summary
 ---
 
 A brute force attack was detected targeting a Windows host over RDP (port 3389). The attacker attempted multiple failed logins using different usernames and successfully compromised a valid account (`Matthew`). Post-compromise, the attacker executed enumeration commands to assess privileges.
 
 
 
-🕒 Timeline of Events
+Timeline of Events
 ---
 
 - **Mar 07, 2024 – 11:44 AM**
@@ -54,10 +54,10 @@ A brute force attack was detected targeting a Windows host over RDP (port 3389).
     
 
 
-🎯 Attack Details
+Attack Details
 ---
 
-### 🔍 Indicators of Compromise (IOCs)
+### Indicators of Compromise (IOCs)
 
 - **Source IP:** `218.92.0.56`
 - **Destination IP:** `172.16.17.148`
@@ -67,11 +67,11 @@ A brute force attack was detected targeting a Windows host over RDP (port 3389).
     - 4624 – Successful login
 
 
-## 🌐 Threat Intelligence
+##  Threat Intelligence
 
 The attacker IP (`218.92.0.56`) was analyzed using multiple threat intelligence platforms:
 
-### 🔍 Sources Checked
+###  Sources Checked
 
 - VirusTotal
     
@@ -87,7 +87,7 @@ The attacker IP (`218.92.0.56`) was analyzed using multiple threat intelligence 
 
 
 
- Results
+Results
 ---
 
 | Attribute | Value |
@@ -106,7 +106,7 @@ Conclusion:
 **The attacker IP is highly malicious and associated with repeated malicious activity**
 
 
-📊 Traffic Analysis
+Traffic Analysis
 ---
 
 - Repeated RDP login attempts observed from attacker IP
@@ -118,10 +118,10 @@ Conclusion:
 
 
 
- ⚠️ Attack Outcome
+ Attack Outcome
  ---
 
-✅ **Brute force attack was successful**
+**Brute force attack was successful**
 
 Evidence:
 
@@ -132,7 +132,7 @@ Evidence:
 
 ---
 
-🖥️ Post-Exploitation Activity
+Post-Exploitation Activity
 ---
 
 The attacker performed local enumeration:
@@ -158,7 +158,7 @@ The attacker performed **account and privilege enumeration**, likely preparing f
 
 ---
 
-🔐 Root Cause
+Root Cause
 ---
 
 - Weak or easily guessable password for user `Matthew`
@@ -167,17 +167,17 @@ The attacker performed **account and privilege enumeration**, likely preparing f
 
 
 
-🛡️ Response Actions Taken
+Response Actions Taken
 ---
 
-- ✅ Identified malicious external IP
-- ✅ Confirmed successful compromise
-- ✅ Analyzed logs (Event IDs 4624 & 4625)
-- ✅ Contained the affected endpoint via EDR
-- ✅ Investigated attacker activity
+-  Identified malicious external IP
+-  Confirmed successful compromise
+-  Analyzed logs (Event IDs 4624 & 4625)
+-  Contained the affected endpoint via EDR
+-  Investigated attacker activity
 
 
-🚧 Containment & Remediation
+Containment & Remediation
 ---
 
 ### Immediate Actions:
@@ -194,10 +194,9 @@ The attacker performed **account and privilege enumeration**, likely preparing f
 - Enable Multi-Factor Authentication (MFA)
 - Monitor login anomalies
 
----
 
- 🔁 Lessons Learned
- ---
+Lessons Learned
+---
 
 ### What Happened?
 
@@ -215,7 +214,7 @@ The attacker gained access via brute force due to weak credentials.
 - Lack of account lockout controls
 
 
- 🔎 Future Detection Recommendations
+Future Detection Recommendations
 ---
 
 Monitor for:
@@ -227,22 +226,26 @@ Monitor for:
 - Unusual external IP connections
 
 
-![Screenshot 2026-04-04 at 2.53.11 PM.png](assets/img/Lets-Defend-SOC-Photos-234/Screenshot_2026-04-04_at_2.53.11_PM.png)
+![Screenshot 2026-04-04 at 2.53.11 PM.png](/assets/img/Lets-Defend-SOC-Photos-234/Screenshot_2026-04-04_at_2.53.11_PM.png)
 
-📌 Final Verdict
+Final Verdict
 ---
 
 This incident is classified as a **successful brute force attack with post-compromise enumeration activity**. Immediate remediation and stronger access controls are required to prevent recurrence, particularly securing RDP access and enforcing strong authentication policies.
 
 
-| Tactic | Technique ID | Technique Name | Description |
-| --- | --- | --- | --- |
-| Initial Access | T1110 | Brute Force | Attacker performed multiple login attempts over RDP using different usernames and passwords. |
-| Execution | T1059 | Command-Line Interface | Attacker used command prompt to execute system commands after gaining access. |
-| Persistence | T1078 | Valid Accounts | Legitimate credentials (`Matthew`) were used to maintain access. |
-| Privilege Escalation | T1069.001 | Permission Groups Discovery (Local) | `net localgroup administrators` used to identify admin users. |
-| Discovery | T1087 | Account Discovery | Attacker attempted to identify valid accounts through login attempts and commands. |
-| Lateral Movement | T1021.001 | Remote Services (RDP) | RDP was used as the primary method of access and potential movement. |
+
+MITRE ATT&CK MAPPED TABLE
+---
+| Tactic         | Technique ID | Technique Name              | Description                        |
+| -------------- | ------------ | --------------------------- | ---------------------------------- |
+| Initial Access | T1110.001    | Brute Force                 | Multiple login attempts over RDP   |
+| Initial Access | T1078        | Valid Accounts              | Compromise using valid credentials |
+| Initial Access | T1021.001    | Remote Services (RDP)       | RDP used to access system          |
+| Execution      | T1059        | Command-Line Interface      | Commands executed post-login       |
+| Discovery      | T1087        | Account Discovery           | `net user letsdefend`              |
+| Discovery      | T1069.001    | Permission Groups Discovery | `net localgroup administrators`    |
+
 
 This incident covers multiple stages of the attack lifecycle, including:
 
@@ -255,7 +258,7 @@ This incident covers multiple stages of the attack lifecycle, including:
 This demonstrates how a single weak point (RDP exposure + weak password) can lead to full attack chain execution.
 
 
-## 🧩 Skills Demonstrated
+## Skills Demonstrated
 ---
 
 - Log Analysis (Windows Event Logs)
