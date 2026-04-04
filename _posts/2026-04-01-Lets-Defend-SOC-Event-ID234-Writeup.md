@@ -1,20 +1,34 @@
+---
+title: "Lets Defend - SOC Event ID 234"
+date: 2026-03-01 13:20:00 +0530
+categories: [LetsDefend,SOC]
+tags: [LetsDefend,SOC,Security_Analyst,Triage,EventID_234]
+image:
+  path: /assets/img/headers/Lets_defend_Banner.avif
+  alt: Lets-Defend-Banner
+---
+
+
 # 🚨 SOC Incident Report – Brute Force Attack (Event ID 234)
 
 > ⚡ Hands-on SOC investigation involving brute force detection, threat intelligence correlation, and MITRE ATT&CK mapping.
 
 > Note: Some techniques may overlap across tactics depending on attacker intent and environment context.
 
-## 🎯 Why This Project Matters
+🎯 Why This Lab Matters
+---
 
-This project demonstrates how weak credentials and exposed RDP services can lead to full system compromise. It highlights the importance of monitoring authentication logs and implementing strong access controls in enterprise environments.
+This lab demonstrates how weak credentials and exposed RDP services can lead to full system compromise. It highlights the importance of monitoring authentication logs and implementing strong access controls in enterprise environments.
 
-## 📌 Incident Summary
+📌 Incident Summary
+---
 
 A brute force attack was detected targeting a Windows host over RDP (port 3389). The attacker attempted multiple failed logins using different usernames and successfully compromised a valid account (`Matthew`). Post-compromise, the attacker executed enumeration commands to assess privileges.
 
----
 
-## 🕒 Timeline of Events
+
+🕒 Timeline of Events
+---
 
 - **Mar 07, 2024 – 11:44 AM**
     - Multiple failed login attempts detected (**Event ID 4625**)
@@ -39,9 +53,9 @@ A brute force attack was detected targeting a Windows host over RDP (port 3389).
     ![Screenshot 2026-04-04 at 1.41.41 PM.png](/assets/img/Lets-Defend-SOC-Photos-234/Screenshot_2026-04-04_at_1.41.41_PM.png)
     
 
----
 
-## 🎯 Attack Details
+🎯 Attack Details
+---
 
 ### 🔍 Indicators of Compromise (IOCs)
 
@@ -52,7 +66,6 @@ A brute force attack was detected targeting a Windows host over RDP (port 3389).
     - 4625 – Failed logins
     - 4624 – Successful login
 
----
 
 ## 🌐 Threat Intelligence
 
@@ -72,9 +85,10 @@ The attacker IP (`218.92.0.56`) was analyzed using multiple threat intelligence 
 
 ![Screenshot 2026-04-04 at 4.03.51 PM.png](/assets/img/Lets-Defend-SOC-Photos-234/Screenshot_2026-04-04_at_4.03.51_PM.png)
 
----
 
-### Results
+
+ Results
+---
 
 | Attribute | Value |
 | --- | --- |
@@ -86,13 +100,14 @@ The attacker IP (`218.92.0.56`) was analyzed using multiple threat intelligence 
 | Detection Ratio | 10/94 (VirusTotal) |
 | Verdict | Malicious |
 
-### Conclusion:
+Conclusion:
+---
 
 **The attacker IP is highly malicious and associated with repeated malicious activity**
 
----
 
-## 📊 Traffic Analysis
+📊 Traffic Analysis
+---
 
 - Repeated RDP login attempts observed from attacker IP
 - No SSH activity detected
@@ -101,9 +116,10 @@ The attacker IP (`218.92.0.56`) was analyzed using multiple threat intelligence 
 
 - Attack focused solely on RDP service (port 3389)
 
----
 
-## ⚠️ Attack Outcome
+
+ ⚠️ Attack Outcome
+ ---
 
 ✅ **Brute force attack was successful**
 
@@ -116,7 +132,8 @@ Evidence:
 
 ---
 
-## 🖥️ Post-Exploitation Activity
+🖥️ Post-Exploitation Activity
+---
 
 The attacker performed local enumeration:
 
@@ -141,15 +158,17 @@ The attacker performed **account and privilege enumeration**, likely preparing f
 
 ---
 
-## 🔐 Root Cause
+🔐 Root Cause
+---
 
 - Weak or easily guessable password for user `Matthew`
 - No account lockout policy enforced
 - RDP exposed to external network
 
----
 
-## 🛡️ Response Actions Taken
+
+🛡️ Response Actions Taken
+---
 
 - ✅ Identified malicious external IP
 - ✅ Confirmed successful compromise
@@ -157,9 +176,9 @@ The attacker performed **account and privilege enumeration**, likely preparing f
 - ✅ Contained the affected endpoint via EDR
 - ✅ Investigated attacker activity
 
----
 
-## 🚧 Containment & Remediation
+🚧 Containment & Remediation
+---
 
 ### Immediate Actions:
 
@@ -177,7 +196,8 @@ The attacker performed **account and privilege enumeration**, likely preparing f
 
 ---
 
-## 🔁 Lessons Learned
+ 🔁 Lessons Learned
+ ---
 
 ### What Happened?
 
@@ -194,9 +214,9 @@ The attacker gained access via brute force due to weak credentials.
 - Exposure of RDP to internet
 - Lack of account lockout controls
 
----
 
-## 🔎 Future Detection Recommendations
+ 🔎 Future Detection Recommendations
+---
 
 Monitor for:
 
@@ -206,15 +226,14 @@ Monitor for:
 - Suspicious command execution (`net localgroup`)
 - Unusual external IP connections
 
----
 
 ![Screenshot 2026-04-04 at 2.53.11 PM.png](assets/img/Lets-Defend-SOC-Photos-234/Screenshot_2026-04-04_at_2.53.11_PM.png)
 
-## 📌 Final Verdict
+📌 Final Verdict
+---
 
 This incident is classified as a **successful brute force attack with post-compromise enumeration activity**. Immediate remediation and stronger access controls are required to prevent recurrence, particularly securing RDP access and enforcing strong authentication policies.
 
----
 
 | Tactic | Technique ID | Technique Name | Description |
 | --- | --- | --- | --- |
@@ -235,9 +254,9 @@ This incident covers multiple stages of the attack lifecycle, including:
 
 This demonstrates how a single weak point (RDP exposure + weak password) can lead to full attack chain execution.
 
----
 
 ## 🧩 Skills Demonstrated
+---
 
 - Log Analysis (Windows Event Logs)
 - Brute Force Detection
