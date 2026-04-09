@@ -1,6 +1,6 @@
 ---
 title: "Lets Defend - SOC Event ID 234"
-date: 2026-03-01 13:20:00 +0530
+date: 2026-04-01 13:20:00 +0530
 categories: [LetsDefend,SOC]
 tags: [LetsDefend,SOC,Security_Analyst,Triage,EventID_234]
 image:
