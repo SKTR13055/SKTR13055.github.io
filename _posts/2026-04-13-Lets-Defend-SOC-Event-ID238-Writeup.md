@@ -5,7 +5,7 @@ categories: [LetsDefend,SOC]
 tags: [LetsDefend,SOC,Security_Analyst,Triage,EventID_238,PowerShell_Script,MITRE]
 image:
   path: /assets/img/headers/Lets_defend_Banner.avif
-  alt: Lets-Defend-Banner
+  alt: Lets-Defend
 ---
 
 # SOC153 -Suspicious Powershell Script Executed -Malware
