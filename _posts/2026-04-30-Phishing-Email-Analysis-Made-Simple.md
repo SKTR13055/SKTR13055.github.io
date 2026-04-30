@@ -410,7 +410,7 @@ If you found this useful, feel free to share it with others—spreading awarenes
 If you're interested in cybersecurity, SOC analysis, or hands-on learning like this, let’s connect!
 
 👉 Follow me on LinkedIn for more content, practical guides, and insights:  
-[LinkedIn Profile](www.linkedin.com/in/sktr13055)
+[LinkedIn Profile](https://www.linkedin.com/in/sktr13055)
 
 I share learning resources, project experiences, and cybersecurity concepts explained in a simple way.
 
