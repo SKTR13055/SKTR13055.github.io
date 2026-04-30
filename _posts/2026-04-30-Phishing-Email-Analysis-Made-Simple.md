@@ -296,13 +296,13 @@ Together, they create a strong defense against phishing.
 
 If you want to go a step further, these tools can help verify suspicious emails safely:
 
-### **1. [MXToolbox](http://www.mxtoolbox.com)**
+### **1. [MXToolbox](https://www.mxtoolbox.com)**
 
 Check SPF, DKIM, DMARC records and analyze domains.
 
 ---
 
-### **2. [VirusTotal](http://Virustotal.com)**
+### **2. [VirusTotal](https://Virustotal.com)**
 
 Scan links, files, and IP addresses using multiple security engines.
 
@@ -314,7 +314,7 @@ Identify whether an IP address is associated with malicious activity.
 
 ---
 
-### **4. [URLScan.io](http://URLScan.io)**
+### **4. [URLScan.io](https://URLScan.io)**
 
 Analyze suspicious websites and observe their behavior safely.
 
