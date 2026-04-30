@@ -394,3 +394,25 @@ Be direct here—this is where many guides fall short.
     - Financial transactions
 
 Scan links, files, and IP addresses using multiple security engines.
+
+---
+
+## Thank You for Reading 🙌
+
+Thank you for taking the time to read this guide on phishing email analysis. I hope it helped you understand both the technical and non-technical ways to identify and defend against phishing attacks.
+
+If you found this useful, feel free to share it with others—spreading awareness is one of the strongest defenses we have against cyber threats.
+
+---
+
+## Let’s Connect on LinkedIn 🔗
+
+If you're interested in cybersecurity, SOC analysis, or hands-on learning like this, let’s connect!
+
+👉 Follow me on LinkedIn for more content, practical guides, and insights:  
+[LinkedIn Profile](www.linkedin.com/in/sktr13055)
+
+I share learning resources, project experiences, and cybersecurity concepts explained in a simple way.
+
+---
+
