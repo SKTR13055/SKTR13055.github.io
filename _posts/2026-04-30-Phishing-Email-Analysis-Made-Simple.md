@@ -292,7 +292,7 @@ The safest approach is a combination of:
 
 Together, they create a strong defense against phishing.
 
-# 🔧 Tools for Phishing Analysis
+## Tools for Phishing Analysis
 
 If you want to go a step further, these tools can help verify suspicious emails safely:
 
@@ -331,7 +331,7 @@ Quickly check if a website is flagged as unsafe.
 
 ---
 
-# 🛡️ Phishing Response Playbook
+## Phishing Response Playbook
 
 If you encounter a suspicious email, follow this step-by-step approach:
 
