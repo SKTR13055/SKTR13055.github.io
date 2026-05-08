@@ -224,3 +224,8 @@ jekyll-archives:
   permalinks:
     tag: /tags/:name/
     category: /categories/:name/
+
+    collections:
+  projects:
+    output: true
+    permalink: /projects/:title/
