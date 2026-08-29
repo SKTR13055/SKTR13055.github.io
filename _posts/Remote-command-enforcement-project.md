@@ -1,8 +1,10 @@
 ---
 layout: post
-title: "Your Awesome Project Title"
+title: "Remote Command Enforcement"
 date: 2026-05-15
 tech: ["Python", Blue_Team]
+categories: [Projects]
+featured: true
 ---
 
 ### Project Overview

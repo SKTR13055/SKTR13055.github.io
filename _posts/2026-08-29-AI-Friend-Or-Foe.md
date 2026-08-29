@@ -4,6 +4,7 @@ title: "M.Tech Dissertation: [AI: Friend or Foe? An Experimental Evaluation of L
 Classification Under Adversarial Conditions]"
 date: 2026-08-29
 tech: ["Cybersecurity", "Research", "AI"]
+categories: [Projects]
 featured: true
 ---
 
