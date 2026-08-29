@@ -170,6 +170,9 @@ collections:
   tabs:
     output: true
     sort_by: order
+  projects:
+    output: true
+    permalink: /projects/:title/
 
 defaults:
   - scope:
@@ -224,8 +227,3 @@ jekyll-archives:
   permalinks:
     tag: /tags/:name/
     category: /categories/:name/
-
-    collections:
-  projects:
-    output: true
-    permalink: /projects/:title/
