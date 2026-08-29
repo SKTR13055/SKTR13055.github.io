@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "M.Tech Dissertation: [AI: Friend or Foe? An Experimental Evaluation of LLM-Assisted Malware
-Classification Under Adversarial Conditions]"
+title: "M.Tech Dissertation: AI: Friend or Foe? An Experimental Evaluation of LLM-Assisted Malware
+Classification Under Adversarial Conditions"
 date: 2026-08-29
 tech: ["Cybersecurity", "Research", "AI"]
 categories: [Projects]
