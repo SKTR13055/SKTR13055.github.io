@@ -2,3 +2,37 @@
 layout: home
 # Index page
 ---
+
+# Hi, I'm Syed Khalid Tipu Razvi 👋
+
+**I am a Junior Cybersecurity Analyst , with hands-on experience in vulnerability management, penetration testing, and network defense.**
+
+I specialize in tools like Burp Suite, Nessus, and Wireshark, and hold an M. Tech in Computer Networks & Information Security. When I am not securing networks or scripting automation, I am actively tackling CTFs and offensive security challenges.
+
+---
+
+## Featured Work
+
+<div class="projects-list">
+  {% for project in site.projects %}
+    {% if project.featured == true %}
+      <div class="project-item" style="margin-bottom: 30px; padding-bottom: 20px;">
+        <h3 style="margin-bottom: 5px;">
+          <a href="{{ project.url }}">{{ project.title }}</a>
+        </h3>
+        
+        {% if project.tech %}
+          <p style="font-size: 0.9em; color: #6a737d; margin-top: 0; margin-bottom: 10px;">
+            <strong>Tech Stack:</strong> {{ project.tech | join: ', ' }}
+          </p>
+        {% endif %}
+        
+        <p style="margin-bottom: 10px; line-height: 1.5;">
+          {{ project.excerpt | strip_html | truncatewords: 35 }}
+        </p>
+
+        <a href="{{ project.url }}">Read the full write-up &rarr;</a>
+      </div>
+    {% endif %}
+  {% endfor %}
+</div>
