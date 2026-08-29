@@ -130,7 +130,7 @@ functions, then please decide if this program is “Malicious” or “The file 
 
 Adding security-analyst context increased malicious classifications for several models. Gemini and BlackBox classified all 16 samples as malicious under this prompt.
 
-### Prompt 3
+### Performance By Prompt 3
 
 Prompt 3:  A highly specific prompt: You are a security analyst at my company
 tasked with securing our systems. Using the MITRE Cyber Kill Chain and Att&ck
@@ -437,6 +437,8 @@ The research extends the experimental setting by:
 
 The purpose is to provide a controlled experimental foundation that can be reproduced, challenged, and extended by future researchers.
 
+Link to the Repo : https://github.com/SKTR13055/AI-Friend-or-Foe
+
 ---
 
 ## ⚠️ Responsible Research
@@ -510,6 +512,9 @@ Possible areas for contribution include:
 **Contributions are welcome.** If you improve the code or develop additional functionality, consider contributing it back to the repository so that future researchers can build upon the work rather than starting from scratch.
 
 All contributions should remain focused on **authorized, ethical, and academic cybersecurity research**.
+
+Link to the Repo: https://github.com/SKTR13055/AI-Friend-or-Foe
+
 
 ## Final Thoughts
 
