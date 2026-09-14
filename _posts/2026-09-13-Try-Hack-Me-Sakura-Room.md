@@ -55,13 +55,13 @@ SakuraSnowAngelAiko
 
 ## Task 3 (Reconnaissance)
 
-# Background
+### Background
 
 ---
 
 It appears that our attacker made a fatal mistake in their operational security. They seem to have reused their username across other social media platforms as well. This should make it far easier for us to gather additional information on them by locating their other social media accounts.
 
-# Instructions
+### Instructions
 
 ---
 
@@ -107,7 +107,7 @@ Aiko Abe
 
 t seems the cybercriminal is aware that we are on to them. As we were investigating into their Github account we observed indicators that the account owner had already begun editing and deleting information in order to throw us off their trail. It is likely that they were removing this information because it contained some sort of data that would add to our investigation. Perhaps there is a way to retrieve the original information that they provided?
 
-# Instructions
+### Instructions
 
 ---
 
@@ -171,7 +171,7 @@ Just as we thought, the cybercriminal is fully aware that we are gathering infor
 
 We've taken a screenshot of the message sent to us by the attacker, you can view it in your browser [here(opens in new tab)](https://raw.githubusercontent.com/OsintDojo/public/main/taunt.png).
 
-# Instructions
+### Instructions
 
 ---
 
@@ -219,13 +219,13 @@ What is the BSSID for the attacker's Home WiFi?
 
 ## Task 6 (HomeBound)
 
-# Background
+### Background
 
 ---
 
 Based on their tweets, it appears our cybercriminal is indeed heading home as they claimed. Their Twitter account seems to have plenty of photos which should allow us to piece together their route back home. If we follow the trail of breadcrumbs they left behind, we should be able to track their movements from one location to the next back all the way to their final destination. Once we can identify their final stops, we can identify which law enforcement organization we should forward our findings to.
 
-# Instructions
+### Instructions
 
 ---
 
@@ -241,7 +241,7 @@ What lake can be seen in the map shared by the attacker as they were on their fi
 What city does the attacker likely consider "home"?
 ```
 
-### Task 6
+### Task 6 Solution
 
 Now in order to begin for this task we need to look at her twitter or X post to further investigate this task
 
@@ -303,7 +303,7 @@ What city does the attacker likely consider "home"?
 
 ---
 
-# Final Thoughts
+### Final Thoughts
 
 This room was probably one of the more interesting OSINT rooms I've completed because the investigation didn't rely on a single technique.
 
