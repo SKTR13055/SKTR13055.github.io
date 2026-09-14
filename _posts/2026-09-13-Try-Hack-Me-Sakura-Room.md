@@ -303,7 +303,9 @@ What city does the attacker likely consider "home"?
 
 ---
 
-### Final Thoughts
+
+
+## Final Thoughts
 
 This room was probably one of the more interesting OSINT rooms I've completed because the investigation didn't rely on a single technique.
 
