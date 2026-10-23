@@ -1,3 +1,12 @@
+---
+layout: post
+title: "Building a Vulnerable Active Directory for Pen testing"
+date: 2026-10-23
+tech: ["Cybersecurity", "Active_Directory", "Pentesting", "Lab"]
+categories: [Projects]
+featured: true
+---
+
 # Building a Vulnerable Active Directory Lab for Penetration Testing
 
 Active Directory is Microsoft’s directory service. It stores a company network’s users, computers, groups and policies, and handles authentication (Kerberos/NTLM) and authorization. Think of it as the phone book of a company network, plus the front desk that decides who gets in.”
