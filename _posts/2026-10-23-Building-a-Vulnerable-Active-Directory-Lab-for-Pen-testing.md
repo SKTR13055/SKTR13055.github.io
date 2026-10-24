@@ -15,13 +15,13 @@ Now if you want to practice Penetration Testing for Active Directory you can fol
 
 I am basically installing this due to the course from TCM Security and I think it would be amazing and really a good skill to put it in my arsenal I’ll go according to the course and step by step I apologize in advance for the screenshots which may or may not be available due to my computer being utilized by the vm.
 
+![AD Lab Topology.svg](/assets/img/Building-Vulnerable-Active-Directory-For-Pentesting-Lab/AD-Lab-Topology.svg)
+A Windows Server 2022 domain controller and two Windows 11 workstations joined to MARVEL.local, plus a Kali Linux machine for pentesting, all on one VMware NAT network.
+
 All the Process from Installing to connecting the workstations to the domain is divided into 6 topics to ensure ease of understanding.
 
 <aside>
-⚠️
-
-**Everything in this lab is intentionally insecure.** Weak passwords, a password in a user description, Defender turned off and an open file share are here on purpose so there is something to attack. Never copy these settings into a real environment. Steps tagged **🧪 Lab only** are the risky ones.
-
+⚠️ **Everything in this lab is intentionally insecure.** Weak passwords, a password in a user description, Defender turned off and an open file share are here on purpose so there is something to attack. Never copy these settings into a real environment. Steps tagged **🧪 Lab only** are the risky ones.
 </aside>
 
 1. Lab Overview and Requirements
