@@ -5,6 +5,8 @@ date: 2026-10-23
 tech: ["Cybersecurity", "Active_Directory", "Pentesting", "Lab"]
 categories: [Projects]
 featured: true
+image:
+  path: /assets/img/headers/AD-Installation-Thumbnail.svg
 ---
 
 # Building a Vulnerable Active Directory Lab for Penetration Testing
