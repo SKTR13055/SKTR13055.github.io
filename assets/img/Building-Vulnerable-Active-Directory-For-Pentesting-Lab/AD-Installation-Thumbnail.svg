@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630" font-family="Arial, Helvetica, sans-serif">
+  <rect width="1200" height="630" fill="#0f172a"/>
+
+  <!-- faint grid -->
+  <g stroke="#1e293b" stroke-width="1">
+    <line x1="0" y1="105" x2="1200" y2="105"/><line x1="0" y1="210" x2="1200" y2="210"/>
+    <line x1="0" y1="315" x2="1200" y2="315"/><line x1="0" y1="420" x2="1200" y2="420"/>
+    <line x1="0" y1="525" x2="1200" y2="525"/>
+    <line x1="150" y1="0" x2="150" y2="630"/><line x1="300" y1="0" x2="300" y2="630"/>
+    <line x1="450" y1="0" x2="450" y2="630"/><line x1="600" y1="0" x2="600" y2="630"/>
+    <line x1="750" y1="0" x2="750" y2="630"/><line x1="900" y1="0" x2="900" y2="630"/>
+    <line x1="1050" y1="0" x2="1050" y2="630"/>
+  </g>
+
+  <!-- left accent bar -->
+  <rect x="0" y="0" width="12" height="630" fill="#38bdf8"/>
+
+  <!-- tag -->
+  <text x="70" y="130" font-size="22" font-weight="bold" fill="#38bdf8" letter-spacing="3">HOME LAB  ·  PENTESTING</text>
+
+  <!-- title -->
+  <text x="70" y="228" font-size="56" font-weight="bold" fill="#ffffff">Building a Vulnerable</text>
+  <text x="70" y="298" font-size="56" font-weight="bold" fill="#ffffff">Active Directory Lab</text>
+
+  <!-- subtitle -->
+  <text x="70" y="362" font-size="27" fill="#cbd5e1">Windows Server 2022 + Windows 11 in VMware</text>
+
+  <!-- pills -->
+  <g font-size="18" fill="#e2e8f0" text-anchor="middle">
+    <rect x="70" y="400" width="205" height="42" rx="21" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+    <text x="172" y="427">Domain Controller</text>
+    <rect x="290" y="400" width="185" height="42" rx="21" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+    <text x="382" y="427">2 Workstations</text>
+    <rect x="490" y="400" width="140" height="42" rx="21" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+    <text x="560" y="427">Kali Linux</text>
+  </g>
+
+  <!-- bottom line -->
+  <text x="70" y="560" font-size="22" fill="#94a3b8">Step-by-step guide</text>
+
+  <!-- network motif (right) -->
+  <g>
+    <!-- links -->
+    <g stroke="#475569" stroke-width="3">
+      <line x1="975" y1="240" x2="975" y2="318"/>
+      <line x1="975" y1="352" x2="860" y2="440"/>
+      <line x1="975" y1="352" x2="975" y2="440"/>
+      <line x1="975" y1="352" x2="1090" y2="440"/>
+    </g>
+
+    <!-- server -->
+    <rect x="945" y="120" width="60" height="100" rx="6" fill="#1e293b" stroke="#38bdf8" stroke-width="3"/>
+    <g stroke="#38bdf8" stroke-width="2.5" stroke-linecap="round">
+      <line x1="955" y1="142" x2="995" y2="142"/><line x1="955" y1="162" x2="995" y2="162"/><line x1="955" y1="182" x2="995" y2="182"/>
+    </g>
+    <circle cx="958" cy="206" r="4" fill="#4ade80"/><circle cx="972" cy="206" r="4" fill="#475569"/>
+    <text x="975" y="248" font-size="16" font-weight="bold" fill="#94a3b8" text-anchor="middle">DC</text>
+
+    <!-- switch -->
+    <rect x="925" y="318" width="100" height="34" rx="6" fill="#1e293b" stroke="#a78bfa" stroke-width="3"/>
+    <g stroke="#a78bfa" stroke-width="2.5" stroke-linecap="round">
+      <line x1="940" y1="330" x2="1008" y2="330"/><line x1="942" y1="341" x2="1010" y2="341"/>
+    </g>
+
+    <!-- PC 1 -->
+    <rect x="828" y="442" width="64" height="44" rx="4" fill="#1e293b" stroke="#4ade80" stroke-width="3"/>
+    <rect x="852" y="486" width="16" height="8" fill="#4ade80"/><rect x="840" y="494" width="40" height="6" rx="3" fill="#4ade80"/>
+    <text x="860" y="528" font-size="16" font-weight="bold" fill="#94a3b8" text-anchor="middle">PC-1</text>
+
+    <!-- PC 2 -->
+    <rect x="943" y="442" width="64" height="44" rx="4" fill="#1e293b" stroke="#4ade80" stroke-width="3"/>
+    <rect x="967" y="486" width="16" height="8" fill="#4ade80"/><rect x="955" y="494" width="40" height="6" rx="3" fill="#4ade80"/>
+    <text x="975" y="528" font-size="16" font-weight="bold" fill="#94a3b8" text-anchor="middle">PC-2</text>
+
+    <!-- Kali -->
+    <rect x="1058" y="442" width="64" height="44" rx="4" fill="#0b1220" stroke="#f59e0b" stroke-width="3"/>
+    <text x="1067" y="472" font-size="20" font-weight="bold" font-family="Courier New, monospace" fill="#4ade80">&gt;_</text>
+    <rect x="1082" y="486" width="16" height="8" fill="#f59e0b"/><rect x="1070" y="494" width="40" height="6" rx="3" fill="#f59e0b"/>
+    <text x="1090" y="528" font-size="16" font-weight="bold" fill="#94a3b8" text-anchor="middle">KALI</text>
+  </g>
+</svg>
