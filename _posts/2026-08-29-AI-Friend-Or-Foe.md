@@ -7,7 +7,7 @@ tech: ["Cybersecurity", "Research", "AI"]
 categories: [Projects]
 featured: true
 image:
-  path:/assets/img/headers/AI-Friend-or-Foe-Banner.png
+  path: /assets/img/headers/AI-Friend-or-Foe-Banner.png
 ---
 
 # Research
