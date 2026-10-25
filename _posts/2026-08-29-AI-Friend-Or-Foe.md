@@ -6,6 +6,8 @@ date: 2026-08-29
 tech: ["Cybersecurity", "Research", "AI"]
 categories: [Projects]
 featured: true
+image:
+  path:/assets/img/headers/AI-Friend-or-Foe-Banner.png
 ---
 
 # Research
