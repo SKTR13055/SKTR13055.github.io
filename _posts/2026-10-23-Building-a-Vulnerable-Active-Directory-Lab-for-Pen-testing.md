@@ -1,21 +1,21 @@
 ---
 layout: post
-title: "Building a Vulnerable Active Directory for Pen testing"
+title: "Building a Vulnerable Active Directory Lab for Pentesting (2026, Windows 11)"
 date: 2026-10-23
-tech: ["Cybersecurity", "Active_Directory", "Pentesting", "Lab"]
+tech: ["Cybersecurity", "Active_Directory", "Pentesting", "Lab", Windows 11]
 categories: [Projects]
 featured: true
 image:
   path: /assets/img/headers/AD-Installation-Thumbnail.svg
 ---
 
-# Building a Vulnerable Active Directory Lab for Penetration Testing
+# Building a Vulnerable Active Directory Lab for Pentesting (2026, Windows 11)
 
 Active Directory is Microsoft’s directory service. It stores a company network’s users, computers, groups and policies, and handles authentication (Kerberos/NTLM) and authorization. Think of it as the phone book of a company network, plus the front desk that decides who gets in.”
 
 Now if you want to practice Penetration Testing for Active Directory you can follow this build 
 
-I am basically installing this due to the course from TCM Security and I think it would be amazing and really a good skill to put it in my arsenal I’ll go according to the course and step by step I apologize in advance for the screenshots which may or may not be available due to my computer being utilized by the vm.
+I am installing this because of the course from TCM Security, and I think it is a really good skill to add to my arsenal. I’ll follow the course step by step. I apologize in advance for any missing screenshots, since my computer is busy running the virtual machines.
 
 ![AD Lab Topology.svg](/assets/img/Building-Vulnerable-Active-Directory-For-Pentesting-Lab/AD-Lab-Topology.svg)
 A Windows Server 2022 domain controller and two Windows 11 workstations joined to MARVEL.local, plus a Kali Linux machine for pentesting, all on one VMware NAT network.
