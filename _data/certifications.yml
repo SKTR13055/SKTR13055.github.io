@@ -73,53 +73,77 @@
   date: "December 31 2025"
   url: "/assets/img/certs/ibm-career-excellence.png"
 
-  - Name: Security+: Security Operations
-- Issuer: Cybrary
-- Date: July 01 2025
-- Certificate: [View Image](/assets/img/certs/cybrary-security-operations.png)
+- name: "Ethical Hacking"
+  issuer: "NPTEL (IIT Kharagpur)"
+  date: "Oct 2024 (Jul–Oct 2024)"
+  url: "/assets/img/certs/nptel-ethical-hacking.png"
 
-- Name: Ethical Hacking
-- Issuer: NPTEL (IIT Kharagpur)
-- Date: Oct 2024 (Jul–Oct 2024)
-- Certificate: [View Image](/assets/img/certs/nptel-ethical-hacking.png)
+- name: "Passwords 2 and Simulation"
+  issuer: "Huntress"
+  date: "Oct 06 2025"
+  url: "/assets/img/certs/huntress-passwords-2.png"
 
-- Name: Passwords 2 and Simulation
-- Issuer: Huntress
-- Date: Oct 06 2025
-- Certificate: [View Image](/assets/img/certs/huntress-passwords-2.png)
+- name: "Python for Absolute Beginners"
+  issuer: "EC-Council"
+  date: "July 11 2024"
+  url: "/assets/img/certs/ec-council-python.png"
 
-- Name: Python for Absolute Beginners
-- Issuer: EC-Council
-- Date: July 11 2024
-- Certificate: [View Image](/assets/img/certs/ec-council-python.png)
+- name: "CSRBOX: Data Analytics Internship Plan"
+  issuer: "IBM SkillsBuild"
+  date: "July 05 2023"
+  url: "/assets/img/certs/ibm-data-analytics.png"
 
-- Name: CSRBOX: Data Analytics Internship Plan
-- Issuer: IBM SkillsBuild
-- Date: July 05 2023
-- Certificate: [View Image](/assets/img/certs/ibm-data-analytics.png)
+- name: "Techonquer Certified VAPT Practitioner (TCVP)"
+  issuer: "Techonquer"
+  date: "Nov 20 2024"
+  url: "/assets/img/certs/techonquer-tcvp.png"
 
-- Name: Techonquer Certified VAPT Practitioner (TCVP)
-- Issuer: Techonquer
-- Date: Nov 20 2024
-- Certificate: [View Image](/assets/img/certs/techonquer-tcvp.png)
+- name: "Android Basics in Kotlin Course (Android Study Jams)"
+  issuer: "Google Developer Student Clubs (Methodist College of Engineering & Technology)"
+  date: "Not listed on certificate"
+  url: "/assets/img/certs/gdsc-android-kotlin.png"
 
-- Name: Android Basics in Kotlin Course (Android Study Jams)
-- Issuer: Google Developer Student Clubs (Methodist College of Engineering & Technology)
-- Date: Not listed on certificate
-- Certificate: [View Image](/assets/img/certs/gdsc-android-kotlin.png)
+- name: "2022–2023 GDSC Extended Core Team Member"
+  issuer: "Google Developer Student Clubs (Methodist College of Engineering & Technology)"
+  date: "2022–2023 Academic Year"
+  url: "/assets/img/certs/gdsc-core-team.png"
 
-- Name: 2022–2023 GDSC Extended Core Team Member
-- Issuer: Google Developer Student Clubs (Methodist College of Engineering & Technology)
-- Date: 2022–2023 Academic Year
-- Certificate: [View Image](/assets/img/certs/gdsc-core-team.png)
+- name: "Mock Interview – CSI State Level Student Convention (FUSION 2022)"
+  issuer: "CSI MVSREC Student Branch (Maturi Venkata Subba Rao Engineering College)"
+  date: "Dec 16 2022 (15th–16th Dec 2022)"
+  url: "/assets/img/certs/csi-mock-interview.png"
 
-- Name: Mock Interview – CSI State Level Student Convention (FUSION 2022)
-- Issuer: CSI MVSREC Student Branch (Maturi Venkata Subba Rao Engineering College)
-- Date: Dec 16 2022 (15th–16th Dec 2022)
-- Certificate: [View Image](/assets/img/certs/csi-mock-interview.png)
+- name: "Introduction to Cybersecurity"
+  issuer: "Cisco Networking Academy"
+  date: "June 06 2023"
+  url: "/assets/img/certs/cisco-intro-cybersecurity.png"
 
-- Name: Introduction to Cybersecurity
-- Issuer: Cisco Networking Academy
-- Date: June 06 2023
-- Certificate: [View Image](/assets/img/certs/cisco-intro-cybersecurity.png)
+- name: "DevNet Associate"
+  issuer: "Cisco Networking Academy"
+  date: "July 31 2023"
+  url: "/assets/img/certs/cisco-devnet-associate.png"
 
+- name: "CCNAv7: Introduction to Networks"
+  issuer: "Cisco Networking Academy"
+  date: "June 21 2022"
+  url: "/assets/img/certs/cisco-ccnav7-intro-networks.png"
+
+- name: "Hacker Holidays"
+  issuer: "TryHackMe"
+  date: "August 11 2026"
+  url: "/assets/img/certs/thm-hacker-holidays.png"
+
+- name: "Advent of Cyber 2024"
+  issuer: "TryHackMe"
+  date: "Dec 28 2024"
+  url: "/assets/img/certs/thm-advent-of-cyber-2024.png"
+
+- name: "Advent of Cyber 2025"
+  issuer: "TryHackMe"
+  date: "Dec 25 2025"
+  url: "/assets/img/certs/thm-advent-of-cyber-2025.png"
+
+- name: "Advent of Cyber 2023"
+  issuer: "TryHackMe"
+  date: "Dec 27 2023"
+  url: "/assets/img/certs/thm-advent-of-cyber-2023.png"
